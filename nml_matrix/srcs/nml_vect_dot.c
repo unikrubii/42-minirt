@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nml_mat_trace.c                                    :+:      :+:    :+:   */
+/*   nml_vect_dot.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/02 14:53:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/08 20:17:35 by nnakarac         ###   ########.fr       */
+/*   Created: 2023/04/08 19:43:54 by nnakarac          #+#    #+#             */
+/*   Updated: 2023/04/08 20:04:42 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
-/// @brief Matrix Trace
-/// @param m
-/// @return sum of diagonal value or -2147483648 incase matrix is not square
-float	nml_mat_trace(t_nml_mat *m)
+float	nml_vect_dot(t_nml_mat *m1, unsigned int m1col, t_nml_mat *m2, \
+	unsigned int m2col)
 {
 	unsigned int	i;
-	float			trace;
+	float			dot;
 
+	if (m1->rows != m2->rows)
+		return (nml_error(__FILE__, __LINE__, "CANT_V_DOT_DIM"), -2147483648);
+	if (m1col >= m1->cols || m2col >= m2->cols)
+		return (nml_error(__FILE__, __LINE__, "CANT_GET_COLUMN"), -2147483648);
 	i = 0;
-	trace = 0.0f;
-	if (!m->is_square)
-		return (nml_error(__FILE__, __LINE__, "CANNOT_TRACE"), INT_MIN);
-	while (i < m->rows)
+	dot = 0.0f;
+	while (i < m1->rows)
 	{
-		trace += m->data[i][i];
+		dot += m1->data[i][m1col] * m2->data[i][m2col];
 		i++;
 	}
-	return (trace);
+	return (dot);
 }

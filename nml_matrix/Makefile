@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
+#    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2023/04/05 22:19:59 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/04/08 20:43:08 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,15 @@ NML = nml_util.c \
 	nml_mat_lu_get.c \
 	nml_ls_solvefwd.c \
 	nml_ls_solvebck.c \
+	nml_ls_solve.c \
+	nml_mat_inv.c \
+	nml_vect_dot.c \
+	nml_mat_col_l2norm.c \
+	nml_mat_l2norm.c \
+	nml_mat_normalize.c \
+	nml_mat_qr_new.c \
+	nml_mat_qr_free.c \
+	# nml_mat_qr_solve.c \
 
 SRCS = $(NML)
 OBJS = $(SRCS:.c=.o)

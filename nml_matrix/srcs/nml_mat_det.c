@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_det.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 20:34:17 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/05 21:36:28 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:48:18 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ float	nml_mat_det(t_nml_mat_lup *lup)
 		product *= u->data[k][k];
 		k++;
 	}
-	return (sign * product);
+	return (product * sign);
 }

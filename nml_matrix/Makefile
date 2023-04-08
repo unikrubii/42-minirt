@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2023/04/08 20:43:08 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/04/08 21:23:24 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ NML = nml_util.c \
 	nml_mat_normalize.c \
 	nml_mat_qr_new.c \
 	nml_mat_qr_free.c \
+	nml_mat_from.c \
 	# nml_mat_qr_solve.c \
 
 SRCS = $(NML)

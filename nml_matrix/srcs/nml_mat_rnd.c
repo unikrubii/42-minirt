@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_rnd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:36:47 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/03/27 12:45:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:35:43 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,9 @@ t_nml_mat	*nml_mat_rnd(unsigned int num_rows, unsigned int num_cols, \
 		i++;
 	}
 	return (r);
+}
+
+t_nml_mat	*nml_mat_sqr_rnd(unsigned int size, float min, float max)
+{
+	return (nml_mat_rnd(size, size, min, max));
 }

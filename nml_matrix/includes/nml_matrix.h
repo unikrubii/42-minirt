@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:32:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/08 20:17:23 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:50:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft.h"
 # include "../../libft/includes/libft.h"
 
-# define NML_MIN_COEF 0.0000000001
+# define NML_MIN_COEF 0.0000000000001
 
 // ****************************************************************************
 //
@@ -200,6 +200,8 @@ void			nml_mat_lup_free(t_nml_mat_lup *lu);
 void			nml_mat_lup_print(t_nml_mat_lup *lu);
 void			nml_mat_lup_printf(t_nml_mat_lup *lu, const char *fmt);
 
+t_nml_mat_lup	*nml_mat_lup_solve(t_nml_mat *m);
+
 float			nml_mat_det(t_nml_mat_lup *lup);
 
 t_nml_mat		*nml_mat_lu_get(t_nml_mat_lup *lup);
@@ -234,5 +236,8 @@ t_nml_mat_qr	*nml_mat_qr_new(void);
 void			nml_mat_qr_free(t_nml_mat_qr *qr);
 
 t_nml_mat_qr	*nml_mat_qr_solve(t_nml_mat *m);
+
+t_nml_mat		*nml_mat_from(unsigned int num_rows, unsigned int num_cols, \
+	unsigned int n_vals, float *vals);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:06:03 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/18 00:21:12 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/18 01:07:16 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ int	mlx_conv_color(int color)
 
 void	mlx_draw(t_data *data, t_draw *draw)
 {
-	int	x;
-	int	y;
-	double	r;
-	double	g;
-	int	color;
+	int		x;
+	int		y;
+	float	r;
+	float	g;
 
 	(void) draw;
 	y = 0;
@@ -57,10 +56,9 @@ void	mlx_draw(t_data *data, t_draw *draw)
 		x = 0;
 		while (x < WIDTH)
 		{
-			r = ((float) x / 1024.0f) * 255.0;
-			g = ((float) y / 768.0f) * 255.0;
-			color = ((int) r << 16) + ((int) g << 8) + 0;
-			my_mlx_pixel_put(data, x, y, color);
+			r = ((float) x / WIDTH) * 255.0;
+			g = ((float) y / HEIGHT) * 255.0;
+			my_mlx_pixel_put(data, x, y, ((int) r << 16) + ((int) g << 8));
 			x++;
 		}
 		y++;

@@ -68,6 +68,8 @@ fclean: clean
 	@make -C $(NML_DIR) fclean --silent
 	@$(RM) libmlx.dylib
 	@$(RM) $(NAME)
+	@$(RM) libmlx.dylib.dSYM
+	@$(RM) $(NAME).dSYM
 
 re: fclean all
 

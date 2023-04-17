@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/12 19:06:16 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:12:29 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 void	mlx_key_close(t_handle *handy)
 {
-	mlx_clear_window(handy->data->mlx, handy->data->win);
-	mlx_destroy_window(handy->data->mlx, handy->data->win);
-	handy->data->win = NULL;
-	handy->data->mlx = NULL;
-	free(handy->mouse);
+	mlx_clear_window(handy->data.mlx, handy->data.win);
+	mlx_destroy_window(handy->data.mlx, handy->data.win);
+	handy->data.mlx = NULL;
+	handy->data.mlx = NULL;
+	exit(0);
+}
+
+int	mlx_close(t_vars *vars)
+{
+	mlx_clear_window(vars->mlx, vars->win);
+	mlx_destroy_window(vars->mlx, vars->win);
+	vars->win = NULL;
+	vars->mlx = NULL;
 	exit(0);
 }
 

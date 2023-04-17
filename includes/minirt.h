@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/12 15:55:45 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:08:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,34 +109,50 @@ typedef struct s_camera
 
 typedef struct s_object
 {
-	int			type;
-	t_nml_mat	*pos;
-	t_nml_mat	*dir;
-	t_nml_mat	*color;
-	float		radius;
-	float		height;
-	float		ambient;
-	float		diffuse;
-	float		specular;
-	float		reflective;
-	float		transparency;
-	float		refractive_index;
+	int				type;
+	t_nml_mat		*pos;
+	t_nml_mat		*dir;
+	t_nml_mat		*color;
+	float			radius;
+	float			height;
+	float			ambient;
+	float			diffuse;
+	float			specular;
+	float			reflective;
+	float			transparency;
+	float			refractive_index;
+	struct s_object	*next;
 }	t_object;
 
 typedef struct s_light
 {
-	t_nml_mat	*pos;
-	t_nml_mat	*color;
-	float		brightness;
+	t_nml_mat		*pos;
+	t_nml_mat		*color;
+	float			brightness;
+	struct s_light	*next;
 }	t_light;
 typedef struct s_handle
 {
-	t_vars		*data;
-	t_draw		*draw;
-	t_mouse		*mouse;
+	t_vars		data;
+	t_draw		draw;
+	t_mouse		mouse;
 	t_camera	*camera;
 	t_object	*objects;
 	t_light		*lights;
 }	t_handle;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+void	mlx_draw(t_data *data, t_draw *draw);
+
+void	mlx_re_draw(t_handle *handy);
+
+void	mlx_key_close(t_handle *handy);
+
+int		mlx_close(t_vars *vars);
+
+int		rt_key_handler(int keycode, t_handle *handy);
+
+int		render(t_handle *handy);
 
 #endif

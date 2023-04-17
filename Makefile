@@ -35,6 +35,8 @@ else
 endif
 
 SRCS =	rt_key_handler.c \
+		rt_draw.c \
+		rt_render.c \
 		blink.c \
 
 OBJS = $(SRCS:.c=.o)

@@ -1,5 +1,5 @@
 NAME = miniRT
-CC = gcc
+CC = gcc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
@@ -38,6 +38,7 @@ SRCS =	rt_key_handler.c \
 		rt_draw.c \
 		rt_render.c \
 		blink.c \
+		endian.c \
 
 OBJS = $(SRCS:.c=.o)
 

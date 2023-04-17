@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_render.c                                        :+:      :+:    :+:   */
+/*   endian.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/17 21:19:17 by nnakarac         ###   ########.fr       */
+/*   Created: 2023/04/17 20:40:40 by nnakarac          #+#    #+#             */
+/*   Updated: 2023/04/17 20:44:47 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	render(t_handle *handy)
+int	endian(void)
 {
-	if (handy->data.win == NULL)
-		return (1);
-	mlx_draw(&handy->data.img, &handy->draw);
-	mlx_draw2(&handy->data.img, &handy->draw);
-	mlx_put_image_to_window(handy->data.mlx, handy->data.win, \
-		handy->data.img.img, 0, 0);
-	return (0);
+	int		i;
+	char	*p;
+
+	i = 1;
+	p = (char *)&i;
+	if (p[0] == 1)
+		return (LITTLE_ENDIAN);
+	return (BIG_ENDIAN);
 }

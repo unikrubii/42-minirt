@@ -34,7 +34,8 @@ else
 				  -L$(NML_DIR) -lnml_matrix
 endif
 
-SRCS =	dummy.c \
+SRCS =	rt_key_handler.c \
+		blink.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:06:03 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/17 21:28:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/17 22:04:41 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	mlx_draw(t_data *data, t_draw *draw)
 		x = 0;
 		while (x < WIDTH)
 		{
-			my_mlx_pixel_put(data, x, y, 0xAAFF0000);
+			my_mlx_pixel_put(data, x, y, 0x00FFFF00);
 			x++;
 		}
 		y++;
@@ -73,7 +73,7 @@ void	mlx_draw2(t_data *data, t_draw *draw)
 		x = 0;
 		while (x < WIDTH)
 		{
-			my_mlx_pixel_put(data, x, y, 0xBB0000FF);
+			my_mlx_pixel_put(data, x, y, 0xF00000FF);
 			x++;
 		}
 		y++;

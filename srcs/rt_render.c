@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/17 21:19:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/17 22:03:21 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	render(t_handle *handy)
 	if (handy->data.win == NULL)
 		return (1);
 	mlx_draw(&handy->data.img, &handy->draw);
-	mlx_draw2(&handy->data.img, &handy->draw);
 	mlx_put_image_to_window(handy->data.mlx, handy->data.win, \
 		handy->data.img.img, 0, 0);
 	return (0);

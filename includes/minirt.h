@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/17 21:19:34 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/18 07:10:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "get_next_line.h"
 # include "mlx.h"
 # include "nml_matrix.h"
+# include "camera.h"
 
 # define PI 3.14159265358979323846
 # define EPSILON 0.000001

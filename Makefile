@@ -39,6 +39,13 @@ SRCS =	rt_key_handler.c \
 		rt_render.c \
 		blink.c \
 		endian.c \
+		camera_1.c \
+		camera_2.c \
+		camera_3.c \
+		camera_4.c \
+		camera_5.c \
+		camera_6.c \
+		v_util.c \
 
 OBJS = $(SRCS:.c=.o)
 

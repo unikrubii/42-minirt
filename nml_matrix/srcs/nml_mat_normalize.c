@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_normalize.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:35:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/19 22:28:44 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:42:09 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	nml_mat_normalize_r(t_nml_mat *m)
 			nml_error(__FILE__, __LINE__, "VECTOR_J_DEGENERATE");
 			return (nml_mat_free(l2norms), 0);
 		}
-		nml_mat_col_mult_r(m, j, 1/l2norms->data[0][j]);
 		j++;
 	}
 	return (1);

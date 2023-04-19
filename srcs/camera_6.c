@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_6.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:16:09 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/18 19:57:32 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:28:04 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	update_cam_geomet(t_camera *camera)
 	camera->v_align_vect = nml_mat_sub(camera->v_cam_lookat, \
 		camera->v_cam_pos);
 	nml_mat_normalize_r(camera->v_align_vect);
-	// camera->v_proj_scr_u =
+	camera->v_proj_scr_u = vect_cross(camera->v_align_vect, camera->v_cam_up);
+	nml_mat_normalize_r(camera->v_proj_scr_u);
+
 }

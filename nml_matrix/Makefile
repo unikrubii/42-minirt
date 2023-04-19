@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
+#    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2023/04/08 21:23:24 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/04/19 23:25:07 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ NML = nml_util.c \
 	nml_mat_set.c \
 	nml_mat_mult.c \
 	nml_mat_smult.c \
+	nml_mat_devide.c \
 	nml_col_row_rem.c \
 	nml_col_row_swap.c \
 	nml_row_addrow.c \

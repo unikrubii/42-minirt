@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 23:24:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/19 23:27:49 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/19 23:37:51 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 /// @param m
 /// @param num
 /// @return
-t_nml_mat	*nml_mat_devide(t_nml_mat *m, float num)
+t_nml_mat	*nml_mat_sdevide(t_nml_mat *m, float num)
 {
 	t_nml_mat	*r;
 
 	if (num == 0.0f)
 		return (NULL);
 	r = nml_mat_cp(m);
-	nml_mat_devide_r(r, num);
+	nml_mat_sdevide_r(r, num);
 	return (r);
 }
 
@@ -32,7 +32,7 @@ t_nml_mat	*nml_mat_devide(t_nml_mat *m, float num)
 /// @param m
 /// @param num
 /// @return
-int	nml_mat_devide_r(t_nml_mat *m, float num)
+int	nml_mat_sdevide_r(t_nml_mat *m, float num)
 {
 	unsigned int	i;
 	unsigned int	j;

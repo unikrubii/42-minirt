@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_matrix.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:32:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/08 21:50:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/19 23:38:42 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ t_nml_mat		*nml_mat_col_mult(t_nml_mat *m, unsigned int col, float num);
 
 int				nml_mat_smult_r(t_nml_mat *m, float num);
 t_nml_mat		*nml_mat_smult(t_nml_mat *m, float num);
+
+int				nml_mat_sdevide_r(t_nml_mat *m, float num);
+t_nml_mat		*nml_mat_sdevide(t_nml_mat *m, float num);
 
 // ****************************************************************************
 //

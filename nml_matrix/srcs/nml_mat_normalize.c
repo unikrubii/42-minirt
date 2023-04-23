@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:35:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/19 23:18:46 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:49:12 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	nml_mat_normalize_r(t_nml_mat *m)
 
 	j = 0;
 	l2norms = NULL;
+	l2norms = nml_mat_l2norm(m);
 	while (j < m->cols)
 	{
 		if (l2norms->data[0][j] < NML_MIN_COEF)

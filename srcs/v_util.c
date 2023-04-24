@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:15:57 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/19 22:24:30 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:27:02 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ t_nml_mat	*vect_cross(t_nml_mat *a, t_nml_mat *b)
 	i = (a->data[1][0] * b->data[2][0]) - (a->data[2][0] * b->data[1][0]);
 	j = (a->data[2][0] * b->data[0][0]) - (a->data[0][0] * b->data[2][0]);
 	k = (a->data[0][0] * b->data[1][0]) - (a->data[1][0] * b->data[0][0]);
-	new_vect = nml_mat_sqr(3);
+	new_vect = nml_mat_new(3, 1);
 	new_vect->data[0][0] = i;
 	new_vect->data[1][0] = j;
 	new_vect->data[2][0] = k;
 	return (new_vect);
+}
+
+void	vect_print(t_nml_mat *vect)
+{
+	printf("%2.2f\n%2.2f\n%2.2f\n", vect->data[0][0], vect->data[1][0], vect->data[2][0]);
 }

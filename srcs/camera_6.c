@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:16:09 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/19 22:46:56 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:33:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /// @param camera
 void	update_cam_geomet(t_camera *camera)
 {
-	t_nml_mat	*smult_tmp;
+	t_nml_mat	*stmp;
 
 	camera->v_align_vect = nml_mat_sub(camera->v_cam_lookat, \
 		camera->v_cam_pos);
@@ -31,9 +31,30 @@ void	update_cam_geomet(t_camera *camera)
 	camera->v_proj_scr_v = vect_cross(camera->v_proj_scr_u, \
 		camera->v_align_vect);
 	nml_mat_normalize_r(camera->v_proj_scr_v);
-	smult_tmp = nml_mat_smult(camera->v_align_vect, camera->cam_len);
-	camera->v_proj_scr_cen = nml_mat_add_r(camera->v_cam_pos, smult_tmp);
-	nml_mat_free(smult_tmp);
+	stmp = nml_mat_smult(camera->v_align_vect, camera->cam_len);
+	camera->v_proj_scr_cen = nml_mat_cp(camera->v_cam_pos);
+	nml_mat_add_r(camera->v_proj_scr_cen, stmp);
+	nml_mat_free(stmp);
 	nml_mat_smult_r(camera->v_proj_scr_u, camera->cam_hor_size);
+	nml_mat_smult_r(camera->v_proj_scr_v, \
+		(camera->cam_hor_size / camera->cam_aspr));
+}
 
+t_ray	*generate_ray(t_camera *camera, float pro_scr_x, float pro_scr_y)
+{
+	t_nml_mat	*v_scr_wrld_coord;
+	t_nml_mat	*stmp;
+	t_ray		*ray;
+
+	ray = NULL;
+	v_scr_wrld_coord = nml_mat_cp(camera->v_proj_scr_cen);
+	stmp = nml_mat_smult(camera->v_proj_scr_u, pro_scr_x);
+	nml_mat_add_r(v_scr_wrld_coord, stmp);
+	nml_mat_free(stmp);
+	stmp = nml_mat_smult(camera->v_proj_scr_v, pro_scr_y);
+	nml_mat_add_r(v_scr_wrld_coord, stmp);
+	nml_mat_free(stmp);
+	ray_init(ray, camera->v_cam_pos, v_scr_wrld_coord);
+	nml_mat_free(v_scr_wrld_coord);
+	return (ray);
 }

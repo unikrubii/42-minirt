@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/17 22:03:56 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:59:06 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,30 @@
 int	main(void)
 {
 	static t_handle	handy;
+	t_camera		cam;
+	t_nml_mat		scr_cen;
+	t_nml_mat		scr_u;
+	t_nml_mat		scr_v;
+
+	camera_init(&cam);
+	cam_set_pos(&cam, 0.0, 0.0, 0.0);
+	cam_set_lookat(&cam, 0.0, 2.0, 0.0);
+	cam_set_up(&cam, 0.0, 0.0, 1.0);
+	cam_set_length(&cam, 1.0);
+	cam_set_hor_size(&cam, 1.0);
+	cam_set_aspr(&cam, 1.0);
+	update_cam_geomet(&cam);
+
+	scr_cen = cam_get_scr_cen(&cam);
+	scr_u = cam_get_scr_u(&cam);
+	scr_v = cam_get_scr_v(&cam);
+
+	printf("scr_cen:\n");
+	vect_print(&scr_cen);
+	printf("scr_u:\n");
+	vect_print(&scr_u);
+	printf("scr_v:\n");
+	vect_print(&scr_v);
 
 	handy.data.mlx = mlx_init();
 	handy.data.win = mlx_new_window(handy.data.mlx, WIDTH, HEIGHT, "RT");

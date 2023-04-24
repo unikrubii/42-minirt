@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/18 07:10:58 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:11:21 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "mlx.h"
 # include "nml_matrix.h"
 # include "camera.h"
+# include "ray.h"
 
 # define PI 3.14159265358979323846
 # define EPSILON 0.000001
@@ -101,12 +102,12 @@ typedef struct s_mouse
 	int		pos_y;
 }	t_mouse;
 
-typedef struct s_camera
-{
-	t_nml_mat		*view;
-	t_nml_mat_lup	*view_lup;
-	float			fov;
-}	t_camera;
+// typedef struct s_camera
+// {
+// 	t_nml_mat		*view;
+// 	t_nml_mat_lup	*view_lup;
+// 	float			fov;
+// }	t_camera;
 
 typedef struct s_object
 {

@@ -47,6 +47,7 @@ SRCS =	rt_key_handler.c \
 		camera_6.c \
 		v_util.c \
 		ray_util.c \
+		objectbase.c \
 
 OBJS = $(SRCS:.c=.o)
 

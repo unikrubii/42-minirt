@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 17:11:21 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/29 10:20:12 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@
 # include "nml_matrix.h"
 # include "camera.h"
 # include "ray.h"
+# include "objectbase.h"
 
 # define PI 3.14159265358979323846
-# define EPSILON 0.000001
+# define EPSILON 1e-21f
 
 # define WIDTH 1024
 # define HEIGHT 768

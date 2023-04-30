@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
+#    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2023/04/19 23:39:05 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/04/30 19:39:03 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,8 @@ NML = nml_util.c \
 	nml_mat_qr_new.c \
 	nml_mat_qr_free.c \
 	nml_mat_from.c \
+	nml_vect_cross.c \
+	nml_vect_util.c \
 	# nml_mat_qr_solve.c \
 
 SRCS = $(NML)

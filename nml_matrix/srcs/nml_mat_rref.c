@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_rref.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:38:50 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/04 10:46:58 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 19:02:23 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief We put zeros on the colum with the pivot
+/// @param r
+/// @param i
+/// @param j
 static void	nml_mat_rref_util(t_nml_mat *r, unsigned int i, unsigned int j)
 {
 	unsigned int	k;
@@ -25,6 +29,9 @@ static void	nml_mat_rref_util(t_nml_mat *r, unsigned int i, unsigned int j)
 	}
 }
 
+/// @brief Retrieves the matrix in Reduced Row Echelon using Guass-Jordan Elimination
+/// @param m
+/// @return
 t_nml_mat	*nml_mat_rref(t_nml_mat *m)
 {
 	unsigned int	i;

@@ -6,12 +6,16 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:09:37 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/08 20:30:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:47:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief Calculates the l2 norm for a colum in the matrix
+/// @param m
+/// @param col
+/// @return
 float	nml_mat_col_l2norm(t_nml_mat *m, unsigned int col)
 {
 	float			sum;

@@ -6,12 +6,16 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:57:46 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/08 21:45:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:58:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief Pivots LU and P accordingly to the rule
+/// @param r
+/// @param j
+/// @param pivot
 static void	nml_mat_pivot_lu(t_nml_mat_lup *r, unsigned int j, \
 	unsigned int pivot)
 {
@@ -24,6 +28,10 @@ static void	nml_mat_pivot_lu(t_nml_mat_lup *r, unsigned int j, \
 	}
 }
 
+/// @brief Retrieves the row with the biggest element for column (j)
+/// @param l
+/// @param u
+/// @param r
 static void	nml_mat_lup_solve_util(t_nml_mat *l, t_nml_mat *u, t_nml_mat_lup *r)
 {
 	unsigned int	i;
@@ -51,6 +59,9 @@ static void	nml_mat_lup_solve_util(t_nml_mat *l, t_nml_mat *u, t_nml_mat_lup *r)
 	nml_mat_diag_set(l, 1.0);
 }
 
+/// @brief Solve LUP Matrix Structure
+/// @param m
+/// @return
 t_nml_mat_lup	*nml_mat_lup_solve(t_nml_mat *m)
 {
 	t_nml_mat		*l;

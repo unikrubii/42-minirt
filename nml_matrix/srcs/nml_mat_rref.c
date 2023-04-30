@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:38:50 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 19:02:23 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 21:45:30 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	nml_mat_rref_util(t_nml_mat *r, unsigned int i, unsigned int j)
 	}
 }
 
-/// @brief Retrieves the matrix in Reduced Row Echelon using Guass-Jordan Elimination
+/// @brief Retrieves the matrix in Reduced Row Echelon using
+/// Guass-Jordan Elimination
 /// @param m
 /// @return
 t_nml_mat	*nml_mat_rref(t_nml_mat *m)

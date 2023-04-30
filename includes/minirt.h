@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 22:35:19 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 22:36:21 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,17 @@ typedef struct s_handle
 
 typedef struct s_scene
 {
-	t_ray	*cam_ray;
+	t_ray		*cam_ray;
+	t_nml_mat	*v_intpoint;
+	t_nml_mat	*v_lc_norm;
+	t_nml_mat	*v_lc_color;
+	float		x_fact;
+	float		y_fact;
+	float		min_dist;
+	float		max_dist;
+	float		norm_x;
+	float		norm_y;
+	int			valid_inter;
 }	t_scene;
 
 

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nml_mat_lup_free.c                                 :+:      :+:    :+:   */
+/*   camera_get_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 13:26:34 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 18:56:22 by nnakarac         ###   ########.fr       */
+/*   Created: 2023/04/30 21:01:14 by nnakarac          #+#    #+#             */
+/*   Updated: 2023/04/30 21:02:47 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "nml_matrix.h"
+#include "camera.h"
+#include "ray.h"
 
-/// @brief Deallocate LUP structure
-/// @param lup
-void	nml_mat_lup_free(t_nml_mat_lup *lup)
+float	cam_get_length(t_camera *camera)
 {
-	nml_mat_free(lup->_l);
-	nml_mat_free(lup->_u);
-	nml_mat_free(lup->_p);
-	free(lup);
+	return (camera->cam_len);
+}
+
+float	cam_get_hor_size(t_camera *camera)
+{
+	return (camera->cam_hor_size);
+}
+
+float	cam_get_aspr(t_camera *camera)
+{
+	return (camera->cam_aspr);
 }

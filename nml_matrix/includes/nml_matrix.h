@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_matrix.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:32:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 17:48:23 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:45:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,5 +242,19 @@ t_nml_mat_qr	*nml_mat_qr_solve(t_nml_mat *m);
 
 t_nml_mat		*nml_mat_from(unsigned int num_rows, unsigned int num_cols, \
 	unsigned int n_vals, float *vals);
+
+// ****************************************************************************
+//
+// Vector Utility
+//
+// ****************************************************************************
+
+t_nml_mat		*new_vector(void);
+
+void			set_vect(t_nml_mat *vect, float u, float v, float w);
+
+t_nml_mat		*vect_cross(t_nml_mat *a, t_nml_mat *b);
+
+void			vect_print(t_nml_mat *vect);
 
 #endif

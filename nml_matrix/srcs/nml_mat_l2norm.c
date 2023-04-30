@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_l2norm.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:30:34 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 17:48:57 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:47:56 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief Calculates the l2norm for each column
+/// Keeps results into 1 row matrix
+/// @param m
+/// @return
 t_nml_mat	*nml_mat_l2norm(t_nml_mat *m)
 {
 	unsigned int	i;

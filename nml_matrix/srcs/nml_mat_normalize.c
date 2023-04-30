@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_normalize.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:35:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 17:49:12 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 21:45:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief Matrix Normalization to the target
+/// @param m
+/// @return
 int	nml_mat_normalize_r(t_nml_mat *m)
 {
 	t_nml_mat		*l2norms;
@@ -27,12 +30,15 @@ int	nml_mat_normalize_r(t_nml_mat *m)
 			nml_error(__FILE__, __LINE__, "VECTOR_J_DEGENERATE");
 			return (nml_mat_free(l2norms), 0);
 		}
-		nml_mat_col_mult_r(m, j, 1/l2norms->data[0][j]);
+		nml_mat_col_mult_r(m, j, 1 / l2norms->data[0][j]);
 		j++;
 	}
 	return (1);
 }
 
+/// @brief Matrix Normalization
+/// @param m
+/// @return new MAtrix
 t_nml_mat	*nml_mat_normalize(t_nml_mat *m)
 {
 	t_nml_mat	*r;

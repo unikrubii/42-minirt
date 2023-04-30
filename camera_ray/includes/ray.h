@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:22:30 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 21:21:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 23:18:22 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct	s_ray
 }	t_ray;
 
 void		ray_init(t_ray *ray, t_nml_mat *v_point1, t_nml_mat *v_point2);
+
+void		ray_deinit(t_ray *ray);
 
 t_nml_mat	*ray_get_point(t_ray *ray, int point);
 

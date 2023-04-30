@@ -55,35 +55,12 @@ char **get_map(char *path, int row_count)
 
 void init_scene(t_scene *scene)
 {
-	scene->res = NULL;
 	scene->amb = NULL;
 	scene->cam = NULL;
 	scene->light = NULL;
-	scene->obj = NULL;
-}
-
-t_amb *set_amb(char *line)
-{
-	t_amb *amb;
-
-	amb = (t_amb *)malloc(sizeof(t_amb));
-	if (!amb)
-		return (NULL);
-	amb->ratio = ft_atof(line + 2);
-	amb->color = set_color(line + 2);
-	return (amb);
-}
-
-void set_scene(t_scene *scene, char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i])
-	{
-		if (map[i][0] == 'A')
-			scene->amb = set_amb(map[i]);
-	}
+	scene->sphere = NULL;
+	scene->plane = NULL;
+	scene->cylinder = NULL;
 }
 
 int main(int argc, char **argv)

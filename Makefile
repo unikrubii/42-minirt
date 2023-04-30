@@ -70,6 +70,7 @@ clean:
 	@make -C $(LIB_DIR) clean --silent
 	@make -C $(NML_DIR) clean --silent
 	@make -C $(CAM_DIR) clean --silent
+	@$(RM) $(MLX_DIR)/*.swiftsourceinfo
 	@$(RM) $(OBJ_DIR)
 
 fclean: clean

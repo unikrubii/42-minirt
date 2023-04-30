@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_lu_get.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 21:37:13 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/05 21:39:36 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:55:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief Returns LU matrix from a LUP structure
+/// @param lup
+/// @return
 t_nml_mat	*nml_mat_lu_get(t_nml_mat_lup *lup)
 {
 	unsigned int	i;

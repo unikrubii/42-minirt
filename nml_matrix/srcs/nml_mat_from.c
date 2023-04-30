@@ -6,12 +6,19 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:19:32 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/08 21:45:53 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:52:06 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
+/// @brief Dynamically allocates a new matrix struct.
+/// Initialise the matrix by reading values from a vector
+/// @param num_rows
+/// @param num_cols
+/// @param n_vals
+/// @param vals
+/// @return
 t_nml_mat	*nml_mat_from(unsigned int num_rows, unsigned int num_cols, \
 	unsigned int n_vals, float *vals)
 {

@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   v_util.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:15:57 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 17:27:02 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 09:03:22 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v_util.h"
 #include "minirt.h"
 #include "nml_matrix.h"
+
+t_nml_mat	*new_vector(void)
+{
+	return (nml_mat_new(3,1));
+}
 
 void	set_vect(t_nml_mat *vect, float u, float v, float w)
 {

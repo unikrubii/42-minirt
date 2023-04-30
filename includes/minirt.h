@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/29 10:20:12 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 22:35:19 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@
 # include "camera.h"
 # include "ray.h"
 # include "objectbase.h"
+// # include "v_util.h"
 
 # define PI 3.14159265358979323846
 # define EPSILON 1e-21f
 
-# define WIDTH 1024
-# define HEIGHT 768
+# define WIDTH 1280
+# define HEIGHT 720
 
 enum e_key {
 	ON_KEYDOWN = 2,
@@ -110,22 +111,22 @@ typedef struct s_mouse
 // 	float			fov;
 // }	t_camera;
 
-typedef struct s_object
-{
-	int				type;
-	t_nml_mat		*pos;
-	t_nml_mat		*dir;
-	t_nml_mat		*color;
-	float			radius;
-	float			height;
-	float			ambient;
-	float			diffuse;
-	float			specular;
-	float			reflective;
-	float			transparency;
-	float			refractive_index;
-	struct s_object	*next;
-}	t_object;
+// typedef struct s_object
+// {
+// 	int				type;
+// 	t_nml_mat		*pos;
+// 	t_nml_mat		*dir;
+// 	t_nml_mat		*color;
+// 	float			radius;
+// 	float			height;
+// 	float			ambient;
+// 	float			diffuse;
+// 	float			specular;
+// 	float			reflective;
+// 	float			transparency;
+// 	float			refractive_index;
+// 	struct s_object	*next;
+// }	t_object;
 
 typedef struct s_light
 {
@@ -140,9 +141,15 @@ typedef struct s_handle
 	t_draw		draw;
 	t_mouse		mouse;
 	t_camera	*camera;
-	t_object	*objects;
+	t_objbase	*objects;
 	t_light		*lights;
 }	t_handle;
+
+typedef struct s_scene
+{
+	t_ray	*cam_ray;
+}	t_scene;
+
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 

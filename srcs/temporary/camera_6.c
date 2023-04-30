@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_6.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:16:09 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 15:33:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 09:29:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_ray	*generate_ray(t_camera *camera, float pro_scr_x, float pro_scr_y)
 	t_nml_mat	*stmp;
 	t_ray		*ray;
 
-	ray = NULL;
+	ray = malloc(sizeof(t_ray) * 1);
 	v_scr_wrld_coord = nml_mat_cp(camera->v_proj_scr_cen);
 	stmp = nml_mat_smult(camera->v_proj_scr_u, pro_scr_x);
 	nml_mat_add_r(v_scr_wrld_coord, stmp);
@@ -58,3 +58,24 @@ t_ray	*generate_ray(t_camera *camera, float pro_scr_x, float pro_scr_y)
 	nml_mat_free(v_scr_wrld_coord);
 	return (ray);
 }
+
+// int	generate_ray(t_camera *camera, float pro_scr_x, \
+// 	float pro_scr_y, t_ray *cam_ray)
+// {
+// 	t_nml_mat	*v_scr_wrld_coord;
+// 	t_nml_mat	*stmp;
+// 	t_ray		*ray;
+
+// 	ray = malloc(sizeof(t_ray) * 1);
+// 	v_scr_wrld_coord = nml_mat_cp(camera->v_proj_scr_cen);
+// 	stmp = nml_mat_smult(camera->v_proj_scr_u, pro_scr_x);
+// 	nml_mat_add_r(v_scr_wrld_coord, stmp);
+// 	nml_mat_free(stmp);
+// 	stmp = nml_mat_smult(camera->v_proj_scr_v, pro_scr_y);
+// 	nml_mat_add_r(v_scr_wrld_coord, stmp);
+// 	nml_mat_free(stmp);
+// 	ray_init(ray, camera->v_cam_pos, v_scr_wrld_coord);
+// 	nml_mat_free(v_scr_wrld_coord);
+// 	cam_ray = ray;
+// 	return (1);
+// }

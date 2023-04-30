@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 17:59:06 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 22:11:51 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ int	main(void)
 	t_nml_mat		scr_cen;
 	t_nml_mat		scr_u;
 	t_nml_mat		scr_v;
+	t_objbase		obj_test;
 
 	camera_init(&cam);
-	cam_set_pos(&cam, 0.0, 0.0, 0.0);
-	cam_set_lookat(&cam, 0.0, 2.0, 0.0);
+	cam_set_pos(&cam, 0.0, -20.0, 0.0);
+	cam_set_lookat(&cam, 0.0, 0.0, 0.0);
 	cam_set_up(&cam, 0.0, 0.0, 1.0);
 	cam_set_length(&cam, 1.0);
-	cam_set_hor_size(&cam, 1.0);
-	cam_set_aspr(&cam, 1.0);
+	cam_set_hor_size(&cam, 0.25);
+	cam_set_aspr(&cam, 16.0 / 9.0);
 	update_cam_geomet(&cam);
 
 	scr_cen = cam_get_scr_cen(&cam);
@@ -40,6 +41,10 @@ int	main(void)
 	printf("scr_v:\n");
 	vect_print(&scr_v);
 
+	obj_init(&obj_test, SPH);
+	handy.camera = &cam;
+	handy.objects = &obj_test;
+
 	handy.data.mlx = mlx_init();
 	handy.data.win = mlx_new_window(handy.data.mlx, WIDTH, HEIGHT, "RT");
 	handy.data.img.img = mlx_new_image(handy.data.mlx, WIDTH, HEIGHT);
@@ -48,7 +53,7 @@ int	main(void)
 		&handy.data.img.endian);
 	mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy.data);
 	mlx_hook(handy.data.win, ON_KEYDOWN, 1L << 0, rt_key_handler, &handy);
-	mlx_loop_hook(handy.data.mlx, &render, &handy.data);
+	mlx_loop_hook(handy.data.mlx, &render, &handy);
 	mlx_loop(handy.data.mlx);
 	return (0);
 }

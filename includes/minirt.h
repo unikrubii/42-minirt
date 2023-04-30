@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 22:36:21 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/01 00:48:19 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ typedef struct s_handle
 	t_camera	*camera;
 	t_objbase	*objects;
 	t_light		*lights;
+	int			to_render;
 }	t_handle;
 
 typedef struct s_scene
@@ -158,6 +159,7 @@ typedef struct s_scene
 	float		norm_x;
 	float		norm_y;
 	int			valid_inter;
+	float		dist;
 }	t_scene;
 
 
@@ -166,7 +168,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	mlx_draw(t_data *data, t_draw *draw);
 void	mlx_draw2(t_data *data, t_draw *draw);
 
-void	mlx_re_draw(t_handle *handy);
+int		mlx_re_draw(t_handle *handy);
 
 void	mlx_key_close(t_handle *handy);
 

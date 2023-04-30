@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 22:49:54 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/01 01:26:46 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	scene_init(t_scene *scn)
 	scn->max_dist = 0.0;
 	scn->norm_x = 0.0;
 	scn->norm_y = 0.0;
+	scn->cam_ray = NULL;
+	scn->dist = 0.0;
+}
+
+void	scene_deinit(t_scene *scn)
+{
+	nml_mat_free(scn->v_intpoint);
+	nml_mat_free(scn->v_lc_norm);
+	nml_mat_free(scn->v_lc_color);
 }
 
 int	scene_render(t_handle *handy)
@@ -30,6 +39,7 @@ int	scene_render(t_handle *handy)
 	t_scene		scn;
 	int			x;
 	int			y;
+	t_nml_mat	*vtmp;
 
 	scene_init(&scn);
 	x = 0;
@@ -47,13 +57,24 @@ int	scene_render(t_handle *handy)
 			scn.valid_inter = handy->objects->obj_test_intersect(scn.cam_ray, \
 				scn.v_intpoint, scn.v_lc_norm, scn.v_lc_color);
 			if (scn.valid_inter)
-				my_mlx_pixel_put(&handy->data.img, x, y, ((int) 255 << 16) + ((int) 0 << 8) + ((int) 0 ));
+			{
+				//compute distance between camera and the point of intersection
+				vtmp = nml_mat_sub(scn.v_intpoint, scn.cam_ray->v_point1);
+				scn.dist = nml_vect_dot(vtmp, 0, vtmp, 0);
+				// printf("dist: %f\n", scn.dist);
+				my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255.0 - ((scn.dist - 9.0) / 0.94605) * 255.0 ) << 16) + ((int) 0 << 8) + ((int) 0 ));
+				// my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255) << 16) + ((int) 0 << 8) + ((int) 0 ));
+				nml_mat_free(vtmp);
+			}
 			else
 				my_mlx_pixel_put(&handy->data.img, x, y, ((int) 0 << 16) + ((int) 0 << 8) + ((int) 0 ));
 			y++;
+			ray_deinit(scn.cam_ray);
+			scn.cam_ray = NULL;
 		}
 		x++;
 	}
+	scene_deinit(&scn);
 	return (1);
 }
 
@@ -61,8 +82,10 @@ int	render(t_handle *handy)
 {
 	if (handy->data.win == NULL)
 		return (1);
+
 	// mlx_draw(&handy->data.img, &handy->draw);
 	scene_render(handy);
+	// sleep(1);
 	mlx_put_image_to_window(handy->data.mlx, handy->data.win, \
 		handy->data.img.img, 0, 0);
 	return (0);

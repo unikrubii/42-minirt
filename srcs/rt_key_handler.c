@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_key_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/17 17:12:29 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/01 00:09:53 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	rt_key_handler(int keycode, t_handle *handy)
 	if (keycode == KEY_ESC)
 		mlx_key_close(handy);
 	else
-		mlx_re_draw(handy);
+		handy->to_render = 1;
 	return (0);
 }

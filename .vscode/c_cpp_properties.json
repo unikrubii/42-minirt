@@ -4,7 +4,9 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/nml_matrix/includes"
+                "${workspaceFolder}/nml_matrix/includes",
+                "${workspaceFolder}/camera_ray/includes",
+                "${workspaceFolder}/includes"
             ],
             "defines": [],
             "macFrameworkPath": [

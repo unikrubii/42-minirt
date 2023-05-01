@@ -50,4 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-*.swiftsourceinfo
+
+# Minilibx
+minilibx/*.swiftsourceinfo
+minilibx/*.swiftdoc
+minilibx/*.swiftmodule

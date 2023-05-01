@@ -34,7 +34,7 @@ else
 				  -L$(NML_DIR) -lnml_matrix
 endif
 
-SRCS =	dummy.c \
+SRCS =	rt_readmap.c \
 
 OBJS = $(SRCS:.c=.o)
 

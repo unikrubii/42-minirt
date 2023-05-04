@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:44:27 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/04 22:45:22 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:18:45 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	nml_vect_normalize_r(t_nml_mat *v)
 
 	i = 0;
 	norm = nml_vect_norm(v);
+	printf("hello\n");
 	while (i < v->rows)
 	{
 		temp = v->data[i][0] * (1.0 / norm);

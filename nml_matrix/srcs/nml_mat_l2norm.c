@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_l2norm.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:30:34 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 18:47:56 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:51:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_nml_mat	*nml_mat_l2norm(t_nml_mat *m)
 			sq_sum += m->data[i][j] * m->data[i][j];
 			i++;
 		}
-		r->data[0][j] = sqrt(sq_sum);
+		r->data[0][j] = sqrtf(sq_sum);
 		j++;
 	}
 	return (r);

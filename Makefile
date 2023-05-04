@@ -1,5 +1,7 @@
 NAME = miniRT
+
 CC = gcc -g -Ofast
+
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
@@ -46,7 +48,6 @@ SRCS =	rt_key_handler.c \
 		endian.c \
 		objectbase.c \
 		sphere.c \
-
 
 OBJS = $(SRCS:.c=.o)
 

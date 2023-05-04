@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_geomet_gen_ray.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:04:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 21:04:46 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:50:04 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	update_cam_geomet(t_camera *camera)
 
 	camera->v_align_vect = nml_mat_sub(camera->v_cam_lookat, \
 		camera->v_cam_pos);
-	nml_mat_normalize_r(camera->v_align_vect);
+	nml_vect_normalize_r(camera->v_align_vect);
 	camera->v_proj_scr_u = vect_cross(camera->v_align_vect, camera->v_cam_up);
-	nml_mat_normalize_r(camera->v_proj_scr_u);
+	nml_vect_normalize_r(camera->v_proj_scr_u);
 	camera->v_proj_scr_v = vect_cross(camera->v_proj_scr_u, \
 		camera->v_align_vect);
-	nml_mat_normalize_r(camera->v_proj_scr_v);
+	nml_vect_normalize_r(camera->v_proj_scr_v);
 	stmp = nml_mat_smult(camera->v_align_vect, camera->cam_len);
 	camera->v_proj_scr_cen = nml_mat_cp(camera->v_cam_pos);
 	nml_mat_add_r(camera->v_proj_scr_cen, stmp);

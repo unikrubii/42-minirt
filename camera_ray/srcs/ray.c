@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:05:33 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 21:08:57 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/04/30 23:12:28 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ void	ray_init(t_ray *ray, t_nml_mat *v_point1, t_nml_mat *v_point2)
 	ray->v_point2 = nml_mat_cp(v_point2);
 	ray->v_lab = nml_mat_cp(v_point1);
 	nml_mat_sub_r(ray->v_lab, ray->v_point2);
+}
+
+void	ray_deinit(t_ray *ray)
+{
+	nml_mat_free(ray->v_point1);
+	nml_mat_free(ray->v_point2);
+	nml_mat_free(ray->v_lab);
+	free(ray);
 }
 
 t_nml_mat	*ray_get_point(t_ray *ray, int point)

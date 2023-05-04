@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:44:27 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/04 22:48:22 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:51:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ float	nml_vect_norm(t_nml_mat *v)
 		cumulative_sum += (v->data[i][0] * v->data[i][0]);
 		i++;
 	}
-	return sqrt(cumulative_sum);
+	return sqrtf(cumulative_sum);
 }
 
 /// @brief Vector Normalization to the target

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 01:26:46 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:56:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int	scene_render(t_handle *handy)
 			{
 				//compute distance between camera and the point of intersection
 				vtmp = nml_mat_sub(scn.v_intpoint, scn.cam_ray->v_point1);
-				scn.dist = nml_vect_dot(vtmp, 0, vtmp, 0);
+				scn.dist = nml_vect_norm(vtmp);
+				// scn.dist = sqrtf(nml_vect_dot(vtmp, 0, vtmp, 0));
+
 				// printf("dist: %f\n", scn.dist);
 				my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255.0 - ((scn.dist - 9.0) / 0.94605) * 255.0 ) << 16) + ((int) 0 << 8) + ((int) 0 ));
 				// my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255) << 16) + ((int) 0 << 8) + ((int) 0 ));

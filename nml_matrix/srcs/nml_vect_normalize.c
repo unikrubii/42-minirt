@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:44:27 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/04 11:09:06 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:48:22 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 /// @return
 float	nml_vect_norm(t_nml_mat *v)
 {
-	int		i;
-	float	cumulative_sum;
+	unsigned int		i;
+	float				cumulative_sum;
 
 	i = 0;
 	cumulative_sum = 0.0;
@@ -41,7 +41,7 @@ int	nml_vect_normalize_r(t_nml_mat *v)
 
 	i = 0;
 	norm = nml_vect_norm(v);
-	while (i < v->cols)
+	while (i < v->rows)
 	{
 		temp = v->data[i][0] * (1.0 / norm);
 		v->data[i][0] = temp;

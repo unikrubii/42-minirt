@@ -1,5 +1,7 @@
 NAME = miniRT
-CC = gcc
+
+CC = gcc -g -Ofast
+
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
@@ -8,6 +10,7 @@ OBJ_DIR = objs/
 INC_DIR = includes
 LIB_DIR = libft/
 NML_DIR = nml_matrix/
+CAM_DIR = camera_ray/
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
@@ -16,9 +19,11 @@ ifeq ($(UNAME), Linux)
 	INCS		= -I$(INC_DIR) \
 				  -I$(LIB_DIR)includes \
 				  -I$(NML_DIR)includes \
+				  -I$(CAM_DIR)includes \
 				  -I/usr/include
 	LIBS		= -L$(LIB_DIR) -lft \
 				  -L$(NML_DIR) -lnml_matrix \
+				  -L$(CAM_DIR) -lcamera_ray \
 				  -L/usr/lib
 else
 	# MLX_DIR		= minilibx_macos
@@ -29,12 +34,20 @@ else
 	INCS		= -I$(INC_DIR) \
 				  -I$(LIB_DIR)includes \
 				  -I$(NML_DIR)includes \
+				  -I$(CAM_DIR)includes \
 				  -I$(MLX_DIR)
 	LIBS		= -L$(LIB_DIR) -lft \
-				  -L$(NML_DIR) -lnml_matrix
+				  -L$(NML_DIR) -lnml_matrix \
+				  -L$(CAM_DIR) -lcamera_ray
 endif
 
-SRCS =	dummy.c \
+SRCS =	rt_key_handler.c \
+		rt_draw.c \
+		rt_render.c \
+		blink.c \
+		endian.c \
+		objectbase.c \
+		sphere.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -44,6 +57,7 @@ $(NAME):	$(addprefix $(OBJ_DIR),$(OBJS))
 		@make -C $(LIB_DIR) --silent
 		@make -C $(MLX_DIR) --silent
 		@make -C $(NML_DIR) --silent
+		@make -C $(CAM_DIR) --silent
 		@$(CC) -g $(CFLAGS) $(addprefix $(OBJ_DIR),$(OBJS)) $(LIBS) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -56,14 +70,19 @@ copy:
 clean:
 	@make -C $(LIB_DIR) clean --silent
 	@make -C $(NML_DIR) clean --silent
+	@make -C $(CAM_DIR) clean --silent
+	@$(RM) $(MLX_DIR)/*.swiftsourceinfo
 	@$(RM) $(OBJ_DIR)
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean --silent
 	@make -C $(MLX_DIR) clean --silent
 	@make -C $(NML_DIR) fclean --silent
+	@make -C $(CAM_DIR) fclean --silent
 	@$(RM) libmlx.dylib
 	@$(RM) $(NAME)
+	@$(RM) libmlx.dylib.dSYM
+	@$(RM) $(NAME).dSYM
 
 re: fclean all
 

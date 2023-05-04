@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_matrix.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:32:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 18:45:26 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:05:46 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,5 +256,11 @@ void			set_vect(t_nml_mat *vect, float u, float v, float w);
 t_nml_mat		*vect_cross(t_nml_mat *a, t_nml_mat *b);
 
 void			vect_print(t_nml_mat *vect);
+
+float			nml_vect_norm(t_nml_mat *m);
+
+int				nml_vect_normalize_r(t_nml_mat *m);
+
+t_nml_mat		*nml_vect_normalize(t_nml_mat *m);
 
 #endif

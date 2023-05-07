@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectbase.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 22:20:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:25:00 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,11 @@ void	sphere_init(t_objbase *obj);
 void	sphere_deinit(t_objbase *obj);
 int		sphere_test_intersect(t_ray *ray, t_nml_mat *int_point, \
 	t_nml_mat *lc_normal, t_nml_mat *lc_color);
+
+t_objbase	*objlst_last(t_objbase *lst);
+void		objlst_add_back(t_objbase **lst, t_objbase *new);
+t_objbase	*objlst_new(int type);
+void		objlst_clear(t_objbase **lst);
+void		objlst_print(t_objbase *lst);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 22:06:23 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/06 00:19:51 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	obj_init(t_objbase *obj, int type)
 	obj->type = type;
 	obj->v_base_color = new_vector();
 	obj->obj_close_enough = obj_close_enough;
+	obj->next = NULL;
 	if (type == SPH)
 	{
 		obj->obj_init = sphere_init;

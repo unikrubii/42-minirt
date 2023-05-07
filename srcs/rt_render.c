@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/05 01:56:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:31:07 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	scene_render(t_handle *handy)
 	int			x;
 	int			y;
 	t_nml_mat	*vtmp;
+	t_objbase	*p_lst;
 
 	scene_init(&scn);
 	x = 0;
@@ -53,23 +54,47 @@ int	scene_render(t_handle *handy)
 			scn.norm_y = ((float) y * scn.y_fact) - 1.0;
 			//Generate the ray for this pixel
 			scn.cam_ray = generate_ray(handy->camera, scn.norm_x, scn.norm_y);
-			// Test if we have a valid intersection
-			scn.valid_inter = handy->objects->obj_test_intersect(scn.cam_ray, \
-				scn.v_intpoint, scn.v_lc_norm, scn.v_lc_color);
-			if (scn.valid_inter)
-			{
-				//compute distance between camera and the point of intersection
-				vtmp = nml_mat_sub(scn.v_intpoint, scn.cam_ray->v_point1);
-				scn.dist = nml_vect_norm(vtmp);
-				// scn.dist = sqrtf(nml_vect_dot(vtmp, 0, vtmp, 0));
 
-				// printf("dist: %f\n", scn.dist);
-				my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255.0 - ((scn.dist - 9.0) / 0.94605) * 255.0 ) << 16) + ((int) 0 << 8) + ((int) 0 ));
-				// my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255) << 16) + ((int) 0 << 8) + ((int) 0 ));
-				nml_mat_free(vtmp);
+			p_lst = handy->objects;
+			while (p_lst)
+			{
+				scn.valid_inter = p_lst->obj_test_intersect(scn.cam_ray, \
+					scn.v_intpoint, scn.v_lc_norm, scn.v_lc_color);
+				if (scn.valid_inter)
+				{
+					//compute distance between camera and the point of intersection
+					vtmp = nml_mat_sub(scn.v_intpoint, scn.cam_ray->v_point1);
+					scn.dist = nml_vect_norm(vtmp);
+					// scn.dist = sqrtf(nml_vect_dot(vtmp, 0, vtmp, 0));
+
+					// printf("dist: %f\n", scn.dist);
+					my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255.0 - ((scn.dist - 9.0) / 0.94605) * 255.0 ) << 16) + ((int) 0 << 8) + ((int) 0 ));
+					// my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255) << 16) + ((int) 0 << 8) + ((int) 0 ));
+					nml_mat_free(vtmp);
+				}
+				else
+					my_mlx_pixel_put(&handy->data.img, x, y, ((int) 0 << 16) + ((int) 0 << 8) + ((int) 0 ));
+				p_lst = p_lst->next;
 			}
-			else
-				my_mlx_pixel_put(&handy->data.img, x, y, ((int) 0 << 16) + ((int) 0 << 8) + ((int) 0 ));
+
+
+			// Test if we have a valid intersection
+			// scn.valid_inter = handy->objects->obj_test_intersect(scn.cam_ray, \
+			// 	scn.v_intpoint, scn.v_lc_norm, scn.v_lc_color);
+			// if (scn.valid_inter)
+			// {
+			// 	//compute distance between camera and the point of intersection
+			// 	vtmp = nml_mat_sub(scn.v_intpoint, scn.cam_ray->v_point1);
+			// 	scn.dist = nml_vect_norm(vtmp);
+			// 	// scn.dist = sqrtf(nml_vect_dot(vtmp, 0, vtmp, 0));
+
+			// 	// printf("dist: %f\n", scn.dist);
+			// 	my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255.0 - ((scn.dist - 9.0) / 0.94605) * 255.0 ) << 16) + ((int) 0 << 8) + ((int) 0 ));
+			// 	// my_mlx_pixel_put(&handy->data.img, x, y, ((int) (255) << 16) + ((int) 0 << 8) + ((int) 0 ));
+			// 	nml_mat_free(vtmp);
+			// }
+			// else
+			// 	my_mlx_pixel_put(&handy->data.img, x, y, ((int) 0 << 16) + ((int) 0 << 8) + ((int) 0 ));
 			y++;
 			ray_deinit(scn.cam_ray);
 			scn.cam_ray = NULL;

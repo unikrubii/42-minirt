@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 00:48:19 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:24:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ int		mlx_re_draw(t_handle *handy);
 
 void	mlx_key_close(t_handle *handy);
 
-int		mlx_close(t_vars *vars);
+int		mlx_close(t_handle *handy);
 
 int		rt_key_handler(int keycode, t_handle *handy);
 

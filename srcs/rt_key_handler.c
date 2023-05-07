@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_key_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 00:09:53 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:23:52 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ void	mlx_key_close(t_handle *handy)
 {
 	mlx_clear_window(handy->data.mlx, handy->data.win);
 	mlx_destroy_window(handy->data.mlx, handy->data.win);
+	objlst_clear(&handy->objects);
 	handy->data.mlx = NULL;
 	handy->data.mlx = NULL;
 	exit(0);
 }
 
-int	mlx_close(t_vars *vars)
+int	mlx_close(t_handle *handy)
 {
-	mlx_clear_window(vars->mlx, vars->win);
-	mlx_destroy_window(vars->mlx, vars->win);
-	vars->win = NULL;
-	vars->mlx = NULL;
+	mlx_clear_window(handy->data.mlx, handy->data.win);
+	mlx_destroy_window(handy->data.mlx, handy->data.win);
+	objlst_clear(&handy->objects);
+	handy->data.win = NULL;
+	handy->data.mlx = NULL;
 	exit(0);
 }
 

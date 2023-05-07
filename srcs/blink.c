@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 01:34:35 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:22:32 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	t_nml_mat		scr_cen;
 	t_nml_mat		scr_u;
 	t_nml_mat		scr_v;
-	t_objbase		obj_test;
+	// t_objbase		obj_test;
 
 	camera_init(&cam);
 	cam_set_pos(&cam, 0.0, -10.0, 0.0);
@@ -41,9 +41,12 @@ int	main(void)
 	printf("scr_v:\n");
 	vect_print(&scr_v);
 
-	obj_init(&obj_test, SPH);
+	// obj_init(&obj_test, SPH);
+
+	objlst_add_back(&handy.objects, objlst_new(SPH));
+
 	handy.camera = &cam;
-	handy.objects = &obj_test;
+	// handy.objects = &obj_test;
 	handy.to_render = 1;
 
 	handy.data.mlx = mlx_init();
@@ -52,7 +55,7 @@ int	main(void)
 	handy.data.img.addr = mlx_get_data_addr(handy.data.img.img, \
 		&handy.data.img.bits_per_pixel, &handy.data.img.line_length, \
 		&handy.data.img.endian);
-	mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy.data);
+	mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy);
 	mlx_hook(handy.data.win, ON_KEYDOWN, 1L << 0, rt_key_handler, &handy);
 	// render(&handy);
 	mlx_loop_hook(handy.data.mlx, &mlx_re_draw, &handy);

@@ -47,6 +47,7 @@ SRCS =	rt_key_handler.c \
 		blink.c \
 		endian.c \
 		objectbase.c \
+		objectlist.c \
 		sphere.c \
 
 OBJS = $(SRCS:.c=.o)

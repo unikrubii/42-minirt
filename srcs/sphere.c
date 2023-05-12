@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 01:32:39 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/13 02:19:37 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		sphere_test_intersect(t_ray *castray, t_nml_mat *int_point, \
 	(void) lc_color;
 	// compute values of a b and c
 	vhat = nml_mat_cp(castray->v_lab);
-	nml_mat_normalize_r(vhat);
+	nml_vect_normalize_r(vhat);
 
 	/* Note that a is equal to the squared magitude of the
 	direction of the cast ray. As this will be a unit vector,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/07 20:22:32 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:48:28 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ int	main(void)
 	// obj_init(&obj_test, SPH);
 
 	objlst_add_back(&handy.objects, objlst_new(SPH));
+	lightlst_add_back(&handy.lights, lightlst_new(PNT));
+	set_vect(handy.lights->v_location, 5.0, -10.0, 5.0);
+	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
 
 	handy.camera = &cam;
 	// handy.objects = &obj_test;

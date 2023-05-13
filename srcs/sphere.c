@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 02:19:37 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:41:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ int		sphere_test_intersect(t_ray *castray, t_nml_mat *int_point, \
 		num_sqrt = sqrt(inter_test);
 		t1 = (-b + num_sqrt) / 2.0;
 		t2 = (-b - num_sqrt) / 2.0;
-
-		// printf("inter_test|%f\n", inter_test);
-		// printf("num_sqrt|%f\n", num_sqrt);
-		// printf("T|%f:%f\n", t1, t2);
 		if ((t1 < 0.0) || (t2 < 0.0))
 		{
 			nml_mat_free(vhat);
@@ -87,6 +83,10 @@ int		sphere_test_intersect(t_ray *castray, t_nml_mat *int_point, \
 				set_vect(int_point, vtmp->data[0][0], vtmp->data[1][0], vtmp->data[2][0]);
 				nml_mat_free(vtmp);
 			}
+
+			// Compute the local normal
+			set_vect(lc_normal, int_point->data[0][0], int_point->data[1][0], int_point->data[2][0]);
+			nml_vect_normalize_r(lc_normal);
 		}
 		nml_mat_free(vhat);
 		return (1);

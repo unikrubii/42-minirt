@@ -49,6 +49,9 @@ SRCS =	rt_key_handler.c \
 		objectbase.c \
 		objectlist.c \
 		sphere.c \
+		lightbase.c \
+		lightlist.c \
+		pointlight.c \
 
 OBJS = $(SRCS:.c=.o)
 

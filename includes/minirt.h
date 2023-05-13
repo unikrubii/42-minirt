@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 12:47:27 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:08:34 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include "ray.h"
 # include "objectbase.h"
 # include "lightbase.h"
+# include "scene.h"
 // # include "v_util.h"
 
 # define PI 3.14159265358979323846
@@ -104,38 +105,6 @@ typedef struct s_mouse
 	int		pos_x;
 	int		pos_y;
 }	t_mouse;
-
-// typedef struct s_camera
-// {
-// 	t_nml_mat		*view;
-// 	t_nml_mat_lup	*view_lup;
-// 	float			fov;
-// }	t_camera;
-
-// typedef struct s_object
-// {
-// 	int				type;
-// 	t_nml_mat		*pos;
-// 	t_nml_mat		*dir;
-// 	t_nml_mat		*color;
-// 	float			radius;
-// 	float			height;
-// 	float			ambient;
-// 	float			diffuse;
-// 	float			specular;
-// 	float			reflective;
-// 	float			transparency;
-// 	float			refractive_index;
-// 	struct s_object	*next;
-// }	t_object;
-
-// typedef struct s_light
-// {
-// 	t_nml_mat		*pos;
-// 	t_nml_mat		*color;
-// 	float			brightness;
-// 	struct s_light	*next;
-// }	t_light;
 typedef struct s_handle
 {
 	t_vars		data;
@@ -146,25 +115,6 @@ typedef struct s_handle
 	t_lightbase	*lights;
 	int			to_render;
 }	t_handle;
-
-typedef struct s_scene
-{
-	t_ray		*cam_ray;
-	t_nml_mat	*v_intpoint;
-	t_nml_mat	*v_lc_norm;
-	t_nml_mat	*v_lc_color;
-	float		x_fact;
-	float		y_fact;
-	float		min_dist;
-	float		max_dist;
-	float		norm_x;
-	float		norm_y;
-	int			valid_inter;
-	float		dist;
-	float		intensity;
-	t_nml_mat	*color;
-	int			valid_illum;
-}	t_scene;
 
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

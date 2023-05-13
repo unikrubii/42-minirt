@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:38:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 11:49:54 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:41:29 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "nml_matrix.h"
 # include "objectbase.h"
 # include "ray.h"
+# include "scene.h"
 
 enum e_lighttype {
 	PNT = 1
@@ -35,6 +36,8 @@ typedef struct s_lightbase
 		t_nml_mat *intpoint, t_nml_mat *lc_normal, \
 		t_objbase *obj, t_objbase *cur_obj, \
 		t_nml_mat *color, float *intensity);
+	int					(*light_comp_illum_scn)(struct s_lightbase *light,
+		t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
 }	t_lightbase;
 
 void	light_init(t_lightbase *light, int type);
@@ -50,6 +53,8 @@ int		p_light_comp_illum(t_lightbase *light, \
 		t_nml_mat *intpoint, t_nml_mat *lc_normal, \
 		t_objbase *obj, t_objbase *cur_obj, \
 		t_nml_mat *color, float *intensity);
+int		p_light_comp_illum_scn(t_lightbase *light, \
+		t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
 
 t_lightbase	*lightlst_last(t_lightbase *lst);
 void		lightlst_add_back(t_lightbase **lst, t_lightbase *new);

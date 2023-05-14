@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 17:59:26 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/14 22:45:50 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ void	compute_values(t_inter_calc *calc, t_scene *scn)
 	calc->vhat = nml_mat_cp(scn->cam_ray->v_lab);
 	nml_vect_normalize_r(calc->vhat);
 	calc->b = 2.0 * nml_vect_dot(scn->cam_ray->v_point1, 0, calc->vhat, 0);
-	calc->c = nml_vect_dot(scn->cam_ray->v_point1, 0, scn->cam_ray->v_point1, 0) - 1.0;
+	calc->c = nml_vect_dot(scn->cam_ray->v_point1, 0, \
+		scn->cam_ray->v_point1, 0) - 1.0;
 	calc->inter_test = (calc->b * calc->b) - 4.0 * calc->c;
 }
 
@@ -114,17 +115,20 @@ void	inter_calc(t_inter_calc *calc, t_scene *scn)
 	{
 		calc->vtmp = nml_mat_smult(calc->vhat, calc->t1);
 		nml_mat_add_r(calc->vtmp, scn->cam_ray->v_point1);
-		set_vect(scn->v_intpoint, calc->vtmp->data[0][0], calc->vtmp->data[1][0], calc->vtmp->data[2][0]);
+		set_vect(scn->v_intpoint, calc->vtmp->data[0][0], \
+			calc->vtmp->data[1][0], calc->vtmp->data[2][0]);
 		nml_mat_free(calc->vtmp);
 	}
 	else
 	{
 		calc->vtmp = nml_mat_smult(calc->vhat, calc->t2);
 		nml_mat_add_r(calc->vtmp, scn->cam_ray->v_point1);
-		set_vect(scn->v_intpoint, calc->vtmp->data[0][0], calc->vtmp->data[1][0], calc->vtmp->data[2][0]);
+		set_vect(scn->v_intpoint, calc->vtmp->data[0][0], \
+			calc->vtmp->data[1][0], calc->vtmp->data[2][0]);
 		nml_mat_free(calc->vtmp);
 	}
-	set_vect(scn->v_lc_norm, scn->v_intpoint->data[0][0], scn->v_intpoint->data[1][0], scn->v_intpoint->data[2][0]);
+	set_vect(scn->v_lc_norm, scn->v_intpoint->data[0][0], \
+		scn->v_intpoint->data[1][0], scn->v_intpoint->data[2][0]);
 	nml_vect_normalize_r(scn->v_lc_norm);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pointlight.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 03:24:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 17:59:08 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/15 00:04:25 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,12 @@ int	p_light_comp_illum_scn(t_lightbase *light, \
 	t_objbase *obj, t_objbase *cur_obj, t_scene *scn)
 {
 	t_nml_mat	*v_light_dir;
-	t_nml_mat	*v_start_point;
 	float		angle;
 
 	(void) obj;
 	(void) cur_obj;
 	v_light_dir = nml_mat_sub(light->v_location, scn->v_intpoint);
 	nml_vect_normalize_r(v_light_dir);
-	v_start_point = nml_mat_cp(scn->v_intpoint);
 	angle = acos(nml_vect_dot(scn->v_lc_norm, 0, v_light_dir, 0));
 	if (angle > 1.5708)
 	{

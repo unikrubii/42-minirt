@@ -44,6 +44,7 @@ endif
 SRCS =	rt_key_handler.c \
 		rt_draw.c \
 		rt_render.c \
+		rt_render_helper.c \
 		blink.c \
 		endian.c \
 		objectbase.c \

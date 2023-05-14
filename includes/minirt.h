@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 17:08:34 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/14 22:59:45 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_mouse
 	int		pos_x;
 	int		pos_y;
 }	t_mouse;
+
 typedef struct s_handle
 {
 	t_vars		data;
@@ -133,5 +134,8 @@ int		rt_key_handler(int keycode, t_handle *handy);
 int		render(t_handle *handy);
 
 int		endian(void);
+
+void	scene_deinit(t_scene *scn);
+void	scene_init(t_scene *scn);
 
 #endif

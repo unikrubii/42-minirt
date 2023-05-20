@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 00:13:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/07 20:19:28 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/20 20:03:55 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	objlst_add_back(t_objbase **lst, t_objbase *new)
 	p_lst->next = new;
 }
 
-t_objbase	*objlst_new(int type)
+t_objbase	*objlst_new(int type, t_fattr *attr)
 {
 	t_objbase	*new;
 
 	new = malloc(sizeof(t_objbase));
 	if (!new)
 		return (NULL);
-	obj_init(new, type);
+	obj_init(new, type, attr);
 	new->next = NULL;
 	return (new);
 }

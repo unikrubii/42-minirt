@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 12:48:28 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/20 21:29:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,19 @@ int	main(void)
 	vect_print(&scr_v);
 
 	// obj_init(&obj_test, SPH);
+	t_fattr	attr;
+	attr.v_tr = new_vector();
+	attr.v_rot = new_vector();
+	attr.v_scl = new_vector();
+	attr.v_color = new_vector();
 
-	objlst_add_back(&handy.objects, objlst_new(SPH));
+	set_vect(attr.v_tr, 0.0, 0.0, 0.0);
+	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr.v_scl, 0.5, 0.5, 0.5);
+	set_vect(attr.v_color, 255.0, 128.0, 0.0);
+
+
+	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
 	lightlst_add_back(&handy.lights, lightlst_new(PNT));
 	set_vect(handy.lights->v_location, 5.0, -10.0, 5.0);
 	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);

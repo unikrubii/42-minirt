@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:58:43 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/05/20 19:03:54 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:17:50 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	scene_init(t_scene *scn)
 	scn->norm_x = 0.0;
 	scn->norm_y = 0.0;
 	scn->cam_ray = NULL;
-	scn->bck_ray = NULL;
+	// scn->bck_ray = NULL;
 	scn->dist = 0.0;
 	scn->intensity = 0.0;
 	scn->color = new_vector();
-	scn->v_poi = new_vector();
-	scn->v_obj_org = new_vector();
-	set_vect(scn->v_obj_org, 0.0, 0.0, 0.0);
+	// scn->v_poi = new_vector();
+	// scn->v_obj_org = new_vector();
+	// set_vect(scn->v_obj_org, 0.0, 0.0, 0.0);
 }
 
 void	scene_deinit(t_scene *scn)

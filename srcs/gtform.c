@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 01:15:26 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 21:38:54 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:27:53 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,11 @@ void	gt_set_trans(t_gtform *form, t_nml_mat *trans, t_nml_mat *rot, t_nml_mat *s
 	set_scale_mat(sclm, scale);
 
 	nml_mat_print(transm);
+	nml_mat_print(sclm);
 	nml_mat_print(rotmx);
 	nml_mat_print(rotmy);
 	nml_mat_print(rotmz);
-	nml_mat_print(sclm);
+
 
 	// Combine to give the final forward transform matrix.
 	dot_tmp1 = nml_mat_dot(transm, sclm);
@@ -190,6 +191,7 @@ t_ray	*ray_apply(t_gtform *form, t_ray *ray, int dir)
 t_nml_mat	*gt_apply(t_gtform *form, t_nml_mat *v_inp, int dir)
 {
 	t_nml_mat	*vect4;
+	t_nml_mat	*tmp;
 	t_nml_mat	*resvect;
 
 	vect4 = new_vector4();
@@ -197,14 +199,15 @@ t_nml_mat	*gt_apply(t_gtform *form, t_nml_mat *v_inp, int dir)
 	set_vect4_frm_vect(vect4, v_inp);
 	if (dir == FWDFM)
 	{
-		resvect = nml_mat_dot(form->fwdtfm, vect4);
+		tmp = nml_mat_dot(form->fwdtfm, vect4);
 	}
 	else
 	{
-		resvect = nml_mat_dot(form->bwdtfm, vect4);
+		tmp = nml_mat_dot(form->bwdtfm, vect4);
 	}
-	set_vect_frm_vect4(vect4, resvect);
+	set_vect_frm_vect4(tmp, resvect);
 	nml_mat_free(vect4);
+	nml_mat_free(tmp);
 	return (resvect);
 }
 

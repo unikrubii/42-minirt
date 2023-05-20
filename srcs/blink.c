@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 21:29:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:20:11 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	// t_objbase		obj_test;
 
 	camera_init(&cam);
-	cam_set_pos(&cam, 0.0, -10.0, 0.0);
+	cam_set_pos(&cam, 0.0, -20.0, 0.0);
 	cam_set_lookat(&cam, 0.0, 0.0, 0.0);
 	cam_set_up(&cam, 0.0, 0.0, 1.0);
 	cam_set_length(&cam, 1.0);
@@ -42,21 +42,42 @@ int	main(void)
 	vect_print(&scr_v);
 
 	// obj_init(&obj_test, SPH);
-	t_fattr	attr;
+	t_fattr	attr, attr2, attr3;
 	attr.v_tr = new_vector();
 	attr.v_rot = new_vector();
 	attr.v_scl = new_vector();
 	attr.v_color = new_vector();
 
-	set_vect(attr.v_tr, 0.0, 0.0, 0.0);
+	attr2.v_tr = new_vector();
+	attr2.v_rot = new_vector();
+	attr2.v_scl = new_vector();
+	attr2.v_color = new_vector();
+
+	attr3.v_tr = new_vector();
+	attr3.v_rot = new_vector();
+	attr3.v_scl = new_vector();
+	attr3.v_color = new_vector();
+
+	set_vect(attr.v_tr, -5.0, 0.0, 0.0);
 	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr.v_scl, 0.5, 0.5, 0.5);
+	set_vect(attr.v_scl, 2, 2, 2);
 	set_vect(attr.v_color, 255.0, 128.0, 0.0);
 
+	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
+	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr2.v_scl, 0.5, 2, 2);
+	set_vect(attr2.v_color, 255.0, 128.0, 0.0);
+
+	set_vect(attr3.v_tr, 5.0, 0.0, 0.0);
+	set_vect(attr3.v_rot, 0.0, 45.0, 0.0);
+	set_vect(attr3.v_scl, 2, 2, 0.5);
+	set_vect(attr3.v_color, 255.0, 128.0, 0.0);
 
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
+	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
+	objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
 	lightlst_add_back(&handy.lights, lightlst_new(PNT));
-	set_vect(handy.lights->v_location, 5.0, -10.0, 5.0);
+	set_vect(handy.lights->v_location, 0.0, -20.0, 0.0);
 	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
 
 	handy.camera = &cam;

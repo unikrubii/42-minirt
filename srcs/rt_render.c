@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 18:48:08 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:10:49 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 		scn->valid_inter = p_obj->obj_test_inter_scn(p_obj, scn);
 		if (scn->valid_inter)
 			intersect_put(scn, handy, p_obj);
-		else
-			my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
-				((int)0 << 16) + ((int)0 << 8) + ((int)0));
+		// else
+		// 	my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
+		// 		((int)0 << 16) + ((int)0 << 8) + ((int)0));
 		p_obj = p_obj->next;
 	}
 }

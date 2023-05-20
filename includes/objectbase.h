@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 20:05:23 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:15:47 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ typedef struct s_inter_calc
 	float		num_sqrt;
 	float		t1;
 	float		t2;
+	t_ray		*bck_ray;
+	t_nml_mat	*v_poi;
+	t_nml_mat	*v_obj_org;
+	t_nml_mat	*v_obj_norg;
 }	t_inter_calc;
 
 void	obj_init(t_objbase *obj, int type, t_fattr *attr);

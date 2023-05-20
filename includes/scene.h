@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:07:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 19:02:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:15:24 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 typedef struct s_scene
 {
 	t_ray		*cam_ray;
-	t_ray		*bck_ray;
 	t_nml_mat	*v_intpoint;
 	t_nml_mat	*v_lc_norm;
 	t_nml_mat	*v_lc_color;
@@ -37,9 +36,6 @@ typedef struct s_scene
 	int			valid_illum;
 	int			x;
 	int			y;
-	t_nml_mat	*v_poi;
-	t_nml_mat	*v_obj_org;
-	t_nml_mat	*v_obj_norg;
 }	t_scene;
 
 #endif

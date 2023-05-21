@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gtform.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 01:15:26 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 23:27:53 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/21 08:55:27 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,12 +132,18 @@ void	gt_set_trans(t_gtform *form, t_nml_mat *trans, t_nml_mat *rot, t_nml_mat *s
 
 
 	// Combine to give the final forward transform matrix.
-	dot_tmp1 = nml_mat_dot(transm, sclm);
-	dot_tmp2 = nml_mat_dot(dot_tmp1, rotmx);
+	// dot_tmp1 = nml_mat_dot(transm, sclm);
+	// dot_tmp2 = nml_mat_dot(dot_tmp1, rotmx);
+	// nml_mat_free(dot_tmp1);
+	// dot_tmp1 = nml_mat_dot(dot_tmp2, rotmy);
+	// nml_mat_free(dot_tmp2);
+	// dot_tmp2 = nml_mat_dot(dot_tmp1, rotmz);
+	dot_tmp1 = nml_mat_dot(sclm, rotmx);
+	dot_tmp2 = nml_mat_dot(dot_tmp1, rotmy);
 	nml_mat_free(dot_tmp1);
-	dot_tmp1 = nml_mat_dot(dot_tmp2, rotmy);
+	dot_tmp1 = nml_mat_dot(dot_tmp2, rotmz);
 	nml_mat_free(dot_tmp2);
-	dot_tmp2 = nml_mat_dot(dot_tmp1, rotmz);
+	dot_tmp2 = nml_mat_dot(dot_tmp1, transm);
 
 	form->fwdtfm = nml_mat_cp(dot_tmp2);
 	nml_mat_free(dot_tmp1);

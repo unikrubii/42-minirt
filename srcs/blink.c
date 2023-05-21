@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/21 08:58:03 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/21 09:15:40 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ int	main(void)
 	attr3.v_scl = new_vector();
 	attr3.v_color = new_vector();
 
-	set_vect(attr.v_tr, -2.0, 0.0, 0.0);
+	set_vect(attr.v_tr, -4.0, 0.0, 0.0);
 	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
 	set_vect(attr.v_scl, 2, 2, 2);
-	set_vect(attr.v_color, 255.0, 128.0, 0.0);
+	set_vect(attr.v_color, 255.0, 0.0, 0.0);
 
 	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_scl, 0.5, 2, 2);
-	set_vect(attr2.v_color, 255.0, 128.0, 0.0);
+	set_vect(attr2.v_color, 128.0, 128.0, 128.0);
 
 	set_vect(attr3.v_tr, 2.0, 0.0, 0.0);
 	set_vect(attr3.v_rot, 0.0, 45.0, 0.0);
 	set_vect(attr3.v_scl, 2, 2, 0.5);
-	set_vect(attr3.v_color, 255.0, 128.0, 0.0);
+	set_vect(attr3.v_color, 255.0, 0.0, 255.0);
 
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));

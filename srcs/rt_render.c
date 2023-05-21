@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/21 00:10:49 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/21 09:11:19 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ static void	intersect_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 	vtmp = nml_mat_sub(scn->v_intpoint, scn->cam_ray->v_point1);
 	scn->dist = nml_vect_norm(vtmp);
 	if (scn->valid_illum)
-		my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, ((int)(255.0 \
-			* scn->intensity) << 16) + ((int)0 << 8) + ((int)0));
+		my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
+			((int)(p_obj->v_base_color->data[0][0] * scn->intensity) << 16) \
+			+ ((int)(p_obj->v_base_color->data[1][0] * scn->intensity) << 8) \
+			+ ((int)(p_obj->v_base_color->data[2][0] * scn->intensity)));
 	else
 		my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
 			((int)0 << 16) + ((int)0 << 8) + ((int)0));

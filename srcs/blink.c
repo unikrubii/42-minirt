@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/21 09:15:40 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/24 21:47:30 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	static t_handle	handy;
 	t_camera		cam;
@@ -21,6 +21,8 @@ int	main(void)
 	t_nml_mat		scr_v;
 	// t_objbase		obj_test;
 
+	read_map(argc, argv);
+	exit(0);g
 	camera_init(&cam);
 	cam_set_pos(&cam, 0.0, -20.0, 0.0);
 	cam_set_lookat(&cam, 0.0, 0.0, 0.0);

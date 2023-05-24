@@ -54,6 +54,7 @@ SRCS =	rt_key_handler.c \
 		lightlist.c \
 		pointlight.c \
 		gtform.c \
+		rt_readmap.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,4 +1,4 @@
-#include "readmap.h"
+#include "minirt.h"
 
 int	get_row(char *path)
 {
@@ -44,7 +44,8 @@ char **get_map(char *path, int row_count)
 	i = 0;
 	while (line)
 	{
-		map[i++] = ft_strdup(line);
+		if (line[0] != '\n')
+			map[i++] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -68,8 +69,60 @@ void	*object_realloc(void *ptr, size_t size)
 	return (new_ptr);
 }
 
-int read_map(int argc, char **argv)
+int	array_size(char **arr)
 {
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
+
+void	free_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}
+
+void	construct_light(char **obj_data, t_handle *handy)
+{
+	(void)obj_data;
+	lightlst_add_back(&handy->lights, lightlst_new(PNT));
+}
+
+void	get_obj_type(char *map, t_handle *handy)
+{
+	(void)handy;
+	char	**map_arr;
+	int		size;
+
+	map_arr = ft_split(map, ' ');
+	size = array_size(map_arr);
+	if (!ft_strncmp(map_arr[0], "A\0", 2) && size == 3)
+		printf("Ambient light\n");
+	else if (!ft_strncmp(map_arr[0], "C\0", 2) && size == 4)
+		printf("Camera\n");
+	else if (!ft_strncmp(map_arr[0], "L\0", 2) && size == 4)
+		construct_light(map_arr, handy);
+	else if (!ft_strncmp(map_arr[0], "sp\0", 3) && size == 4)
+		printf("Sphere\n");
+	else if (!ft_strncmp(map_arr[0], "pl\0", 3) && size == 4)
+		printf("Plane\n");
+	else if (!ft_strncmp(map_arr[0], "cy\0", 3) && size == 6)
+		printf("Cylinder\n");
+	else
+		printf("Error\nWrong object type\n");
+	free_arr(map_arr);
+}
+
+int read_map(int argc, char **argv, t_handle *handy)
+{
+	(void)handy;
 	char **map;
 	int i;
 
@@ -81,6 +134,12 @@ int read_map(int argc, char **argv)
 	map = get_map(argv[1], get_row(argv[1]));
 	i = 0;
 	while (map[i])
-		printf("%s", map[i++]);
+	{
+		printf("%s", map[i]);
+		get_obj_type(map[i], handy);
+		printf("===================\n");
+		i++;
+	}
+	free_arr(map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/24 21:47:30 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/05/24 23:09:09 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	main(int argc, char **argv)
 	t_nml_mat		scr_v;
 	// t_objbase		obj_test;
 
-	read_map(argc, argv);
-	exit(0);g
+	// (void) argc;
+	// (void) argv;
+	read_map(argc, argv, &handy);
+	// exit(0);
 	camera_init(&cam);
 	cam_set_pos(&cam, 0.0, -20.0, 0.0);
 	cam_set_lookat(&cam, 0.0, 0.0, 0.0);
@@ -60,11 +62,7 @@ int	main(int argc, char **argv)
 	attr3.v_scl = new_vector();
 	attr3.v_color = new_vector();
 
-	set_vect(attr.v_tr, -4.0, 0.0, 0.0);
-	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr.v_scl, 2, 2, 2);
-	set_vect(attr.v_color, 255.0, 0.0, 0.0);
-
+	set_vect(attr.v_tr, -4.0, 0.0, 0.0);g
 	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_scl, 0.5, 2, 2);
@@ -78,7 +76,7 @@ int	main(int argc, char **argv)
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
-	lightlst_add_back(&handy.lights, lightlst_new(PNT));
+	// lightlst_add_back(&handy.lights, lightlst_new(PNT));
 	set_vect(handy.lights->v_location, 5.0, -20.0, 0.0);
 	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
 

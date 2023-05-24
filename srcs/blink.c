@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/24 23:09:09 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/05/24 23:14:59 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	attr3.v_scl = new_vector();
 	attr3.v_color = new_vector();
 
-	set_vect(attr.v_tr, -4.0, 0.0, 0.0);g
+	set_vect(attr.v_tr, -4.0, 0.0, 0.0);
 	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_scl, 0.5, 2, 2);

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:06:03 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 00:27:08 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:58:01 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,11 @@ int	mlx_re_draw(t_handle *handy)
 {
 	if (handy->to_render)
 	{
-		// printf("render na \n");
 		mlx_destroy_image(handy->data.mlx, handy->data.img.img);
 		handy->data.img.img = mlx_new_image(handy->data.mlx, WIDTH, HEIGHT);
 		handy->data.img.addr = mlx_get_data_addr(handy->data.img.img,
 				&handy->data.img.bits_per_pixel, &handy->data.img.line_length,
 				&handy->data.img.endian);
-		// mlx_clear_window(&handy->data.mlx, &handy->data.win);
-		// mlx_draw(&handy->data.img, &handy->draw);
-		// mlx_draw2(&handy->data.img, &handy->draw);
 		render(handy);
 		handy->to_render = 0;
 	}

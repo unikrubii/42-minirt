@@ -1,5 +1,7 @@
 NAME = miniRT
+
 CC = gcc -g -Ofast
+
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
@@ -42,11 +44,17 @@ endif
 SRCS =	rt_key_handler.c \
 		rt_draw.c \
 		rt_render.c \
+		rt_render_helper.c \
 		blink.c \
 		endian.c \
 		objectbase.c \
+		objectlist.c \
 		sphere.c \
-
+		lightbase.c \
+		lightlist.c \
+		pointlight.c \
+		gtform.c \
+		plane.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 00:48:19 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:55:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # include "camera.h"
 # include "ray.h"
 # include "objectbase.h"
+# include "lightbase.h"
+# include "scene.h"
+# include "gtform.h"
 // # include "v_util.h"
 
 # define PI 3.14159265358979323846
@@ -104,37 +107,6 @@ typedef struct s_mouse
 	int		pos_y;
 }	t_mouse;
 
-// typedef struct s_camera
-// {
-// 	t_nml_mat		*view;
-// 	t_nml_mat_lup	*view_lup;
-// 	float			fov;
-// }	t_camera;
-
-// typedef struct s_object
-// {
-// 	int				type;
-// 	t_nml_mat		*pos;
-// 	t_nml_mat		*dir;
-// 	t_nml_mat		*color;
-// 	float			radius;
-// 	float			height;
-// 	float			ambient;
-// 	float			diffuse;
-// 	float			specular;
-// 	float			reflective;
-// 	float			transparency;
-// 	float			refractive_index;
-// 	struct s_object	*next;
-// }	t_object;
-
-typedef struct s_light
-{
-	t_nml_mat		*pos;
-	t_nml_mat		*color;
-	float			brightness;
-	struct s_light	*next;
-}	t_light;
 typedef struct s_handle
 {
 	t_vars		data;
@@ -142,25 +114,9 @@ typedef struct s_handle
 	t_mouse		mouse;
 	t_camera	*camera;
 	t_objbase	*objects;
-	t_light		*lights;
+	t_lightbase	*lights;
 	int			to_render;
 }	t_handle;
-
-typedef struct s_scene
-{
-	t_ray		*cam_ray;
-	t_nml_mat	*v_intpoint;
-	t_nml_mat	*v_lc_norm;
-	t_nml_mat	*v_lc_color;
-	float		x_fact;
-	float		y_fact;
-	float		min_dist;
-	float		max_dist;
-	float		norm_x;
-	float		norm_y;
-	int			valid_inter;
-	float		dist;
-}	t_scene;
 
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -172,12 +128,15 @@ int		mlx_re_draw(t_handle *handy);
 
 void	mlx_key_close(t_handle *handy);
 
-int		mlx_close(t_vars *vars);
+int		mlx_close(t_handle *handy);
 
 int		rt_key_handler(int keycode, t_handle *handy);
 
 int		render(t_handle *handy);
 
 int		endian(void);
+
+void	scene_deinit(t_scene *scn);
+void	scene_init(t_scene *scn);
 
 #endif

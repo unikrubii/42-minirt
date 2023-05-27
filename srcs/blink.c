@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/01 01:34:35 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 10:17:36 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	main(void)
 	t_nml_mat		scr_cen;
 	t_nml_mat		scr_u;
 	t_nml_mat		scr_v;
-	t_objbase		obj_test;
+	// t_objbase		obj_test;
 
 	camera_init(&cam);
-	cam_set_pos(&cam, 0.0, -10.0, 0.0);
+	cam_set_pos(&cam, 0.0, -20.0, -1.0);
 	cam_set_lookat(&cam, 0.0, 0.0, 0.0);
 	cam_set_up(&cam, 0.0, 0.0, 1.0);
 	cam_set_length(&cam, 1.0);
@@ -41,9 +41,58 @@ int	main(void)
 	printf("scr_v:\n");
 	vect_print(&scr_v);
 
-	obj_init(&obj_test, SPH);
+	// obj_init(&obj_test, SPH);
+	t_fattr	attr, attr2, attr3, attr4;
+	attr.v_tr = new_vector();
+	attr.v_rot = new_vector();
+	attr.v_scl = new_vector();
+	attr.v_color = new_vector();
+
+	attr2.v_tr = new_vector();
+	attr2.v_rot = new_vector();
+	attr2.v_scl = new_vector();
+	attr2.v_color = new_vector();
+
+	attr3.v_tr = new_vector();
+	attr3.v_rot = new_vector();
+	attr3.v_scl = new_vector();
+	attr3.v_color = new_vector();
+
+	attr4.v_tr = new_vector();
+	attr4.v_rot = new_vector();
+	attr4.v_scl = new_vector();
+	attr4.v_color = new_vector();
+
+	set_vect(attr.v_tr, -2.0, 0.0, 0.0);
+	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr.v_scl, 2, 2, 2);
+	set_vect(attr.v_color, 255.0, 0.0, 0.0);
+
+	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
+	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr2.v_scl, 0.5, 2, 2);
+	set_vect(attr2.v_color, 128.0, 128.0, 128.0);
+
+	set_vect(attr3.v_tr, 2.0, 0.0, 0.0);
+	set_vect(attr3.v_rot, 45.0, 45.0, 45.0);
+	set_vect(attr3.v_scl, 2, 2, 0.5);
+	set_vect(attr3.v_color, 255.0, 0.0, 255.0);
+
+	set_vect(attr4.v_tr, 0.0, 0.0, 0.0);
+	set_vect(attr4.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr4.v_scl, 2, 2, 1);
+	set_vect(attr4.v_color, 128.0, 128.0, 128.0);
+
+	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
+	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
+	objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
+	objlst_add_back(&handy.objects, objlst_new(PLN, &attr4));
+	lightlst_add_back(&handy.lights, lightlst_new(PNT));
+	set_vect(handy.lights->v_location, 5.0, -20.0, -5.0);
+	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
+
 	handy.camera = &cam;
-	handy.objects = &obj_test;
+	// handy.objects = &obj_test;
 	handy.to_render = 1;
 
 	handy.data.mlx = mlx_init();
@@ -52,7 +101,7 @@ int	main(void)
 	handy.data.img.addr = mlx_get_data_addr(handy.data.img.img, \
 		&handy.data.img.bits_per_pixel, &handy.data.img.line_length, \
 		&handy.data.img.endian);
-	mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy.data);
+	mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy);
 	mlx_hook(handy.data.win, ON_KEYDOWN, 1L << 0, rt_key_handler, &handy);
 	// render(&handy);
 	mlx_loop_hook(handy.data.mlx, &mlx_re_draw, &handy);

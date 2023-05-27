@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/27 12:45:35 by sthitiku          #+#    #+#              #
+#    Updated: 2023/05/27 12:45:39 by sthitiku         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = miniRT
 
 CC = gcc -g -Ofast
@@ -54,11 +66,7 @@ SRCS =	rt_key_handler.c \
 		lightlist.c \
 		pointlight.c \
 		gtform.c \
-<<<<<<< HEAD
-		rt_readmap.c \
-=======
 		plane.c \
->>>>>>> @{-1}
 
 OBJS = $(SRCS:.c=.o)
 

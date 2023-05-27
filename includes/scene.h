@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:07:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 23:15:24 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 12:21:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ typedef struct s_scene
 	int			valid_illum;
 	int			x;
 	int			y;
+	t_objbase	*closet_obj;
+	t_nml_mat	*closet_int_point;
+	t_nml_mat	*closet_lc_normal;
+	t_nml_mat	*closet_lc_color;
+	float		min_dist;
+	int			inter_found;
+	float		dist;
+	float		red;
+	float		green;
+	float		blue;
+	int			illum_found;
 }	t_scene;
 
 #endif

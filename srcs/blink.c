@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 10:17:36 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 11:28:53 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	// t_objbase		obj_test;
 
 	camera_init(&cam);
-	cam_set_pos(&cam, 0.0, -20.0, -1.0);
+	cam_set_pos(&cam, 0.0, -10.0, -1.0);
 	cam_set_lookat(&cam, 0.0, 0.0, 0.0);
 	cam_set_up(&cam, 0.0, 0.0, 1.0);
 	cam_set_length(&cam, 1.0);
@@ -63,24 +63,24 @@ int	main(void)
 	attr4.v_scl = new_vector();
 	attr4.v_color = new_vector();
 
-	set_vect(attr.v_tr, -2.0, 0.0, 0.0);
+	set_vect(attr.v_tr, -1.5, 0.0, 0.0);
 	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr.v_scl, 2, 2, 2);
+	set_vect(attr.v_scl, 0.5, 0.5, 0.75);
 	set_vect(attr.v_color, 255.0, 0.0, 0.0);
 
 	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr2.v_scl, 0.5, 2, 2);
+	set_vect(attr2.v_scl, 0.75, 0.5, 0.5);
 	set_vect(attr2.v_color, 128.0, 128.0, 128.0);
 
-	set_vect(attr3.v_tr, 2.0, 0.0, 0.0);
-	set_vect(attr3.v_rot, 45.0, 45.0, 45.0);
-	set_vect(attr3.v_scl, 2, 2, 0.5);
-	set_vect(attr3.v_color, 255.0, 0.0, 255.0);
+	set_vect(attr3.v_tr, 1.5, 0.0, 0.0);
+	set_vect(attr3.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr3.v_scl, 0.75, 0.75, 0.75);
+	set_vect(attr3.v_color, 0.0, 0.0, 255.0);
 
-	set_vect(attr4.v_tr, 0.0, 0.0, 0.0);
+	set_vect(attr4.v_tr, 0.0, 0.0, 0.75);
 	set_vect(attr4.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr4.v_scl, 2, 2, 1);
+	set_vect(attr4.v_scl, 4, 4, 1);
 	set_vect(attr4.v_color, 128.0, 128.0, 128.0);
 
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));

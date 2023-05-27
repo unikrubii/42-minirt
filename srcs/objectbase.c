@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 21:46:58 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 10:02:52 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr)
 	{
 		obj->obj_init = sphere_init;
 		obj->obj_test_inter_scn = sphere_test_inter_scn;
+		obj->obj_init(obj);
+	}
+	if (type == PLN)
+	{
+		obj->obj_init = plane_init;
+		obj->obj_test_inter_scn = plane_test_inter_scn;
 		obj->obj_init(obj);
 	}
 }

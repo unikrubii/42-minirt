@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 19:36:13 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 21:45:53 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 09:36:48 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,15 @@ void	vect_print(t_nml_mat *vect)
 {
 	printf("%2.2f\n%2.2f\n%2.2f\n", vect->data[0][0], \
 		vect->data[1][0], vect->data[2][0]);
+}
+
+/// @brief get vector value
+/// @param vect
+/// @param pos
+/// @return
+float	vect_get(t_nml_mat *vect, int pos)
+{
+	if (vect)
+		return (vect->data[pos][0]);
+	return (0.0);
 }

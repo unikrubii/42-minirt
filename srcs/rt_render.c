@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/21 09:11:19 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:34:26 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	scene_render(t_handle *handy)
 		}
 		scn.x++;
 	}
-	scene_deinit(&scn);
+	// scene_deinit(&scn);
 	return (1);
 }
 

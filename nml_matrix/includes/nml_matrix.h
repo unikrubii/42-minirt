@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:32:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 20:23:39 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 09:36:55 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,5 +270,7 @@ void			set_vect4(t_nml_mat *vect, float u, float v, float w);
 void			set_vect4_frm_vect(t_nml_mat *vect4, t_nml_mat *vect3);
 
 void			set_vect_frm_vect4(t_nml_mat *vect4, t_nml_mat *vect3);
+
+float			vect_get(t_nml_mat *vect, int pos);
 
 #endif

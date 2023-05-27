@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 23:18:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 03:40:46 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	sphere_deinit(t_objbase *obj)
 	(void) obj;
 }
 
-void	compute_values(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
+void	sphere_compute_values(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
 {
 	// Copy the ray and apply the bwd
-	calc->bck_ray = ray_apply(obj->transmat, scn->cam_ray, FWDFM);
+	calc->bck_ray = ray_apply(obj->transmat, scn->cam_ray, BWDFM);
 
 	calc->vhat = nml_mat_cp(calc->bck_ray->v_lab);
 	// calc->vhat = nml_mat_cp(scn->cam_ray->v_lab);
@@ -87,7 +87,7 @@ int	sphere_test_inter_scn(t_objbase *obj, t_scene *scn)
 	sph.v_poi = new_vector();
 	sph.v_obj_org = new_vector();
 	set_vect(sph.v_obj_org, 0.0, 0.0, 0.0);
-	compute_values(&sph, scn, obj);
+	sphere_compute_values(&sph, scn, obj);
 	if (sph.inter_test > 0.0)
 	{
 		sph.num_sqrt = sqrt(sph.inter_test);

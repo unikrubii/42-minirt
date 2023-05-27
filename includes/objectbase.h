@@ -6,7 +6,11 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/05/24 22:18:31 by sthitiku         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/27 10:02:16 by nnakarac         ###   ########.fr       */
+>>>>>>> @{-1}
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +69,12 @@ typedef struct s_inter_calc
 	t_nml_mat	*v_poi;
 	t_nml_mat	*v_obj_org;
 	t_nml_mat	*v_obj_norg;
+	t_nml_mat	*k;
+	float		t;
+	float		u;
+	float		v;
+	t_nml_mat	*v_obj_norm;
+	t_nml_mat	*v_obj_gorg;
 }	t_inter_calc;
 
 void	obj_init(t_objbase *obj, int type, t_fattr *attr);
@@ -79,6 +89,9 @@ void	sphere_deinit(t_objbase *obj);
 int		sphere_test_intersect(t_ray *ray, t_nml_mat *int_point, \
 	t_nml_mat *lc_normal, t_nml_mat *lc_color);
 int		sphere_test_inter_scn(t_objbase *obj, t_scene *scn);
+void	plane_init(t_objbase *obj);
+void	plane_deinit(t_objbase *obj);
+int		plane_test_inter_scn(t_objbase *obj, t_scene *scn);
 
 t_objbase	*objlst_last(t_objbase *lst);
 void		objlst_add_back(t_objbase **lst, t_objbase *new);

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:58:43 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/05/27 12:25:14 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:02:37 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	scene_init(t_scene *scn)
 	scn->valid_inter = 0;
 	scn->illum_found = 0;
 	scn->inter_found = 0;
-
+	scn->closet_int_point = NULL;
+	scn->closet_lc_color = NULL;
+	scn->closet_lc_normal = NULL;
 	// scn->v_poi = new_vector();
 	// scn->v_obj_org = new_vector();
 	// set_vect(scn->v_obj_org, 0.0, 0.0, 0.0);

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 11:28:53 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:24:08 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,27 @@ int	main(void)
 	set_vect(attr.v_tr, -1.5, 0.0, 0.0);
 	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
 	set_vect(attr.v_scl, 0.5, 0.5, 0.75);
-	set_vect(attr.v_color, 255.0, 0.0, 0.0);
+	set_vect(attr.v_color, 1, 0.0, 0.0);
 
 	set_vect(attr2.v_tr, 0.0, 0.0, 0.0);
 	set_vect(attr2.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr2.v_scl, 0.75, 0.5, 0.5);
-	set_vect(attr2.v_color, 128.0, 128.0, 128.0);
+	set_vect(attr2.v_scl, 0.5, 0.5, 0.5);
+	set_vect(attr2.v_color, 0.5, 1, 0.5);
 
-	set_vect(attr3.v_tr, 1.5, 0.0, 0.0);
+	set_vect(attr3.v_tr, 0.5, 0.0, 0.0);
 	set_vect(attr3.v_rot, 0.0, 0.0, 0.0);
-	set_vect(attr3.v_scl, 0.75, 0.75, 0.75);
-	set_vect(attr3.v_color, 0.0, 0.0, 255.0);
+	set_vect(attr3.v_scl, 0.5, 0.5, 0.5);
+	set_vect(attr3.v_color, 0.0, 0.0, 1);
 
 	set_vect(attr4.v_tr, 0.0, 0.0, 0.75);
 	set_vect(attr4.v_rot, 0.0, 0.0, 0.0);
 	set_vect(attr4.v_scl, 4, 4, 1);
-	set_vect(attr4.v_color, 128.0, 128.0, 128.0);
+	set_vect(attr4.v_color, 0.5, 0.5, 0.5);
 
-	objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
+	// objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
-	objlst_add_back(&handy.objects, objlst_new(PLN, &attr4));
+	// objlst_add_back(&handy.objects, objlst_new(PLN, &attr4));
 	lightlst_add_back(&handy.lights, lightlst_new(PNT));
 	set_vect(handy.lights->v_location, 5.0, -20.0, -5.0);
 	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);

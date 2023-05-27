@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:38:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 17:41:29 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 12:43:18 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int		p_light_comp_illum(t_lightbase *light, \
 		t_objbase *obj, t_objbase *cur_obj, \
 		t_nml_mat *color, float *intensity);
 int		p_light_comp_illum_scn(t_lightbase *light, \
+		t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
+int		p_light_comp_illum_scn_close(t_lightbase *light, \
 		t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
 
 t_lightbase	*lightlst_last(t_lightbase *lst);

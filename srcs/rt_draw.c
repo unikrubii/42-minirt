@@ -6,11 +6,24 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:06:03 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 17:58:01 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 14:27:52 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+// void	my_mlx_pixel_put_scn(t_data *data, int x, int y, t_scene *scn)
+// {
+// 	char	*dst;
+
+// 	float	r_ch;
+// 	float	g_ch;
+// 	float	b_ch;
+// 	float	r_max;
+// 	float	g_max;
+// 	float	b_max;
+// 	float	ovr_max;
+// }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {

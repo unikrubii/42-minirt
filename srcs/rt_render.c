@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 18:25:14 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:31:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,9 +246,9 @@ int	render(t_handle *handy)
 	scene_render(handy);
 	// remap color of every pixel
 	// 1. calculate max value
-	find_max_color(handy);
+	// find_max_color(handy);
 	// 2. remap the
-	set_new_color(handy);
+	// set_new_color(handy);
 	// done
 	mlx_put_image_to_window(handy->data.mlx, handy->data.win, \
 		handy->data.img.img, 0, 0);

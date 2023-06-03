@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 03:40:46 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:19:29 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,13 @@ int	sphere_test_inter_scn(t_objbase *obj, t_scene *scn)
 	sphere_compute_values(&sph, scn, obj);
 	if (sph.inter_test > 0.0)
 	{
-		sph.num_sqrt = sqrt(sph.inter_test);
+		sph.num_sqrt = sqrtf(sph.inter_test);
 		sph.t1 = (-sph.b + sph.num_sqrt) / 2.0;
 		sph.t2 = (-sph.b - sph.num_sqrt) / 2.0;
 		if ((sph.t1 < 0.0) || (sph.t2 < 0.0))
 			return (nml_mat_free(sph.vhat), 0);
 		else
-			inter_calc(&sph, scn, obj);
-		return (nml_mat_free(sph.vhat), 1);
+			return (inter_calc(&sph, scn, obj), nml_mat_free(sph.vhat), 1);
 	}
 	else
 		return (nml_mat_free(sph.vhat), 0);

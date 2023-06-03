@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 01:15:26 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 15:57:06 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:28:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,11 @@ void	gt_set_trans(t_gtform *form, t_nml_mat *trans, t_nml_mat *rot, t_nml_mat *s
 	set_rotx_mat(rotmx, rot);
 	set_scale_mat(sclm, scale);
 
-	nml_mat_print(transm);
-	nml_mat_print(sclm);
-	nml_mat_print(rotmx);
-	nml_mat_print(rotmy);
-	nml_mat_print(rotmz);
+	// nml_mat_print(transm);
+	// nml_mat_print(sclm);
+	// nml_mat_print(rotmx);
+	// nml_mat_print(rotmy);
+	// nml_mat_print(rotmz);
 
 
 	// Combine to give the final forward transform matrix.
@@ -150,12 +150,12 @@ void	gt_set_trans(t_gtform *form, t_nml_mat *trans, t_nml_mat *rot, t_nml_mat *s
 	nml_mat_free(dot_tmp1);
 	nml_mat_free(dot_tmp2);
 
-	nml_mat_print(form->fwdtfm);
+	// nml_mat_print(form->fwdtfm);
 
 	lup = nml_mat_lup_solve(form->fwdtfm);
 	form->bwdtfm = nml_mat_inv(lup);
 
-	nml_mat_print(form->bwdtfm);
+	// nml_mat_print(form->bwdtfm);
 
 	nml_mat_lup_free(lup);
 }

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 18:31:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:33:32 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 	scn->min_dist = 1e6;
 	scn->inter_found = 0;
 	scn->valid_inter = 0;
+	scn->debug = 0;
 	while (p_obj)
 	{
 		scn->valid_inter = p_obj->obj_test_inter_scn(p_obj, scn);
@@ -60,15 +61,22 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 			vtmp = nml_mat_sub(scn->v_intpoint, scn->cam_ray->v_point1);
 			scn->dist = nml_vect_norm(vtmp);
 			nml_mat_free(vtmp);
-			if (scn->dist < scn->min_dist)
+			// if (scn->min_dist < 10000)
+			// {
+			// 	scn->debug = 1;
+			// 	// dprintf(2, "obj:%d\tdist:%f\tmin_dist:%f\t%f\n", p_obj->type, scn->dist, scn->min_dist, p_obj->v_base_color->data[2][0]);
+			// }
+			if (scn->dist <= scn->min_dist)
 			{
-				if (scn->min_dist < 10000)
-					dprintf(2, "obj:%d\tdist:%f\tmin_dist:%f\n", p_obj->type, scn->dist, scn->min_dist);
 				scn->min_dist = scn->dist;
 				closet_obj = p_obj;
-				scn->closet_int_point = scn->v_intpoint;
-				scn->closet_lc_normal = scn->v_lc_norm;
-				scn->closet_lc_color = scn->v_lc_color;
+				// scn->closet_int_point = scn->v_intpoint;
+				// scn->closet_lc_normal = scn->v_lc_norm;
+				// scn->closet_lc_color = scn->v_lc_color;
+				// scn->closet_lc_color = closet_obj->v_base_color;
+				scn->closet_int_point = nml_mat_cp(scn->v_intpoint);
+				scn->closet_lc_normal = nml_mat_cp(scn->v_lc_norm);
+				scn->closet_lc_color = closet_obj->v_base_color;
 			}
 		}
 		p_obj = p_obj->next;
@@ -77,6 +85,13 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 	// Compute the illumination for the closet object, assuming that there was a valid intersection
 	if (scn->inter_found)
 	{
+		// scn->red = scn->closet_lc_color->data[0][0] * 255;
+		// scn->green = scn->closet_lc_color->data[1][0] * 255;
+		// scn->blue = scn->closet_lc_color->data[2][0] * 255;
+		// 	my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
+		// 	((int)(scn->red) << 16) \
+		// 	+ ((int)(scn->green) << 8) \
+		// 	+ ((int)(scn->blue)));
 		// Compute the intensity of illumination
 		scn->red = 0;
 		scn->green = 0;
@@ -116,6 +131,7 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 		// 	+ ((int)(0) << 8) \
 		// 	+ ((int)(0)));
 		// }
+
 	}
 
 	// while (p_obj)
@@ -128,6 +144,61 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 	// 	// 		((int)0 << 16) + ((int)0 << 8) + ((int)0));
 	// 	p_obj = p_obj->next;
 	// }
+
+}
+
+// t_ray		*cam_ray;
+// 	t_nml_mat	*v_intpoint;
+// 	t_nml_mat	*v_lc_norm;
+// 	t_nml_mat	*v_lc_color;
+// 	float		x_fact;
+// 	float		y_fact;
+// 	float		min_dist;
+// 	float		max_dist;
+// 	float		norm_x;
+// 	float		norm_y;
+// 	int			valid_inter;
+// 	float		dist;
+// 	float		intensity;
+// 	t_nml_mat	*color;
+// 	int			valid_illum;
+// 	int			x;
+// 	int			y;
+// 	t_nml_mat	*closet_int_point;
+// 	t_nml_mat	*closet_lc_normal;
+// 	t_nml_mat	*closet_lc_color;
+// 	int			inter_found;
+// 	float		red;
+// 	float		green;
+// 	float		blue;
+// 	int			illum_found;
+
+void	debug_scene_init(t_scene *scn)
+{
+	scn->x_fact = 1.0 / ((float) WIDTH / 2.0);
+	scn->y_fact = 1.0 / ((float) HEIGHT / 2.0);
+	scn->min_dist = 1e6;
+	scn->max_dist = 0.0;
+	scn->norm_x = 0.0;
+	scn->norm_y = 0.0;
+	scn->cam_ray = NULL;
+	// scn->bck_ray = NULL;
+	scn->dist = 0.0;
+	scn->intensity = 0.0;
+	scn->red = 0.0;
+	scn->green = 0.0;
+	scn->blue = 0.0;
+	scn->valid_illum = 0;
+	scn->valid_inter = 0;
+	scn->illum_found = 0;
+	scn->inter_found = 0;
+	scn->closet_int_point = NULL;
+	scn->closet_lc_color = NULL;
+	scn->closet_lc_normal = NULL;
+	scn->color = new_vector();
+	// scn->v_poi = new_vector();
+	// scn->v_obj_org = new_vector();
+	// set_vect(scn->v_obj_org, 0.0, 0.0, 0.0);
 }
 
 int	scene_render(t_handle *handy)
@@ -150,6 +221,7 @@ int	scene_render(t_handle *handy)
 			scn.cam_ray = generate_ray(handy->camera, scn.norm_x, scn.norm_y);
 			p_obj = handy->objects;
 			scene_pixel_put(&scn, handy, p_obj);
+
 			scn.y++;
 			ray_deinit(scn.cam_ray);
 		}

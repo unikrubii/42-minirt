@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+         #
+#    By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 12:45:35 by sthitiku          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/05/27 23:49:44 by sthitiku         ###   ########.fr        #
+=======
+#    Updated: 2023/05/31 20:55:00 by sthitiku         ###   ########.fr        #
+>>>>>>> 74d4f40b2e930584fe8493aac9136e7fb7cbedad
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +71,12 @@ SRCS =	rt_key_handler.c \
 		pointlight.c \
 		gtform.c \
 		plane.c \
+<<<<<<< HEAD
 		rt_readmap.c \
 		rt_atof.c \
+=======
+		rt_readmap.c
+>>>>>>> 74d4f40b2e930584fe8493aac9136e7fb7cbedad
 
 OBJS = $(SRCS:.c=.o)
 

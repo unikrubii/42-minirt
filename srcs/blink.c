@@ -6,11 +6,44 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 11:32:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:27:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	init_color_pix(t_handle *handy)
+{
+	int			width;
+	int			height;
+	t_nml_mat	**dst;
+
+	// dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+
+	width = 0;
+	height = 0;
+	// init all pixel color
+	handy->vv_color = malloc(sizeof(t_nml_mat *) * WIDTH * HEIGHT);
+	while (width < WIDTH)
+	{
+		height = 0;
+		while (height < HEIGHT)
+		{
+			dst = handy->vv_color + (HEIGHT * width) + (height);
+			*dst = new_vector();
+			height++;
+		}
+		width++;
+	}
+}
+
+void	clear_attr(t_fattr *attr)
+{
+	nml_mat_free(attr->v_color);
+	nml_mat_free(attr->v_rot);
+	nml_mat_free(attr->v_scl);
+	nml_mat_free(attr->v_tr);
+}
 
 int	main(void)
 {
@@ -85,16 +118,22 @@ int	main(void)
 
 	// objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
-	objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
+	// objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
 	// objlst_add_back(&handy.objects, objlst_new(PLN, &attr4));
 	lightlst_add_back(&handy.lights, lightlst_new(PNT));
 	set_vect(handy.lights->v_location, 5.0, -20.0, -5.0);
 	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
 
+	clear_attr(&attr);
+	clear_attr(&attr2);
+	clear_attr(&attr3);
+	clear_attr(&attr4);
+
 	handy.camera = &cam;
 	// handy.objects = &obj_test;
 	handy.to_render = 1;
 
+	init_color_pix(&handy);
 	handy.data.mlx = mlx_init();
 	handy.data.win = mlx_new_window(handy.data.mlx, WIDTH, HEIGHT, "RT");
 	handy.data.img.img = mlx_new_image(handy.data.mlx, WIDTH, HEIGHT);

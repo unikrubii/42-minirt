@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 10:02:52 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:16:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr)
 void	obj_deinit(t_objbase *obj)
 {
 	(void) obj;
+	nml_mat_free(obj->v_base_color);
+	gt_deinit(obj->transmat);
 }
 
 int	obj_test_intersect(t_ray *ray, t_nml_mat *int_point, \

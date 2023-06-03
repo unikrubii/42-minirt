@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 01:15:26 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 11:32:55 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:19:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,11 @@ void	gt_set_trans(t_gtform *form, t_nml_mat *trans, t_nml_mat *rot, t_nml_mat *s
 	form->fwdtfm = nml_mat_cp(dot_tmp2);
 	nml_mat_free(dot_tmp1);
 	nml_mat_free(dot_tmp2);
+	nml_mat_free(transm);
+	nml_mat_free(sclm);
+	nml_mat_free(rotmx);
+	nml_mat_free(rotmy);
+	nml_mat_free(rotmz);
 
 	nml_mat_print(form->fwdtfm);
 

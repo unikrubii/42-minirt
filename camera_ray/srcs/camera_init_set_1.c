@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera_init_set.c                                  :+:      :+:    :+:   */
+/*   camera_init_set_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:28:14 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 20:34:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:00:06 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	camera_init(t_camera *camera)
 	camera->v_cam_pos = new_vector();
 	camera->v_cam_lookat = new_vector();
 	camera->v_cam_up = new_vector();
+	camera->v_align_vect = NULL;
+	camera->v_proj_scr_u = NULL;
+	camera->v_proj_scr_v = NULL;
+	camera->v_proj_scr_cen = NULL;
 	set_vect(camera->v_cam_pos, 0.0, 0.0, 0.0);
 	set_vect(camera->v_cam_lookat, 0.0, 0.0, 0.0);
 	set_vect(camera->v_cam_up, 0.0, 0.0, 0.0);
@@ -39,7 +43,6 @@ void	camera_deinit(t_camera *camera)
 	nml_mat_free(camera->v_proj_scr_cen);
 	nml_mat_free(camera->v_proj_scr_u);
 	nml_mat_free(camera->v_proj_scr_v);
-	free(camera);
 }
 
 /// @brief Set camera position in vector format

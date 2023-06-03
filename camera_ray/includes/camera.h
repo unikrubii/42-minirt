@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:22:28 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 20:25:36 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:34:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_camera
 }	t_camera;
 
 void		camera_init(t_camera *camera);
+
+void		camera_deinit(t_camera *camera);
 
 void		cam_set_pos(t_camera *camera, float u, float v, float w);
 

@@ -1,6 +1,6 @@
 NAME = miniRT
 
-CC = gcc -g -Ofast
+CC = gcc -g -Ofast -fsanitize=address
 
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
@@ -55,6 +55,7 @@ SRCS =	rt_key_handler.c \
 		pointlight.c \
 		gtform.c \
 		plane.c \
+		pix_color.c \
 
 OBJS = $(SRCS:.c=.o)
 

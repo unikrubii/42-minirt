@@ -6,36 +6,11 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 12:27:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:00:20 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-void	init_color_pix(t_handle *handy)
-{
-	int			width;
-	int			height;
-	t_nml_mat	**dst;
-
-	// dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-
-	width = 0;
-	height = 0;
-	// init all pixel color
-	handy->vv_color = malloc(sizeof(t_nml_mat *) * WIDTH * HEIGHT);
-	while (width < WIDTH)
-	{
-		height = 0;
-		while (height < HEIGHT)
-		{
-			dst = handy->vv_color + (HEIGHT * width) + (height);
-			*dst = new_vector();
-			height++;
-		}
-		width++;
-	}
-}
 
 void	clear_attr(t_fattr *attr)
 {
@@ -130,20 +105,24 @@ int	main(void)
 	clear_attr(&attr4);
 
 	handy.camera = &cam;
-	// handy.objects = &obj_test;
+	// // handy.objects = &obj_test;
 	handy.to_render = 1;
 
 	init_color_pix(&handy);
-	handy.data.mlx = mlx_init();
-	handy.data.win = mlx_new_window(handy.data.mlx, WIDTH, HEIGHT, "RT");
-	handy.data.img.img = mlx_new_image(handy.data.mlx, WIDTH, HEIGHT);
-	handy.data.img.addr = mlx_get_data_addr(handy.data.img.img, \
-		&handy.data.img.bits_per_pixel, &handy.data.img.line_length, \
-		&handy.data.img.endian);
-	mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy);
-	mlx_hook(handy.data.win, ON_KEYDOWN, 1L << 0, rt_key_handler, &handy);
-	// render(&handy);
-	mlx_loop_hook(handy.data.mlx, &mlx_re_draw, &handy);
-	mlx_loop(handy.data.mlx);
+	// handy.data.mlx = mlx_init();
+	// handy.data.win = mlx_new_window(handy.data.mlx, WIDTH, HEIGHT, "RT");
+	// handy.data.img.img = mlx_new_image(handy.data.mlx, WIDTH, HEIGHT);
+	// handy.data.img.addr = mlx_get_data_addr(handy.data.img.img, \
+	// 	&handy.data.img.bits_per_pixel, &handy.data.img.line_length, \
+	// 	&handy.data.img.endian);
+	// mlx_hook(handy.data.win, ON_DESTROY, 1L << 0, mlx_close, &handy);
+	// mlx_hook(handy.data.win, ON_KEYDOWN, 1L << 0, rt_key_handler, &handy);
+	// // render(&handy);
+	// mlx_loop_hook(handy.data.mlx, &mlx_re_draw, &handy);
+	// mlx_loop(handy.data.mlx);
+	deinit_color_pix(&handy);
+	objlst_clear(&handy.objects);
+	lightlst_clear(&handy.lights);
+	camera_deinit(handy.camera);
 	return (0);
 }

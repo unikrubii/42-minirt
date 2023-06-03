@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 11:51:05 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:45:43 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,8 @@ int		endian(void);
 
 void	scene_deinit(t_scene *scn);
 void	scene_init(t_scene *scn);
+
+void	init_color_pix(t_handle *handy);
+void	deinit_color_pix(t_handle *handy);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 02:46:43 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 11:31:39 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:50:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ void	light_init(t_lightbase *light, int type)
 void	light_deinit(t_lightbase *light)
 {
 	(void) light;
+	nml_mat_free(light->v_color);
+	nml_mat_free(light->v_location);
 }

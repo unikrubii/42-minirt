@@ -6,35 +6,11 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 12:13:26 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:44:27 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-void	deinit_color_pix(t_handle *handy)
-{
-	int			width;
-	int			height;
-	t_nml_mat	**dst;
-
-	// dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-
-	width = 0;
-	height = 0;
-	while (width < WIDTH)
-	{
-		height = 0;
-		while (height < HEIGHT)
-		{
-			dst = handy->vv_color + (HEIGHT * width) + (height);
-			nml_mat_free(*dst);
-			height++;
-		}
-		width++;
-	}
-	free(handy->vv_color);
-}
 
 void	mlx_key_close(t_handle *handy)
 {

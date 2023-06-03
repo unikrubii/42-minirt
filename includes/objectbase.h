@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 12:42:57 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/05/28 00:44:12 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_inter_calc
 	t_nml_mat	*v_obj_gorg;
 }	t_inter_calc;
 
-void	obj_init(t_objbase *obj, int type, t_fattr *attr);
+void	obj_init(t_objbase *obj, int type, t_fattr *attr, char **o_data);
 void	obj_deinit(t_objbase *obj);
 int		obj_test_intersect(t_ray *ray, t_nml_mat *int_point, \
 	t_nml_mat *lc_normal, t_nml_mat *lc_color);
@@ -91,7 +91,7 @@ int		plane_test_inter_scn(t_objbase *obj, t_scene *scn);
 
 t_objbase	*objlst_last(t_objbase *lst);
 void		objlst_add_back(t_objbase **lst, t_objbase *new);
-t_objbase	*objlst_new(int type, t_fattr *attr);
+t_objbase	*objlst_new(int type, t_fattr *attr, char **o_data);
 void		objlst_clear(t_objbase **lst);
 void		objlst_print(t_objbase *lst);
 

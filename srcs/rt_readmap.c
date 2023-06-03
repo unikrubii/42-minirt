@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rt_readmap.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
+/*   Updated: 2023/05/27 19:13:49 by sthitiku         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
 int	get_row(char *path)
@@ -89,10 +101,12 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-void	construct_light(char **obj_data, t_handle *handy)
+void	construct_light(char **light_data, t_handle *handy)
 {
-	(void)obj_data;
-	lightlst_add_back(&handy->lights, lightlst_new(PNT));
+	int	i;
+
+	i = 0;
+	lightlst_add_back(&handy->lights, lightlst_new(PNT, light_data));
 }
 
 void	get_obj_type(char *map, t_handle *handy)

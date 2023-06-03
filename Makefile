@@ -6,7 +6,7 @@
 #    By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 12:45:35 by sthitiku          #+#    #+#              #
-#    Updated: 2023/05/27 12:45:39 by sthitiku         ###   ########.fr        #
+#    Updated: 2023/05/27 23:49:44 by sthitiku         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,8 @@ SRCS =	rt_key_handler.c \
 		pointlight.c \
 		gtform.c \
 		plane.c \
+		rt_readmap.c \
+		rt_atof.c \
 
 OBJS = $(SRCS:.c=.o)
 

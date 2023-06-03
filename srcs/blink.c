@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 12:42:09 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/05/27 23:51:07 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ int	main(int argc, char **argv)
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
 	objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));
 	objlst_add_back(&handy.objects, objlst_new(PLN, &attr4));
-	lightlst_add_back(&handy.lights, lightlst_new(PNT));
-	set_vect(handy.lights->v_location, 5.0, -20.0, -5.0);
-	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
+	// lightlst_add_back(&handy.lights, lightlst_new(PNT));
+	// set_vect(handy.lights->v_location, 5.0, -20.0, -5.0);
+	// set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
 
 	handy.camera = &cam;
 	// handy.objects = &obj_test;

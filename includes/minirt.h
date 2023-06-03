@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/24 22:54:45 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/05/27 23:50:15 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,12 @@ int		endian(void);
 void	scene_deinit(t_scene *scn);
 void	scene_init(t_scene *scn);
 
+int		read_map(int argc, char **argv, t_handle *handy);
+
 // readmap
 int		get_row(char *path);
-int		read_map(int argc, char **argv, t_handle *handy);
 char	**get_map(char *path, int row_count);
+float	rt_atof(char *str);
+void	free_arr(char **arr);
 
 #endif

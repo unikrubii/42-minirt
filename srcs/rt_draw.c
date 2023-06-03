@@ -6,24 +6,11 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:06:03 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 14:27:52 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 11:32:48 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// void	my_mlx_pixel_put_scn(t_data *data, int x, int y, t_scene *scn)
-// {
-// 	char	*dst;
-
-// 	float	r_ch;
-// 	float	g_ch;
-// 	float	b_ch;
-// 	float	r_max;
-// 	float	g_max;
-// 	float	b_max;
-// 	float	ovr_max;
-// }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -53,48 +40,6 @@ int	mlx_conv_color(int color)
 		return ((r << 24) + (g << 16) + (b << 8) + a);
 	}
 	return (color);
-}
-
-void	mlx_draw(t_data *data, t_draw *draw)
-{
-	int		x;
-	int		y;
-	float	r;
-	float	g;
-
-	(void) draw;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			r = ((float) x / WIDTH) * 255.0;
-			g = ((float) y / HEIGHT) * 255.0;
-			my_mlx_pixel_put(data, x, y, ((int) r << 16) + ((int) g << 8));
-			x++;
-		}
-		y++;
-	}
-}
-
-void	mlx_draw2(t_data *data, t_draw *draw)
-{
-	int	x;
-	int	y;
-
-	(void) draw;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			my_mlx_pixel_put(data, x, y, 0xF00000FF);
-			x++;
-		}
-		y++;
-	}
 }
 
 int	mlx_re_draw(t_handle *handy)

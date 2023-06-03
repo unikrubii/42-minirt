@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 02:46:43 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 12:42:51 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/03 11:31:39 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	light_init(t_lightbase *light, int type)
 	if (type == PNT)
 	{
 		light->light_init = p_light_init;
-		// light->light_comp_illum_scn = p_light_comp_illum_scn;
 		light->light_comp_illum_scn = p_light_comp_illum_scn_close;
 		light->light_init(light);
 	}

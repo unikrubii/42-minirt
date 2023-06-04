@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_vect_util.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 19:36:13 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 09:36:48 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:43:24 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,16 @@ float	vect_get(t_nml_mat *vect, int pos)
 	if (vect)
 		return (vect->data[pos][0]);
 	return (0.0);
+}
+
+/// @brief set destination vector from source vector
+/// @param src
+/// @param dst
+void	set_vect_from_vect(t_nml_mat *src, t_nml_mat *dst)
+{
+	if (!src || !dst || !src->data || !dst->data)
+		return ;
+	dst->data[0][0] = src->data[0][0];
+	dst->data[1][0] = src->data[1][0];
+	dst->data[2][0] = src->data[2][0];
 }

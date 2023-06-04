@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 20:44:56 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:18:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main(void)
 {
 	static t_handle	handy;
 	t_camera		cam;
-	t_nml_mat		scr_cen;
-	t_nml_mat		scr_u;
-	t_nml_mat		scr_v;
+	// t_nml_mat		scr_cen;
+	// t_nml_mat		scr_u;
+	// t_nml_mat		scr_v;
 	// t_objbase		obj_test;
 
 	camera_init(&cam);
@@ -30,9 +30,9 @@ int	main(void)
 	cam_set_aspr(&cam, 16.0 / 9.0);
 	update_cam_geomet(&cam);
 
-	scr_cen = cam_get_scr_cen(&cam);
-	scr_u = cam_get_scr_u(&cam);
-	scr_v = cam_get_scr_v(&cam);
+	// scr_cen = cam_get_scr_cen(&cam);
+	// scr_u = cam_get_scr_u(&cam);
+	// scr_v = cam_get_scr_v(&cam);
 
 	// printf("scr_cen:\n");
 	// vect_print(&scr_cen);

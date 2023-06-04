@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
+#    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2023/06/03 16:00:20 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/06/04 16:29:25 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ NML = nml_util.c \
 	nml_mat_from.c \
 	nml_vect_cross.c \
 	nml_vect_util.c \
+	nml_vect_util2.c \
 	nml_vect_normalize.c \
 	nml_vect4.c \
 	# nml_mat_qr_solve.c \

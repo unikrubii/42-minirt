@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 19:33:32 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:33:57 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 				// scn->closet_lc_color = closet_obj->v_base_color;
 				scn->closet_int_point = nml_mat_cp(scn->v_intpoint);
 				scn->closet_lc_normal = nml_mat_cp(scn->v_lc_norm);
-				scn->closet_lc_color = closet_obj->v_base_color;
+				scn->closet_lc_color = nml_mat_cp(scn->v_lc_color);
 			}
 		}
 		p_obj = p_obj->next;

@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nml_mat_free.c                                     :+:      :+:    :+:   */
+/*   nml_vect_util2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/26 21:26:53 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 16:13:06 by nnakarac         ###   ########.fr       */
+/*   Created: 2023/06/04 16:28:18 by nnakarac          #+#    #+#             */
+/*   Updated: 2023/06/04 16:29:02 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nml_matrix.h"
 
-/// @brief Matrix deallocation
+/// @brief reset vector
 /// @param matrix
-void	nml_mat_free(t_nml_mat *matrix)
+void	reset_vect(t_nml_mat *matrix)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < matrix->rows)
-	{
-		free(matrix->data[i]);
-		i++;
-	}
-	free(matrix->data);
-	free(matrix);
+	matrix->data[0][0] = 0.0;
+	matrix->data[1][0] = 0.0;
+	matrix->data[2][0] = 0.0;
 }

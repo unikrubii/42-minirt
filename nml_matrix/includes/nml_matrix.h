@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_matrix.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:32:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 09:36:55 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:29:15 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,5 +272,9 @@ void			set_vect4_frm_vect(t_nml_mat *vect4, t_nml_mat *vect3);
 void			set_vect_frm_vect4(t_nml_mat *vect4, t_nml_mat *vect3);
 
 float			vect_get(t_nml_mat *vect, int pos);
+
+void			set_vect_from_vect(t_nml_mat *src, t_nml_mat *dst);
+
+void			reset_vect(t_nml_mat *matrix);
 
 #endif

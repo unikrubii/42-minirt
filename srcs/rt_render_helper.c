@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:58:43 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/05/27 15:02:37 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:41:00 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,7 @@ void	scene_deinit(t_scene *scn)
 	nml_mat_free(scn->v_lc_norm);
 	nml_mat_free(scn->v_lc_color);
 	nml_mat_free(scn->color);
+	nml_mat_free(scn->closet_int_point);
+	nml_mat_free(scn->closet_lc_color);
+	nml_mat_free(scn->closet_lc_normal);
 }

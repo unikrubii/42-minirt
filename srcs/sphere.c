@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 19:19:29 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:32:46 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	inter_calc(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
 
 	nml_vect_normalize_r(scn->v_lc_norm);
 
-	scn->v_lc_color = obj->v_base_color;
+	// scn->v_lc_color = obj->v_base_color;
+	scn->v_lc_color = nml_mat_cp(obj->v_base_color);
 }
 
 int	sphere_test_inter_scn(t_objbase *obj, t_scene *scn)

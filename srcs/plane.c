@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 02:48:18 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 10:13:08 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 19:26:04 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	plane_compute_values(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
 				nml_mat_free(calc->vtmp);
 
 				//Return Base Color
-				scn->v_lc_color = obj->v_base_color;
+				// scn->v_lc_color = obj->v_base_color;
+				scn->v_lc_color = nml_mat_cp(obj->v_base_color);
 
 				return (1);
 			}

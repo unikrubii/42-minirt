@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 16:33:57 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:56:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,9 +215,24 @@ int	scene_render(t_handle *handy)
 		{
 			scn.norm_x = ((float) scn.x * scn.x_fact) - 1.0;
 			scn.norm_y = ((float) scn.y * scn.y_fact) - 1.0;
-			scn.closet_int_point = NULL;
-			scn.closet_lc_normal = NULL;
-			scn.closet_lc_color = NULL;
+			// scn.closet_int_point = NULL;
+			// scn.closet_lc_normal = NULL;
+			// scn.closet_lc_color = NULL;
+			if (scn.closet_int_point)
+			{
+				nml_mat_free(scn.closet_int_point);
+				scn.closet_int_point = NULL;
+			}
+			if (scn.closet_lc_normal)
+			{
+				nml_mat_free(scn.closet_lc_normal);
+				scn.closet_lc_normal = NULL;
+			}
+			if (scn.closet_lc_color)
+			{
+				nml_mat_free(scn.closet_lc_color);
+				scn.closet_lc_color = NULL;
+			}
 			scn.cam_ray = generate_ray(handy->camera, scn.norm_x, scn.norm_y);
 			p_obj = handy->objects;
 			scene_pixel_put(&scn, handy, p_obj);

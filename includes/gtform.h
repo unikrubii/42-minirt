@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gtform.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:53:59 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 21:05:38 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:10:59 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_fattr
 	t_nml_mat	*v_rot;
 	t_nml_mat	*v_scl;
 	t_nml_mat	*v_color;
+	t_nml_mat	*up_v;
 }	t_fattr;
 
 typedef struct s_gtform

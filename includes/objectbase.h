@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 16:47:07 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:10:37 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ typedef struct s_objbase
 	t_nml_mat			*v_base_color;
 	t_gtform			*transmat;
 	struct s_objbase	*next;
-	float				norm_x;
-	float				norm_y;
-	float				norm_z;
-
 
 	void				(*obj_init)(struct s_objbase *);
 	void				(*obj_deinit)(struct s_objbase *);

@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/04 16:52:14 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:07:40 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,11 @@ void	construct_sphere(char **sp_data, t_handle *handy)
 	objlst_add_back(&handy->objects, objlst_new(SPH, &att));
 }
 
+void	set_plane_norm(t_handle *handy, char **data)
+{
+
+}
+
 void	construct_plane(char **pl_data, t_handle *handy)
 {
 	t_fattr att;
@@ -143,24 +148,22 @@ void	construct_plane(char **pl_data, t_handle *handy)
 	att.v_rot = new_vector();
 	att.v_scl = new_vector();
 	att.v_color = new_vector();
-	// i = 1;
-	// while (pl_data[i])
-	// {
-	// 	d = ft_split(pl_data[i], ',');
-	// 	if (i == 1)
-	// 		set_vect(att.v_tr, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
-	// 	else if (i == 2)
-	// 		set_vect(att.v_rot, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
-	// 	else if (i == 3)
-	// 		set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
-	// 	free_arr(d);
-	// 	i++;
-	// }
-	// set_vect(att.v_scl, 10, 10, 10);
-	set_vect(att.v_tr, 0.0, 0.0, 0.0);
+	i = 1;
+	while (pl_data[i])
+	{
+		d = ft_split(pl_data[i], ',');
+		if (i == 1)
+			set_vect(att.v_tr, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+		else if (i == 2)
+			set_norm(handy, d);
+		else if (i == 3)
+			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+		free_arr(d);
+		i++;
+	}
+	set_vect(att.v_scl, 10, 10, 10);
 	set_vect(att.v_rot, 0.0, 0.0, 0.0);
 	set_vect(att.v_scl, 20, 20, 20);
-	set_vect(att.v_color, 0.0, 0.0, 255.0);
 	objlst_add_back(&handy->objects, objlst_new(PLN, &att));
 }
 

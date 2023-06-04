@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/28 00:44:12 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:47:07 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ typedef struct s_objbase
 	t_nml_mat			*v_base_color;
 	t_gtform			*transmat;
 	struct s_objbase	*next;
+	float				norm_x;
+	float				norm_y;
+	float				norm_z;
+
 
 	void				(*obj_init)(struct s_objbase *);
 	void				(*obj_deinit)(struct s_objbase *);
@@ -73,7 +77,7 @@ typedef struct s_inter_calc
 	t_nml_mat	*v_obj_gorg;
 }	t_inter_calc;
 
-void	obj_init(t_objbase *obj, int type, t_fattr *attr, char **o_data);
+void	obj_init(t_objbase *obj, int type, t_fattr *attr);
 void	obj_deinit(t_objbase *obj);
 int		obj_test_intersect(t_ray *ray, t_nml_mat *int_point, \
 	t_nml_mat *lc_normal, t_nml_mat *lc_color);
@@ -91,7 +95,7 @@ int		plane_test_inter_scn(t_objbase *obj, t_scene *scn);
 
 t_objbase	*objlst_last(t_objbase *lst);
 void		objlst_add_back(t_objbase **lst, t_objbase *new);
-t_objbase	*objlst_new(int type, t_fattr *attr, char **o_data);
+t_objbase	*objlst_new(int type, t_fattr *attr);
 void		objlst_clear(t_objbase **lst);
 void		objlst_print(t_objbase *lst);
 

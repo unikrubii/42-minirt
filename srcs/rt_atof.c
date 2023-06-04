@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 19:17:52 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 23:42:12 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:02:29 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ float	rt_atof(char *str)
 	int		i;
 
 	i = 0;
+	sign = 1.0;
 	while (str[i])
 	{
 		if (str[i] == '-')
@@ -53,7 +54,7 @@ float	rt_atof(char *str)
 		}
 		if (str[i] == '-')
 		{
-			perror("Invalid input");
+			dprintf(2, "Invalid format");
 			exit (-1);
 		}
 		if (ft_isdigit(str[i]))

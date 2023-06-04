@@ -6,14 +6,14 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/28 00:12:53 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:16:43 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "objectbase.h"
 
-void	obj_init(t_objbase *obj, int type, t_fattr *attr, char **o_data)
+void	obj_init(t_objbase *obj, int type, t_fattr *attr)
 {
 	obj->type = type;
 	obj->v_base_color = nml_mat_cp(attr->v_color);

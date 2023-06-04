@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 00:13:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/28 00:12:33 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:17:18 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	objlst_add_back(t_objbase **lst, t_objbase *new)
 	p_lst->next = new;
 }
 
-t_objbase	*objlst_new(int type, t_fattr *attr, char **o_data)
+t_objbase	*objlst_new(int type, t_fattr *attr)
 {
 	t_objbase	*new;
 
 	new = malloc(sizeof(t_objbase));
 	if (!new)
 		return (NULL);
-	obj_init(new, type, attr, o_data);
+	obj_init(new, type, attr);
 	new->next = NULL;
 	return (new);
 }

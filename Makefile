@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 12:45:35 by sthitiku          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/05/27 23:49:44 by sthitiku         ###   ########.fr        #
-=======
-#    Updated: 2023/05/31 20:55:00 by sthitiku         ###   ########.fr        #
->>>>>>> 74d4f40b2e930584fe8493aac9136e7fb7cbedad
+#    Updated: 2023/06/04 00:10:58 by sthitiku         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +14,7 @@ NAME = miniRT
 
 CC = gcc -g -Ofast
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
 SRC_DIR = srcs/
@@ -71,12 +67,8 @@ SRCS =	rt_key_handler.c \
 		pointlight.c \
 		gtform.c \
 		plane.c \
-<<<<<<< HEAD
 		rt_readmap.c \
 		rt_atof.c \
-=======
-		rt_readmap.c
->>>>>>> 74d4f40b2e930584fe8493aac9136e7fb7cbedad
 
 OBJS = $(SRCS:.c=.o)
 

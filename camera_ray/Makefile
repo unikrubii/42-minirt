@@ -6,11 +6,11 @@
 #    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/30 20:16:16 by nnakarac          #+#    #+#              #
-#    Updated: 2023/06/05 14:02:01 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/06/05 17:26:04 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc -g -Ofast -fsanitize=address
+CC = gcc -g -Ofast
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = libcamera_ray.a

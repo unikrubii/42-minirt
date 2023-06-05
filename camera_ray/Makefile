@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
+#    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/30 20:16:16 by nnakarac          #+#    #+#              #
-#    Updated: 2023/04/30 21:18:57 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/06/05 14:02:01 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc -g
+CC = gcc -g -Ofast -fsanitize=address
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = libcamera_ray.a

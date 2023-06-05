@@ -6,11 +6,11 @@
 #    By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 22:45:00 by nnakarac          #+#    #+#              #
-#    Updated: 2023/06/04 16:29:25 by nnakarac         ###   ########.fr        #
+#    Updated: 2023/06/05 14:02:06 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc -g
+CC = gcc -g -Ofast -fsanitize=address
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = libnml_matrix.a

@@ -1,6 +1,6 @@
 NAME = miniRT
 
-CC = gcc -g -Ofast
+CC = gcc -g -Ofast -fsanitize=address
 
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf

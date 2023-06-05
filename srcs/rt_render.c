@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 18:56:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:26:02 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,10 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 			vtmp = nml_mat_sub(scn->v_intpoint, scn->cam_ray->v_point1);
 			scn->dist = nml_vect_norm(vtmp);
 			nml_mat_free(vtmp);
-			// if (scn->min_dist < 10000)
-			// {
-			// 	scn->debug = 1;
-			// 	// dprintf(2, "obj:%d\tdist:%f\tmin_dist:%f\t%f\n", p_obj->type, scn->dist, scn->min_dist, p_obj->v_base_color->data[2][0]);
-			// }
 			if (scn->dist <= scn->min_dist)
 			{
 				scn->min_dist = scn->dist;
 				closet_obj = p_obj;
-				// scn->closet_int_point = scn->v_intpoint;
-				// scn->closet_lc_normal = scn->v_lc_norm;
-				// scn->closet_lc_color = scn->v_lc_color;
-				// scn->closet_lc_color = closet_obj->v_base_color;
 				scn->closet_int_point = nml_mat_cp(scn->v_intpoint);
 				scn->closet_lc_normal = nml_mat_cp(scn->v_lc_norm);
 				scn->closet_lc_color = nml_mat_cp(scn->v_lc_color);
@@ -85,13 +76,6 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 	// Compute the illumination for the closet object, assuming that there was a valid intersection
 	if (scn->inter_found)
 	{
-		// scn->red = scn->closet_lc_color->data[0][0] * 255;
-		// scn->green = scn->closet_lc_color->data[1][0] * 255;
-		// scn->blue = scn->closet_lc_color->data[2][0] * 255;
-		// 	my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
-		// 	((int)(scn->red) << 16) \
-		// 	+ ((int)(scn->green) << 8) \
-		// 	+ ((int)(scn->blue)));
 		// Compute the intensity of illumination
 		scn->red = 0;
 		scn->green = 0;
@@ -105,9 +89,7 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 			if (scn->valid_illum)
 			{
 				scn->illum_found = 1;
-				// scn->red += scn->color->data[0][0] * scn->intensity;
-				// scn->green += scn->color->data[1][0] * scn->intensity;
-				// scn->blue += scn->color->data[2][0] * scn->intensity;
+
 				scn->red += scn->color->data[0][0] * scn->intensity;
 				scn->green += scn->color->data[1][0] * scn->intensity;
 				scn->blue += scn->color->data[2][0] * scn->intensity;
@@ -119,10 +101,11 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 			scn->red *= scn->closet_lc_color->data[0][0];
 			scn->green *= scn->closet_lc_color->data[1][0];
 			scn->blue *= scn->closet_lc_color->data[2][0];
-			my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
-			((int)(scn->red) << 16) \
-			+ ((int)(scn->green) << 8) \
-			+ ((int)(scn->blue)));
+			// my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
+			// ((int)(scn->red) << 16) \
+			// + ((int)(scn->green) << 8) \
+			// + ((int)(scn->blue)));
+			pix_color_put(scn, handy);
 		}
 		// else
 		// {
@@ -133,18 +116,6 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 		// }
 
 	}
-
-	// while (p_obj)
-	// {
-	// 	scn->valid_inter = p_obj->obj_test_inter_scn(p_obj, scn);
-	// 	if (scn->valid_inter)
-	// 		intersect_put(scn, handy, p_obj);
-	// 	// else
-	// 	// 	my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
-	// 	// 		((int)0 << 16) + ((int)0 << 8) + ((int)0));
-	// 	p_obj = p_obj->next;
-	// }
-
 }
 
 // t_ray		*cam_ray;
@@ -246,86 +217,6 @@ int	scene_render(t_handle *handy)
 	return (1);
 }
 
-void	find_max_color_util(t_handle *handy, int color)
-{
-	float	red;
-	float	green;
-	float	blue;
-
-	red = (color & 0xFF0000) >> 16;
-	green = (color & 0xFF00) >> 8;
-	blue = color & 0xFF;
-	if (red > handy->max_red)
-		handy->max_red = red;
-	if (green > handy->max_green)
-		handy->max_green = green;
-	if (blue > handy->max_blue)
-		handy->max_blue = blue;
-	if (handy->max_red > handy->maxall)
-		handy->maxall = red;
-	if (handy->max_green > handy->maxall)
-		handy->maxall = green;
-	if (handy->max_blue > handy->maxall)
-		handy->maxall = blue;
-}
-
-void	find_max_color(t_handle *handy)
-{
-	int		x;
-	int		y;
-	int		color;
-	char	*dst;
-
-
-	x = 0;
-	y = 0;
-
-	while (x < WIDTH)
-	{
-		y = 0;
-		while (y < HEIGHT)
-		{
-			dst = handy->data.img.addr + (y * handy->data.img.line_length + x * (handy->data.img.bits_per_pixel / 8));
-			color = *(unsigned int *) dst;
-			find_max_color_util(handy, color);
-			y++;
-		}
-		x++;
-	}
-}
-
-void	set_new_color(t_handle *handy)
-{
-	int		x;
-	int		y;
-	int		color;
-	char	*dst;
-	float	red;
-	float	green;
-	float	blue;
-
-	x = 0;
-	y = 0;
-
-	while (x < WIDTH)
-	{
-		y = 0;
-		color = 0;
-		while (y < HEIGHT)
-		{
-			dst = handy->data.img.addr + (y * handy->data.img.line_length + x * (handy->data.img.bits_per_pixel / 8));
-			red = (((color & 0xFF0000) >> 16) / handy->maxall) * 255.0;
-			green = (((color & 0xFF00) >> 8)  / handy->maxall) * 255.0;
-			blue = ((color & 0xFF)  / handy->maxall) * 255.0;
-
-			*(unsigned int *) dst = ((int)(red) << 16) + ((int)(green) << 8) + ((int)(blue));
-
-			y++;
-		}
-		x++;
-	}
-}
-
 int	render(t_handle *handy)
 {
 	if (handy->data.win == NULL)
@@ -334,6 +225,7 @@ int	render(t_handle *handy)
 	// remap color of every pixel
 	// 1. calculate max value
 	// find_max_color(handy);
+	opt_color(handy);
 	// 2. remap the
 	// set_new_color(handy);
 	// done

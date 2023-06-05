@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 15:18:58 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:56:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	// t_objbase		obj_test;
 
 	camera_init(&cam);
-	cam_set_pos(&cam, 0.0, -10.0, -10.0);
+	cam_set_pos(&cam, 0.0, -10.0, -1.0);
 	cam_set_lookat(&cam, 0.0, 0.0, 0.0);
 	cam_set_up(&cam, 0.0, 0.0, 1.0);
 	cam_set_length(&cam, 1.0);
@@ -90,6 +90,7 @@ int	main(void)
 	lightlst_add_back(&handy.lights, lightlst_new(PNT));
 	set_vect(handy.lights->v_location, 0.0, -10.0, -2.0);
 	set_vect(handy.lights->v_color, 255.0, 255.0, 255.0);
+	init_color_pix(&handy);
 
 	handy.camera = &cam;
 	// handy.objects = &obj_test;

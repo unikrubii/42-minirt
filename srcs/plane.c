@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 02:48:18 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/05 22:58:31 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/06 00:38:57 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 void	plane_init(t_objbase *obj)
 {
 	(void) obj;
-	printf("plane init\n");
-	// exit(0);
 }
 
 void	plane_deinit(t_objbase *obj)
@@ -87,7 +85,6 @@ int	plane_test_inter_scn(t_objbase *obj, t_scene *scn)
 	pln.v_poi = new_vector();
 	pln.v_obj_org = new_vector();
 	pln.v_obj_norm = new_vector();
-	// printf("PLANE: %f\t %f\t %f\n", obj->up_x, obj->up_y, obj->up_z);
 	set_vect(pln.v_obj_org, 0.0, 0.0, 0.0);
 	set_vect(pln.v_obj_norm, obj->up_x, obj->up_y, obj->up_z);
 	return (plane_compute_values(&pln, scn, obj));

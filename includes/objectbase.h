@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectbase.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 17:10:37 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:53:19 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ typedef struct s_objbase
 	int					type;
 	t_nml_mat			*v_base_color;
 	t_gtform			*transmat;
+	float				up_x;
+	float				up_y;
+	float				up_z;
 	struct s_objbase	*next;
 
 	void				(*obj_init)(struct s_objbase *);

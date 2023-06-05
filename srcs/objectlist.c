@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 00:13:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 13:17:18 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:34:22 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_objbase	*objlst_new(int type, t_fattr *attr)
 	new = malloc(sizeof(t_objbase));
 	if (!new)
 		return (NULL);
+	if (type == PLN)
+		vect_print(attr->up_v);
 	obj_init(new, type, attr);
 	new->next = NULL;
 	return (new);

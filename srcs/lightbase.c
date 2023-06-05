@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lightbase.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 02:46:43 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/04 00:10:51 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/05 23:30:43 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	light_init(t_lightbase *light, int type, char **l_data)
 	light->type = type;
 	light->v_color = new_vector();
 	light->v_location = new_vector();
-	// set_light_coord(light, l_data[1]);
-	// set_light_color(light, l_data[3]);
-	set_vect(light->v_location, 5.0, -20.0, -5.0);
-	set_vect(light->v_color, 255.0, 255.0, 255.0);
+	set_light_coord(light, l_data[1]);
+	set_light_color(light, l_data[3]);
+	// set_vect(light->v_location, 5.0, -20.0, -5.0);
+	// set_vect(light->v_color, 255.0, 255.0, 255.0);
 	light->next = NULL;
-	// light->intensity = rt_atof(l_data[2]);
-	light->intensity = 0.0;
+	light->intensity = rt_atof(l_data[2]);
+	// light->intensity = 0.0;
 	if (type == PNT)
 	{
 		light->light_init = p_light_init;

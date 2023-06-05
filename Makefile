@@ -93,6 +93,12 @@ fclean: clean
 	@$(RM) libmlx.dylib.dSYM
 	@$(RM) $(NAME).dSYM
 
+lib:	$(addprefix $(OBJ_DIR),$(OBJS))
+	@make -C $(LIB_DIR) re --silent
+	@make -C $(NML_DIR) re --silent
+	@make -C $(CAM_DIR) re --silent
+	@$(CC) -g $(CFLAGS) $(addprefix $(OBJ_DIR),$(OBJS)) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+
 re: fclean all
 
 .PHONY: fclean all clean re miniRT copy

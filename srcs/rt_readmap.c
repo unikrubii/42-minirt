@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_readmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/04 17:07:40 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:35:55 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,6 @@ void	construct_sphere(char **sp_data, t_handle *handy)
 	objlst_add_back(&handy->objects, objlst_new(SPH, &att));
 }
 
-void	set_plane_norm(t_handle *handy, char **data)
-{
-
-}
-
 void	construct_plane(char **pl_data, t_handle *handy)
 {
 	t_fattr att;
@@ -148,6 +143,7 @@ void	construct_plane(char **pl_data, t_handle *handy)
 	att.v_rot = new_vector();
 	att.v_scl = new_vector();
 	att.v_color = new_vector();
+	att.up_v = new_vector();
 	i = 1;
 	while (pl_data[i])
 	{
@@ -155,13 +151,12 @@ void	construct_plane(char **pl_data, t_handle *handy)
 		if (i == 1)
 			set_vect(att.v_tr, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
 		else if (i == 2)
-			set_norm(handy, d);
+			set_vect(att.up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
 		else if (i == 3)
 			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
 		free_arr(d);
 		i++;
 	}
-	set_vect(att.v_scl, 10, 10, 10);
 	set_vect(att.v_rot, 0.0, 0.0, 0.0);
 	set_vect(att.v_scl, 20, 20, 20);
 	objlst_add_back(&handy->objects, objlst_new(PLN, &att));

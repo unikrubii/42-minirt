@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/05 22:53:19 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:52:43 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_inter_calc
 {
 	t_nml_mat	*vhat;
 	t_nml_mat	*vtmp;
+	float		a;
 	float		b;
 	float		c;
 	float		inter_test;

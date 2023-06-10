@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:38:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/27 12:43:18 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:11:19 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,7 @@
 # include "objectbase.h"
 # include "ray.h"
 # include "scene.h"
-
-enum e_lighttype {
-	PNT = 1
-};
-
-typedef struct s_lightbase
-{
-	int					type;
-	t_nml_mat			*v_color;
-	t_nml_mat			*v_location;
-	float				intensity;
-	struct s_lightbase	*next;
-
-	void				(*light_init)(struct s_lightbase *light);
-	void				(*light_deinit)(struct s_lightbase *light);
-	int					(*light_comp_illum)(struct s_lightbase *light,
-		t_nml_mat *intpoint, t_nml_mat *lc_normal, \
-		t_objbase *obj, t_objbase *cur_obj, \
-		t_nml_mat *color, float *intensity);
-	int					(*light_comp_illum_scn)(struct s_lightbase *light,
-		t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
-}	t_lightbase;
+# include "t_base.h"
 
 void	light_init(t_lightbase *light, int type);
 void	light_deinit(t_lightbase *light);

@@ -63,20 +63,22 @@ SRCS_PRIM =	objectbase.c \
 			sphere.c \
 			plane.c \
 
+SRCS_MAT =	materialbase.c \
+
 OBJS = $(SRCS:.c=.o)
 
 OBJS_LIGHT = $(SRCS_LIGHT:.c=.o)
 OBJS_PRIM = $(SRCS_PRIM:.c=.o)
-# OBJS_MAT = $(MAT_DIR:.c=.o)
+OBJS_MAT = $(SRCS_MAT:.c=.o)
 
 all: $(NAME) | copy
 
-$(NAME):	$(addprefix $(OBJ_DIR),$(OBJS)) $(addprefix $(OBJ_DIR),$(OBJS_LIGHT)) $(addprefix $(OBJ_DIR),$(OBJS_PRIM))
+$(NAME):	$(addprefix $(OBJ_DIR),$(OBJS)) $(addprefix $(OBJ_DIR),$(OBJS_LIGHT)) $(addprefix $(OBJ_DIR),$(OBJS_PRIM)) $(addprefix $(OBJ_DIR),$(OBJS_MAT))
 		@make -C $(LIB_DIR) --silent
 		@make -C $(MLX_DIR) --silent
 		@make -C $(NML_DIR) --silent
 		@make -C $(CAM_DIR) --silent
-		@$(CC) -g $(CFLAGS) $(addprefix $(OBJ_DIR),$(OBJS)) $(addprefix $(OBJ_DIR),$(OBJS_LIGHT)) $(addprefix $(OBJ_DIR),$(OBJS_PRIM)) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+		@$(CC) -g $(CFLAGS) $(addprefix $(OBJ_DIR),$(OBJS)) $(addprefix $(OBJ_DIR),$(OBJS_LIGHT)) $(addprefix $(OBJ_DIR),$(OBJS_PRIM)) $(addprefix $(OBJ_DIR),$(OBJS_MAT)) $(LIBS) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
@@ -87,6 +89,10 @@ $(OBJ_DIR)%.o: $(LIGHT_DIR)%.c
 	@$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
 
 $(OBJ_DIR)%.o: $(PRIM_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
+
+$(OBJ_DIR)%.o: $(MAT_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) -g $(CFLAGS) -c $< $(INCS) -o $@
 

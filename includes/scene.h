@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:07:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 17:12:11 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:13:33 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define SCENE_H
 
 # include "nml_matrix.h"
-# include "camera.h"
 # include "ray.h"
-# include "objectbase.h"
 
 typedef struct s_scene
 {
@@ -45,8 +43,7 @@ typedef struct s_scene
 	float		green;
 	float		blue;
 	int			illum_found;
-
-	int debug; // remove later
+	t_nml_mat	*mat_color;
 }	t_scene;
 
 #endif

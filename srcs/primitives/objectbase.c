@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/03 19:00:05 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:47:04 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr, int id)
 	obj->transmat = malloc(sizeof(t_gtform) * 1);
 	gt_set_trans(obj->transmat, attr->v_tr, attr->v_rot, attr->v_scl);
 	obj->next = NULL;
+	obj->has_material = 0;
+	obj->material = NULL;
 	if (type == SPH)
 	{
 		obj->obj_init = sphere_init;
@@ -59,4 +61,12 @@ int	obj_close_enough(float f1, float f2)
 void	obj_set_trans_mat(t_gtform *form, t_gtform *transmat)
 {
 	gt_form_assign(form, transmat);
+}
+
+// Function to assign a material
+int		obj_assign_material(t_objbase *obj, t_matbase *material)
+{
+	obj->material = material;
+	obj->has_material = 1;
+	return obj->has_material;
 }

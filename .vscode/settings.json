@@ -19,6 +19,11 @@
 		"string_view": "c",
 		"vector": "c",
 		"complex": "c",
-		"minirt.h": "c"
+		"minirt.h": "c",
+		"t_base.h": "c",
+		"gtform.h": "c",
+		"objectbase.h": "c",
+		"lightbase.h": "c",
+		"scene.h": "c"
 	}
 }

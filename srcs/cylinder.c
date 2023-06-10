@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/08 01:42:22 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/10 18:06:08 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	cylinder_compute_values(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
 	calc->bck_ray = ray_apply(obj->transmat, scn->cam_ray, BWDFM);
 
 	calc->vhat = nml_mat_cp(calc->bck_ray->v_lab);
-	// calc->vhat = nml_mat_cp(scn->cam_ray->v_lab);
 	nml_vect_normalize_r(calc->vhat);
 	calc->a = pow(calc->vhat->data[0][0], 2) + pow(calc->vhat->data[1][0], 2);
 	calc->b = 2.0 * (calc->bck_ray->v_point1->data[0][0] * calc->vhat->data[0][0] + \
@@ -52,25 +51,31 @@ void	cylinder_compute_values(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
 		pow(calc->bck_ray->v_point1->data[1][0], 2) - 1.0;
 	calc->inter_test = pow(calc->bck_ray->v_point1->data[0][0], 2) \
 		- 4.0 * calc->a * calc->c;
-	// calc->b = 2.0 * nml_vect_dot(calc->bck_ray->v_point1, 0, calc->vhat, 0);
-	// calc->b = 2.0 * nml_vect_dot(scn->cam_ray->v_point1, 0, calc->vhat, 0);
-	// calc->c = nml_vect_dot(calc->bck_ray->v_point1, 0, \
-	// 	calc->bck_ray->v_point1, 0) - 1.0;
-	// calc->c = nml_vect_dot(scn->cam_ray->v_point1, 0, \
-	// 	scn->cam_ray->v_point1, 0) - 1.0;
-	// calc->inter_test = (calc->b * calc->b) - 4.0 * calc->c;
 }
 
 int	cylinder_test_inter_scn(t_objbase *obj, t_scene *scn)
 {
 	t_inter_calc	cyl;
+	t_nml_mat		*t;
+	t_nml_mat		poi;
+	float			v;
+	float			p;
 
 	cyl.v_poi = new_vector();
 	cyl.v_obj_org = new_vector();
+	poi = new_vector4();
 	set_vect(cyl.v_obj_org, 0.0, 0.0, 0.0);
 	cylinder_compute_values(&cyl, scn, obj);
+	v = cyl.bck_ray->v_lab;
+	
 	if (cyl.inter_test > 0.0)
 	{
+		t = new_vector4();
+		t->data[0][0] = (-cyl.b + cyl.inter_test) / (2 * cyl.a);
+		t->data[1][0] = (-cyl.b - cyl.inter_test) / (2 * cyl.a);
+		cyl.v_poi->data[0][0] = cyl.bck_ray->v_point1 + (cyl.bck_ray->v_lab * t->data[0][0])
+
+		
 		cyl.num_sqrt = sqrt(cyl.inter_test);
 		cyl.t1 = (-cyl.b + cyl.num_sqrt) / 2.0;
 		cyl.t2 = (-cyl.b - cyl.num_sqrt) / 2.0;

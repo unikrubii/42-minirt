@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/12 00:10:15 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/12 00:15:02 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	cylinder_test_inter_scn(t_objbase *obj, t_scene *scn)
 {
 	t_inter_calc	cyl;
 	t_nml_mat		*poi[4];
-	// t_nml_mat		*v;
-	// float			p;
 	float			t[4];
 	int				t1_valid;
 	int				t2_valid;
@@ -62,9 +60,6 @@ int	cylinder_test_inter_scn(t_objbase *obj, t_scene *scn)
 	poi[2] = new_vector();
 	poi[3] = new_vector();
 	set_vect(cyl.v_obj_org, 0.0, 0.0, 0.0);
-	// v = nml_mat_cp(cyl.bck_ray->v_lab);
-	// nml_vect_normalize_r(v);
-	// p = nml_vect_dot(cyl.bck_ray->v_point1, 0, cyl.vhat, 0);
 	if (cyl.inter_test > 0.0)
 	{
 		t[0] = (-cyl.b + cyl.inter_test) / (2 * cyl.a);

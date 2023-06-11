@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/05 22:56:48 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/12 00:11:24 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 
 	// obj_init(&obj_test, SPH);
 	// t_fattr	attr, attr2, attr3, attr4;
+	
 	// attr.v_tr = new_vector();
 	// attr.v_rot = new_vector();
 	// attr.v_scl = new_vector();
@@ -87,6 +88,19 @@ int	main(int argc, char **argv)
 	// set_vect(attr4.v_scl, 2, 2, 1);
 	// set_vect(attr4.v_color, 128.0, 128.0, 128.0);
 
+	t_fattr	attr;
+	attr.v_tr = new_vector();
+	attr.v_rot = new_vector();
+	attr.v_scl = new_vector();
+	attr.v_color = new_vector();
+	attr.up_v = new_vector();
+	
+	set_vect(attr.v_tr, 3.0, 0.0, 0.0);
+	set_vect(attr.v_rot, 0.0, 0.0, 0.0);
+	set_vect(attr.v_scl, 1, 1, 1);
+	set_vect(attr.v_color, 255.0, 0.0, 0.0);
+	set_vect(attr.up_v, 0.0, 0.0, 1.0);
+	objlst_add_back(&handy.objects, objlst_new(CYL, &attr));
 	// objlst_add_back(&handy.objects, objlst_new(SPH, &attr));
 	// objlst_add_back(&handy.objects, objlst_new(SPH, &attr2));
 	// objlst_add_back(&handy.objects, objlst_new(SPH, &attr3));

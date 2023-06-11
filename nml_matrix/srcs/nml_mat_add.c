@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_mat_add.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 21:08:21 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/03/31 23:34:27 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:31:28 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ int	nml_mat_add_r(t_nml_mat *m1, t_nml_mat *m2)
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/10 18:06:08 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:03:08 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,37 +56,171 @@ void	cylinder_compute_values(t_inter_calc *calc, t_scene *scn, t_objbase *obj)
 int	cylinder_test_inter_scn(t_objbase *obj, t_scene *scn)
 {
 	t_inter_calc	cyl;
-	t_nml_mat		*t;
-	t_nml_mat		poi;
-	float			v;
+	t_nml_mat		*poi[4];
+	t_nml_mat		*v;
 	float			p;
+	float			t[4];
+	int				t1_valid;
+	int				t2_valid;
+	int				t3_valid;
+	int				t4_valid;
 
+	t1_valid = 0;
+	t2_valid = 0;
+	t3_valid = 0;
+	t4_valid = 0;
 	cyl.v_poi = new_vector();
 	cyl.v_obj_org = new_vector();
-	poi = new_vector4();
+	poi[0] = new_vector();
+	poi[1] = new_vector();
+	poi[2] = new_vector();
+	poi[3] = new_vector();
 	set_vect(cyl.v_obj_org, 0.0, 0.0, 0.0);
+	v = nml_mat_cp(cyl.bck_ray->v_lab);
+	nml_vect_normalize_r(v);
+	p = nml_vect_dot(cyl.bck_ray->v_point1, 0, v, 0);
 	cylinder_compute_values(&cyl, scn, obj);
-	v = cyl.bck_ray->v_lab;
-	
 	if (cyl.inter_test > 0.0)
 	{
-		t = new_vector4();
-		t->data[0][0] = (-cyl.b + cyl.inter_test) / (2 * cyl.a);
-		t->data[1][0] = (-cyl.b - cyl.inter_test) / (2 * cyl.a);
-		cyl.v_poi->data[0][0] = cyl.bck_ray->v_point1 + (cyl.bck_ray->v_lab * t->data[0][0])
-
+		t[0] = (-cyl.b + cyl.inter_test) / (2 * cyl.a);
+		t[1] = (-cyl.b - cyl.inter_test) / (2 * cyl.a);
 		
-		cyl.num_sqrt = sqrt(cyl.inter_test);
-		cyl.t1 = (-cyl.b + cyl.num_sqrt) / 2.0;
-		cyl.t2 = (-cyl.b - cyl.num_sqrt) / 2.0;
-		if ((cyl.t1 < 0.0) || (cyl.t2 < 0.0))
-			return (nml_mat_free(cyl.vhat), 0);
+		// compute the points of intersection
+		poi[0]->data[0][0] = cyl.bck_ray->v_point1->data[0][0] + \
+			t[0] * cyl.vhat->data[0][0];
+		poi[1]->data[1][0] = cyl.bck_ray->v_point1->data[1][0] + \
+			t[0] * cyl.vhat->data[1][0];
+
+		// check if any of these are valid
+		if ((t[0] > 0.0) && (fabs(poi[0]->data[2][0]) < 1.0))
+			t1_valid = 1;
 		else
-			inter_calc(&cyl, scn, obj);
-		return (nml_mat_free(cyl.vhat), 1);
+		{
+			t1_valid = 0;
+			t[0] = 100e6;
+		}
+		if ((t[1] > 0.0) && (fabs(poi[1]->data[2][0]) < 1.0))
+			t2_valid = 1;
+		else
+		{
+			t2_valid = 0;
+			t[1] = 100e6;
+		}
 	}
 	else
-		return (nml_mat_free(cyl.vhat), 0);
+	{
+		t1_valid = 0;
+		t2_valid = 0;
+		t[0] = 100e6;
+		t[1] = 100e6;
+	}
+	
+	// test the end caps
+	if (obj_close_enough(v->data[2][0], 0.0))
+	{
+		t3_valid = 0;
+		t4_valid = 0;
+		t[2] = 100e6;
+		t[3] = 100e6;
+	}
+	else
+	{
+		// compute the values of t
+		t[2] = cyl.bck_ray->v_point1->data[2][0] - 1.0 / -v->data[2][0];
+		t[3] = cyl.bck_ray->v_point1->data[2][0] + 1.0 / -v->data[2][0];
+
+		// compute the points of intersection
+		poi[2] = nml_mat_add(cyl.bck_ray->v_point1, nml_mat_smult(v, t[2]));
+		poi[3] = nml_mat_add(cyl.bck_ray->v_point1, nml_mat_smult(v, t[3]));
+
+		// check if any of these are valid
+		if ((t[2] > 0.0) && sqrtf(pow(poi[2]->data[0][0], 2) + \
+			pow(poi[2]->data[1][0], 2)) < 1.0)
+			t3_valid = 1;
+		else
+		{
+			t3_valid = 0;
+			t[2] = 100e6;
+		}
+		if ((t[3] > 0.0) && sqrtf(pow(poi[2]->data[0][0], 2) + \
+			pow(poi[2]->data[1][0], 2)) < 1.0)
+			t4_valid = 1;
+		else
+		{
+			t4_valid = 0;
+			t[3] = 100e6;
+		}
+	}
+
+	// if no valid intersection
+	if (!t1_valid && !t2_valid && !t3_valid && !t4_valid)
+		return 0;
+
+	// find the smallest t
+	int		min_i = 0;
+	int		i = 0;
+	float	min_t = 10e6;
+
+	while (i < 4)
+	{
+		if (t[i] < min_t)
+		{
+			min_t = t[i];
+			min_i = i;
+		}
+		i++;
+	}
+
+	// if min_i is 0 or 1, we have a side intersection
+	t_nml_mat	*valid_poi;
+	t_nml_mat	*org_normal;
+	t_nml_mat	*new_normal;
+	t_nml_mat	*local_origin;
+	t_nml_mat	*global_origin;
+
+	local_origin = new_vector();
+	set_vect(local_origin, 0.0, 0.0, 0.0);
+	org_normal = new_vector();
+	valid_poi = poi[min_i];
+	if (min_i < 2)
+	{
+		// transform the intersection point to world coordinates
+		scn->v_intpoint = gt_apply(obj->transmat, valid_poi, FWDFM);
+
+		// compute the local normal
+		global_origin = gt_apply(obj->transmat, local_origin, FWDFM);
+		set_vect(org_normal, valid_poi->data[0][0], \
+			valid_poi->data[1][0], 0.0);
+		new_normal = nml_mat_sub(gt_apply(obj->transmat, org_normal, FWDFM), \
+			global_origin);
+		nml_mat_normalize_r(new_normal);
+		scn->v_lc_norm = nml_mat_cp(new_normal);
+
+		// Return the base color
+		scn->v_lc_color = nml_mat_cp(obj->v_base_color);
+		return 1;
+	}
+	else
+	{
+		if (!obj_close_enough(v->data[2][0]), 0.0)
+		{
+			if (sqrtf(pow(valid_poi->data[0][0], 2) + \
+				pow(valid_poi->data[1][0], 2)) < 1.0)
+			{
+				scn->v_intpoint = gt_apply(obj->transmat, valid_poi, FWDFM);
+				// comput local normal
+				set_vect(org_normal, 0.0, 0.0, 0.0 + valid_poi->data[2][0]);
+				global_origin = gt_apply(obj->transmat, local_origin, FWDFM);
+				scn->v_lc_norm = nml_mat_sub(gt_apply(obj->transmat, \
+					org_normal, FWDFM), global_origin);
+				nml_mat_normalize_r(scn->v_lc_norm);
+				scn->v_lc_color = nml_mat_cp(obj->v_base_color);
+				return 1;
+			}
+			else
+				return 0;
+		}
+	}
 }
 
 

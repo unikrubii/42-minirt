@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:11:39 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/10 20:28:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/11 23:23:18 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,53 +77,58 @@ static void	scene_pixel_put(t_scene *scn, t_handle *handy, t_objbase *p_obj)
 	{
 		if (closet_obj->has_material)
 		{
+			handy->rfl_ray_cnt = 0;
 			// Use the material to compute the color
-			// compute_color(handy->objects, handy->lights, closet_obj, scn);
+			// compute_color(handy, closet_obj, scn);
+			if (closet_obj->material->type == SIM)
+				simple_compute_color(handy, closet_obj, scn);
 			// pix_color_put(scn, handy);
+			pix_color_put_v(scn, scn->mat_color, handy);
 		}
 		else
 		{
-			// compute_diffuse_color(handy->objects, handy->lights, closet_obj, scn);
+			compute_diffuse_color(handy, closet_obj, scn);
 			// pix_color_put(scn, handy);
+			pix_color_put_v(scn, scn->dif_color, handy);
 
-			// Compute the intensity of illumination
-			scn->red = 0;
-			scn->green = 0;
-			scn->blue = 0;
-			scn->valid_illum = 0;
-			scn->illum_found = 0;
-			while (p_light)
-			{
-				scn->valid_illum = p_light->light_comp_illum_scn(p_light, \
-					handy->objects, closet_obj, scn);
-				if (scn->valid_illum)
-				{
-					scn->illum_found = 1;
-
-					scn->red += scn->color->data[0][0] * scn->intensity;
-					scn->green += scn->color->data[1][0] * scn->intensity;
-					scn->blue += scn->color->data[2][0] * scn->intensity;
-				}
-				p_light = p_light->next;
-			}
-			if (scn->illum_found)
-			{
-				scn->red *= scn->closet_lc_color->data[0][0];
-				scn->green *= scn->closet_lc_color->data[1][0];
-				scn->blue *= scn->closet_lc_color->data[2][0];
-				// my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
-				// ((int)(scn->red) << 16) \
-				// + ((int)(scn->green) << 8) \
-				// + ((int)(scn->blue)));
-				pix_color_put(scn, handy);
-			}
-			// else
+			// // Compute the intensity of illumination
+			// scn->red = 0;
+			// scn->green = 0;
+			// scn->blue = 0;
+			// scn->valid_illum = 0;
+			// scn->illum_found = 0;
+			// while (p_light)
 			// {
-			// 	my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
-			// 	((int)(0) << 16) \
-			// 	+ ((int)(0) << 8) \
-			// 	+ ((int)(0)));
+			// 	scn->valid_illum = p_light->light_comp_illum_scn(p_light, \
+			// 		handy->objects, closet_obj, scn);
+			// 	if (scn->valid_illum)
+			// 	{
+			// 		scn->illum_found = 1;
+
+			// 		scn->red += scn->color->data[0][0] * scn->intensity;
+			// 		scn->green += scn->color->data[1][0] * scn->intensity;
+			// 		scn->blue += scn->color->data[2][0] * scn->intensity;
+			// 	}
+			// 	p_light = p_light->next;
 			// }
+			// if (scn->illum_found)
+			// {
+			// 	scn->red *= scn->closet_lc_color->data[0][0];
+			// 	scn->green *= scn->closet_lc_color->data[1][0];
+			// 	scn->blue *= scn->closet_lc_color->data[2][0];
+			// 	// my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
+			// 	// ((int)(scn->red) << 16) \
+			// 	// + ((int)(scn->green) << 8) \
+			// 	// + ((int)(scn->blue)));
+			// 	pix_color_put(scn, handy);
+			// }
+			// // else
+			// // {
+			// // 	my_mlx_pixel_put(&handy->data.img, scn->x, scn->y, \
+			// // 	((int)(0) << 16) \
+			// // 	+ ((int)(0) << 8) \
+			// // 	+ ((int)(0)));
+			// // }
 		}
 
 
@@ -198,6 +203,13 @@ int	scene_render(t_handle *handy)
 		{
 			scn.norm_x = ((float) scn.x * scn.x_fact) - 1.0;
 			scn.norm_y = ((float) scn.y * scn.y_fact) - 1.0;
+			set_vect(scn.mat_color, 0, 0, 0);
+			set_vect(scn.dif_color, 0, 0, 0);
+			set_vect(scn.spc_color, 0, 0, 0);
+			set_vect(scn.ref_color, 0, 0, 0);
+			scn.red = 0;
+			scn.green = 0;
+			scn.blue = 0;
 			if (scn.closet_int_point)
 			{
 				nml_mat_free(scn.closet_int_point);

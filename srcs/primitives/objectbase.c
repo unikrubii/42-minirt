@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/10 14:47:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:48:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr, int id)
 	obj->next = NULL;
 	obj->has_material = 0;
 	obj->material = NULL;
+	if (attr->mat)
+	{
+		obj->material = attr->mat;
+		obj->has_material = 1;
+	}
 	if (type == SPH)
 	{
 		obj->obj_init = sphere_init;

@@ -4,6 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/libft/includes",
                 "${workspaceFolder}/nml_matrix/includes",
                 "${workspaceFolder}/camera_ray/includes",
                 "${workspaceFolder}/includes"

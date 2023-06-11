@@ -64,6 +64,7 @@ SRCS_PRIM =	objectbase.c \
 			plane.c \
 
 SRCS_MAT =	materialbase.c \
+			simplemat.c \
 
 OBJS = $(SRCS:.c=.o)
 

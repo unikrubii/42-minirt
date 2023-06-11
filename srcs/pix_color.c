@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pix_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:43:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/05 15:26:07 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:49:03 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,26 @@ void	pix_color_put(t_scene *scn, t_handle *handy)
 		handy->maxall = scn->green;
 	if (handy->max_blue > handy->maxall)
 		handy->maxall = scn->blue;
+}
+
+void	pix_color_put_v(t_scene *scn, t_nml_mat *v_color, t_handle *handy)
+{
+	t_nml_mat	**dst;
+
+	dst = handy->vv_color + (HEIGHT * scn->x) + (scn->y);
+	(*dst)->data[0][0] = v_color->data[0][0];
+	(*dst)->data[1][0] = v_color->data[1][0];
+	(*dst)->data[2][0] = v_color->data[2][0];
+	if (v_color->data[0][0] > handy->max_red)
+		handy->max_red = v_color->data[0][0];
+	if (v_color->data[1][0] > handy->max_green)
+		handy->max_green = v_color->data[1][0];
+	if (v_color->data[2][0] > handy->max_blue)
+		handy->max_blue = v_color->data[2][0];
+	if (handy->max_red > handy->maxall)
+		handy->maxall = v_color->data[0][0];
+	if (handy->max_green > handy->maxall)
+		handy->maxall = v_color->data[1][0];
+	if (handy->max_blue > handy->maxall)
+		handy->maxall = v_color->data[2][0];
 }

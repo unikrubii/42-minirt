@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/10 20:23:02 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:56:42 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 /// @note 1, PNT - Point Light
 enum e_lighttype {
 	PNT = 1
+};
+
+/// @brief ENUM Material type
+/// @note 1, SIM - Simple Material
+enum e_material {
+	SIM = 1
 };
 
 /// @brief ENUM Object type
@@ -77,7 +83,15 @@ enum e_key {
 // Material Base Class
 typedef struct s_matbase
 {
-	/* data */
+	int					type;
+	t_nml_mat			*v_base_color;
+	float				reflectivity;
+	float				shiness;
+	// struct s_matbase	*next;
+
+	void				(*mat_init)(struct s_matbase *);
+	void				(*mat_deinit)(struct s_matbase *);
+	void				(*mat_comp_color)(struct s_matbase *, t_scene *scn);
 }	t_matbase;
 
 /// @brief Geometric Transformation Class
@@ -174,6 +188,7 @@ typedef struct s_fattr
 	t_nml_mat	*v_rot;
 	t_nml_mat	*v_scl;
 	t_nml_mat	*v_color;
+	t_matbase	*mat;
 }	t_fattr;
 
 typedef struct s_data {
@@ -220,6 +235,8 @@ typedef struct s_handle
 	float		max_blue;
 	float		maxall;
 	t_nml_mat	**vv_color;
+	int			max_rfl_ray;
+	int			rfl_ray_cnt;
 }	t_handle;
 
 #endif

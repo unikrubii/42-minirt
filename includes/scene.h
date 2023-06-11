@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:07:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/10 20:13:33 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:57:07 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ typedef struct s_scene
 	float		blue;
 	int			illum_found;
 	t_nml_mat	*mat_color;
+	t_nml_mat	*dif_color;
+	t_nml_mat	*ref_color;
+	t_nml_mat	*spc_color;
 }	t_scene;
 
 #endif

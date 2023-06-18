@@ -6,13 +6,15 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:54:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 22:59:20 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:19:34 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "objectbase.h"
 
+/// @brief material base initialization
+/// @param mat
 void	mat_init(t_matbase *mat)
 {
 	(void) mat;
@@ -22,19 +24,23 @@ void	mat_init(t_matbase *mat)
 	mat->reflectivity = 0.0;
 }
 
+/// @brief material base deinitialization
+/// @param mat
 void	mat_deinit(t_matbase *mat)
 {
 	(void) mat;
 	nml_mat_free(mat->v_base_color);
 }
 
-// function to compute the color of the material
+/// @brief base function to compute the color of the material
+/// @param handy
+/// @param closet_obj
+/// @param scn
 void	compute_color(t_handle *handy, t_objbase *closet_obj, t_scene *scn)
 {
 	(void) handy;
 	(void) closet_obj;
 	(void) scn;
-	// Define an initial material color
 }
 
 void	compute_diffuse_color(t_handle *handy, t_objbase *closet_obj, t_scene *scn)

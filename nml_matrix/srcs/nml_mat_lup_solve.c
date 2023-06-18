@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:57:46 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/20 21:22:32 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/18 09:53:05 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static void	nml_mat_lup_solve_util(t_nml_mat *l, t_nml_mat *u, t_nml_mat_lup *r)
 	{
 		pivot = (unsigned int) nml_mat_absmaxr(u, j);
 		if (fabs(u->data[pivot][j]) < NML_MIN_COEF)
-			return (nml_error(__FILE__, __LINE__, "CANNOT_LU_MATRIX_DEGENERATE"));
+			return (nml_error(__FILE__, __LINE__, \
+				"CANNOT_LU_MATRIX_DEGENERATE"));
 		nml_mat_pivot_lu(r, j, pivot);
 		i = j + 1;
 		while (i < u->rows)

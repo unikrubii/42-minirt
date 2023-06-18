@@ -6,12 +6,36 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 13:48:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:06:51 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "objectbase.h"
+
+void	obj_init_util(t_objbase *obj, int type, t_fattr *attr, int id)
+{
+	(void) id;
+	if (attr->mat)
+	{
+		obj->material = attr->mat;
+		obj->has_material = 1;
+	}
+	if (type == SPH)
+	{
+		obj->obj_init = sphere_init;
+		obj->obj_test_inter_scn = sphere_test_inter_scn;
+		obj->obj_init(obj);
+		obj->obj_deinit = sphere_deinit;
+	}
+	if (type == PLN)
+	{
+		obj->obj_init = plane_init;
+		obj->obj_test_inter_scn = plane_test_inter_scn;
+		obj->obj_init(obj);
+		obj->obj_deinit = plane_deinit;
+	}
+}
 
 void	obj_init(t_objbase *obj, int type, t_fattr *attr, int id)
 {
@@ -24,28 +48,25 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr, int id)
 	obj->next = NULL;
 	obj->has_material = 0;
 	obj->material = NULL;
-	if (attr->mat)
-	{
-		obj->material = attr->mat;
-		obj->has_material = 1;
-	}
-	if (type == SPH)
-	{
-		obj->obj_init = sphere_init;
-		obj->obj_test_inter_scn = sphere_test_inter_scn;
-		obj->obj_init(obj);
-	}
-	if (type == PLN)
-	{
-		obj->obj_init = plane_init;
-		obj->obj_test_inter_scn = plane_test_inter_scn;
-		obj->obj_init(obj);
-	}
+	obj_init_util(obj, type, attr, id);
 }
 
 void	obj_deinit(t_objbase *obj)
 {
 	(void) obj;
+	if (obj->v_base_color)
+	{
+		nml_mat_free(obj->v_base_color);
+		obj->v_base_color = NULL;
+	}
+	if (obj->transmat)
+	{
+		if (obj->type != PLN)
+			gt_deinit_mode(obj->transmat, 1);
+		else
+			gt_deinit_mode(obj->transmat, 0);
+		obj->transmat = NULL;
+	}
 }
 
 int	obj_test_intersect(t_ray *ray, t_nml_mat *int_point, \
@@ -56,22 +77,4 @@ int	obj_test_intersect(t_ray *ray, t_nml_mat *int_point, \
 	(void) lc_normal;
 	(void) lc_color;
 	return (0);
-}
-
-int	obj_close_enough(float f1, float f2)
-{
-	return (fabs(f1 - f2) < EPSILON);
-}
-
-void	obj_set_trans_mat(t_gtform *form, t_gtform *transmat)
-{
-	gt_form_assign(form, transmat);
-}
-
-// Function to assign a material
-int		obj_assign_material(t_objbase *obj, t_matbase *material)
-{
-	obj->material = material;
-	obj->has_material = 1;
-	return obj->has_material;
 }

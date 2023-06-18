@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   objectbaseutil.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/30 20:22:30 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/18 09:58:41 by nnakarac         ###   ########.fr       */
+/*   Created: 2023/06/17 23:03:14 by nnakarac          #+#    #+#             */
+/*   Updated: 2023/06/17 23:05:38 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "minirt.h"
+#include "objectbase.h"
 
-# define _GNU_SOURCE
-
-# include "nml_matrix.h"
-# include "ray.h"
-
-typedef struct s_ray
+int	obj_close_enough(float f1, float f2)
 {
-	t_nml_mat	*v_point1;
-	t_nml_mat	*v_point2;
-	t_nml_mat	*v_lab;
-}	t_ray;
+	return (fabs(f1 - f2) < EPSILON);
+}
 
-void		ray_init(t_ray *ray, t_nml_mat *v_point1, t_nml_mat *v_point2);
+void	obj_set_trans_mat(t_gtform *form, t_gtform *transmat)
+{
+	gt_form_assign(form, transmat);
+}
 
-void		ray_deinit(t_ray *ray);
-
-t_nml_mat	*ray_get_point(t_ray *ray, int point);
-
-#endif
+// Function to assign a material
+int	obj_assign_material(t_objbase *obj, t_matbase *material)
+{
+	obj->material = material;
+	obj->has_material = 1;
+	return (obj->has_material);
+}

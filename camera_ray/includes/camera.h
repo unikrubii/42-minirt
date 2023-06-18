@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:22:28 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 20:25:36 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/18 09:58:05 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ typedef struct s_camera
 	t_nml_mat	*v_proj_scr_v;
 	t_nml_mat	*v_proj_scr_cen;
 
-	t_nml_mat	(* getfn_mat)(struct s_camera *);
-	float		(* getfn_flt)(struct s_camera *);
-	void		(* setfn_uvw)(struct s_camera *, float, float, float);
-	void		(* setval)(struct s_camera *, float);
+	t_nml_mat	(*getfn_mat)(struct s_camera *);
+	float		(*getfn_flt)(struct s_camera *);
+	void		(*setfn_uvw)(struct s_camera *, float, float, float);
+	void		(*setval)(struct s_camera *, float);
 }	t_camera;
 
 void		camera_init(t_camera *camera);
+
+void		camera_deinit(t_camera *camera);
 
 void		cam_set_pos(t_camera *camera, float u, float v, float w);
 

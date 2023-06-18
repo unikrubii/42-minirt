@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera_init_set.c                                  :+:      :+:    :+:   */
+/*   camera_init_set_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 20:28:14 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 20:34:04 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/18 09:58:50 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,20 @@ void	camera_init(t_camera *camera)
 /// @param camera
 void	camera_deinit(t_camera *camera)
 {
-	nml_mat_free(camera->v_cam_pos);
-	nml_mat_free(camera->v_cam_lookat);
-	nml_mat_free(camera->v_cam_up);
-	nml_mat_free(camera->v_align_vect);
-	nml_mat_free(camera->v_proj_scr_cen);
-	nml_mat_free(camera->v_proj_scr_u);
-	nml_mat_free(camera->v_proj_scr_v);
-	free(camera);
+	if (camera->v_cam_pos)
+		nml_mat_free(camera->v_cam_pos);
+	if (camera->v_cam_lookat)
+		nml_mat_free(camera->v_cam_lookat);
+	if (camera->v_cam_up)
+		nml_mat_free(camera->v_cam_up);
+	if (camera->v_align_vect)
+		nml_mat_free(camera->v_align_vect);
+	if (camera->v_proj_scr_cen)
+		nml_mat_free(camera->v_proj_scr_cen);
+	if (camera->v_proj_scr_u)
+		nml_mat_free(camera->v_proj_scr_u);
+	if (camera->v_proj_scr_v)
+		nml_mat_free(camera->v_proj_scr_v);
 }
 
 /// @brief Set camera position in vector format

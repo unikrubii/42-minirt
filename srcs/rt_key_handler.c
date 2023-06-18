@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_key_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/05 14:55:19 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/17 22:03:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	mlx_key_close(t_handle *handy)
 	mlx_clear_window(handy->data.mlx, handy->data.win);
 	mlx_destroy_window(handy->data.mlx, handy->data.win);
 	objlst_clear(&handy->objects);
+	lightlst_clear(&handy->lights);
 	handy->data.mlx = NULL;
 	handy->data.mlx = NULL;
 	deinit_color_pix(handy);
@@ -28,6 +29,7 @@ int	mlx_close(t_handle *handy)
 	mlx_clear_window(handy->data.mlx, handy->data.win);
 	mlx_destroy_window(handy->data.mlx, handy->data.win);
 	objlst_clear(&handy->objects);
+	lightlst_clear(&handy->lights);
 	handy->data.win = NULL;
 	handy->data.mlx = NULL;
 	deinit_color_pix(handy);

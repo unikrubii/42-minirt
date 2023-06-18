@@ -6,12 +6,24 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:58:43 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/11 10:04:02 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:25:39 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/// @brief scene init helper
+/// @param scn scene ptr
+void	scene_init2(t_scene *scn)
+{
+	scn->mat_color = new_vector();
+	scn->dif_color = new_vector();
+	scn->ref_color = new_vector();
+	scn->spc_color = new_vector();
+}
+
+/// @brief scene initialization
+/// @param scn scene ptr
 void	scene_init(t_scene *scn)
 {
 	scn->v_intpoint = new_vector();
@@ -24,7 +36,6 @@ void	scene_init(t_scene *scn)
 	scn->norm_x = 0.0;
 	scn->norm_y = 0.0;
 	scn->cam_ray = NULL;
-	// scn->bck_ray = NULL;
 	scn->dist = 0.0;
 	scn->intensity = 0.0;
 	scn->color = new_vector();
@@ -38,15 +49,11 @@ void	scene_init(t_scene *scn)
 	scn->closet_int_point = NULL;
 	scn->closet_lc_color = NULL;
 	scn->closet_lc_normal = NULL;
-	scn->mat_color = new_vector();
-	scn->dif_color = new_vector();
-	scn->ref_color = new_vector();
-	scn->spc_color = new_vector();
-	// scn->v_poi = new_vector();
-	// scn->v_obj_org = new_vector();
-	// set_vect(scn->v_obj_org, 0.0, 0.0, 0.0);
+	scene_init2(scn);
 }
 
+/// @brief scene deinitialization
+/// @param scn scene ptr
 void	scene_deinit(t_scene *scn)
 {
 	nml_mat_free(scn->v_intpoint);

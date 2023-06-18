@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 21:56:42 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/17 17:56:05 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,18 @@ typedef struct s_matbase
 	void				(*mat_comp_color)(struct s_matbase *, t_scene *scn);
 }	t_matbase;
 
+typedef struct s_gtform_calc
+{
+	t_nml_mat	*transm;
+	t_nml_mat	*rotmx;
+	t_nml_mat	*rotmy;
+	t_nml_mat	*rotmz;
+	t_nml_mat	*sclm;
+	t_nml_mat	*dot_tmp1;
+	t_nml_mat	*dot_tmp2;
+	t_nml_mat_lup *lup;
+}	t_gtform_calc;
+
 /// @brief Geometric Transformation Class
 typedef struct s_gtform
 {
@@ -117,7 +129,7 @@ typedef struct s_gtform
 
 }	t_gtform;
 
-// Object Base Class
+/// @brief Object Base Class
 typedef struct s_objbase
 {
 	int					type;

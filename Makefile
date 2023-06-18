@@ -52,6 +52,9 @@ SRCS =	rt_key_handler.c \
 		blink.c \
 		endian.c \
 		gtform.c \
+		gtform2.c \
+		gtform3.c \
+		gtform4.c \
 		pix_color.c \
 
 SRCS_LIGHT =	lightbase.c \
@@ -59,12 +62,14 @@ SRCS_LIGHT =	lightbase.c \
 				pointlight.c \
 
 SRCS_PRIM =	objectbase.c \
+			objectbaseutil.c \
 			objectlist.c \
 			sphere.c \
 			plane.c \
 
 SRCS_MAT =	materialbase.c \
 			simplemat.c \
+			simplematutil.c \
 
 OBJS = $(SRCS:.c=.o)
 

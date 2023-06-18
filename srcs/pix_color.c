@@ -6,12 +6,15 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:43:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 15:49:03 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:13:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/// @brief pixel color optimization
+/// @note optimize pixel color from maximum color value
+/// @param handy
 void	opt_color(t_handle *handy)
 {
 	int			width;
@@ -30,25 +33,24 @@ void	opt_color(t_handle *handy)
 			(*dst)->data[1][0] = (*dst)->data[1][0] / handy->maxall * 255;
 			(*dst)->data[2][0] = (*dst)->data[2][0] / handy->maxall * 255;
 			my_mlx_pixel_put(&handy->data.img, width, height, \
-				((int)(*dst)->data[0][0] << 16) + ((int)(*dst)->data[1][0] << 8) \
-				+ ((int)(*dst)->data[2][0]));
+				((int)(*dst)->data[0][0] << 16) + \
+				((int)(*dst)->data[1][0] << 8) + ((int)(*dst)->data[2][0]));
 			height++;
 		}
 		width++;
 	}
 }
 
+/// @brief init pixel color
+/// @param handy
 void	init_color_pix(t_handle *handy)
 {
 	int			width;
 	int			height;
 	t_nml_mat	**dst;
 
-	// dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-
 	width = 0;
 	height = 0;
-	// init all pixel color
 	handy->max_red = 0.0;
 	handy->max_green = 0.0;
 	handy->max_blue = 0.0;
@@ -67,13 +69,13 @@ void	init_color_pix(t_handle *handy)
 	}
 }
 
+/// @brief deinitialize pixel color
+/// @param handy
 void	deinit_color_pix(t_handle *handy)
 {
 	int			width;
 	int			height;
 	t_nml_mat	**dst;
-
-	// dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 
 	width = 0;
 	height = 0;
@@ -91,7 +93,9 @@ void	deinit_color_pix(t_handle *handy)
 	free(handy->vv_color);
 }
 
-
+/// @brief put pixel color
+/// @param scn
+/// @param handy
 void	pix_color_put(t_scene *scn, t_handle *handy)
 {
 	t_nml_mat	**dst;
@@ -114,6 +118,10 @@ void	pix_color_put(t_scene *scn, t_handle *handy)
 		handy->maxall = scn->blue;
 }
 
+/// @brief put pixel color from vector
+/// @param scn
+/// @param v_color
+/// @param handy
 void	pix_color_put_v(t_scene *scn, t_nml_mat *v_color, t_handle *handy)
 {
 	t_nml_mat	**dst;

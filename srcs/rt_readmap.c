@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/05 22:35:55 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:58:10 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_row(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error\nCan't open file\n");
+		dprintf(2, "Error\nCan't open file\n");
 		exit (1);
 	}
 	line = get_next_line(fd);
@@ -36,6 +36,29 @@ int	get_row(char *path)
 	return (row_count);
 }
 
+void	check_path(char *path)
+{
+	int		i;
+	int		len;
+
+	i = 0;
+	len = ft_strlen(path);
+	if (len < 3)
+	{
+		dprintf(2, "Error\nWrong file name\n");
+		exit (1);
+	}
+	while (path[i])
+	{
+		if (path[i] == '.' && path[i + 1] == 'r' && path[i + 2] == 't' && \
+			path[i + 3] == '\0')
+			return ;
+		i++;
+	}
+	dprintf(2, "Error\nWrong file name\n");
+	exit (1);
+}
+
 char **get_map(char *path, int row_count)
 {
 	char	*line;
@@ -43,10 +66,11 @@ char **get_map(char *path, int row_count)
 	int		i;
 	int		fd;
 
+	check_path(path);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error\nCan't open file\n");
+		dprintf(2, "Error\nCan't open file\n");
 		return (0);
 	}
 	map = (char **)malloc(sizeof(char *) * (row_count + 1));
@@ -192,6 +216,84 @@ void	construct_camera(char **c_data, t_handle *handy)
 	handy->camera = cam;
 }
 
+void	set_scl_vect(t_nml_mat **v_scl, char *d, char *h)
+{
+	float	diameter;
+	float	height;
+
+	diameter = rt_atof(d);
+	height = rt_atof(h);
+	if (diameter < 0 || height < 0)
+	{
+		dprintf(2, "Error\nWrong cylinder scale\n");
+		exit (1);
+	}
+	set_vect(*v_scl, diameter, diameter, height);
+}
+
+void	construct_cylinder(char **cy_data, t_handle *handy)
+{
+	printf("Cylinder!\n");
+	t_fattr	att;
+	char	**d;
+	int		i;
+
+	att.v_tr = new_vector();
+	att.up_v = new_vector();
+	att.v_scl = new_vector();
+	att.v_color = new_vector();
+	att.v_rot = new_vector();
+	i = 1;
+	while (cy_data[i])
+	{
+		d = ft_split(cy_data[i], ',');
+		if (i == 1)
+			set_vect(att.v_tr, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+		else if (i == 2)
+			set_vect(att.up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
+		else if (i == 5)
+			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+		else if (i == 6)
+			set_vect(att.v_rot, rt_atof(d[0]) * ONE_DEG, \
+				rt_atof(d[1]) * ONE_DEG, rt_atof(d[2]) * ONE_DEG);
+		free_arr(d);
+		i++;
+	}
+	set_vect(att.v_scl, rt_atof(cy_data[3]), rt_atof(cy_data[3]), rt_atof(cy_data[4]));
+	objlst_add_back(&handy->objects, objlst_new(CYL, &att));
+}
+
+void	construct_cone(char **cone_data, t_handle *handy)
+{
+	t_fattr	att;
+	char	**d;
+	int		i;
+
+	att.v_tr = new_vector();
+	att.up_v = new_vector();
+	att.v_scl = new_vector();
+	att.v_color = new_vector();
+	att.v_rot = new_vector();
+	i = 1;
+	while (cone_data[i])
+	{
+		d = ft_split(cone_data[i], ',');
+		if (i == 1)
+			set_vect(att.v_tr, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+		else if (i == 2)
+			set_vect(att.up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
+		else if (i == 5)
+			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+		else if (i == 6)
+			set_vect(att.v_rot, rt_atof(d[0]) * ONE_DEG, \
+				rt_atof(d[1]) * ONE_DEG, rt_atof(d[2]) * ONE_DEG);
+		free_arr(d);
+		i++;
+	}
+	set_vect(att.v_scl, rt_atof(cone_data[3]), rt_atof(cone_data[3]), rt_atof(cone_data[4]));
+	objlst_add_back(&handy->objects, objlst_new(CON, &att));
+}
+
 void	get_obj_type(char *map, t_handle *handy)
 {
 	char	**map_arr;
@@ -209,8 +311,10 @@ void	get_obj_type(char *map, t_handle *handy)
 		construct_sphere(map_arr, handy);
 	else if (!ft_strncmp(map_arr[0], "pl\0", 3) && size == 4)
 		construct_plane(map_arr, handy);
-	else if (!ft_strncmp(map_arr[0], "cy\0", 3) && size == 6)
-		printf("Cylinder\n");
+	else if (!ft_strncmp(map_arr[0], "cy\0", 3) && size == 7)
+		construct_cylinder(map_arr, handy);
+	else if (!ft_strncmp(map_arr[0], "cn\0", 3) && size == 7)
+		construct_cone(map_arr, handy);
 	else
 		printf("Error\nWrong object type\n");
 	free_arr(map_arr);
@@ -224,7 +328,7 @@ int read_map(int argc, char **argv, t_handle *handy)
 
 	if (argc != 2)
 	{
-		perror("Error\nWrong number of arguments\n");
+		dprintf(2, "Error\nWrong number of arguments\n");
 		exit (0);
 	}
 	map = get_map(argv[1], get_row(argv[1]));

@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 19:17:51 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:21:34 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,8 @@ void		objlst_print(t_objbase *lst);
 
 int		cylinder_test_inter_scn(t_objbase *obj, t_scene *scn);
 void	cylinder_init(t_objbase *obj);
+
+int		cone_test_inter_scn(t_objbase *obj, t_scene *scn);
+void	cone_init(t_objbase *obj);
 
 #endif

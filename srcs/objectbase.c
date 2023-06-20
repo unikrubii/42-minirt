@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 19:15:39 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:21:52 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr)
 		obj->obj_test_inter_scn = sphere_test_inter_scn;
 		obj->obj_init(obj);
 	}
-	if (type == PLN)
+	else if (type == PLN)
 	{
 		obj->obj_init = plane_init;
 		obj->up_x = attr->up_v->data[0][0];
@@ -36,13 +36,22 @@ void	obj_init(t_objbase *obj, int type, t_fattr *attr)
 		obj->obj_test_inter_scn = plane_test_inter_scn;
 		obj->obj_init(obj);
 	}
-	if (type == CYL)
+	else if (type == CYL)
 	{
 		obj->obj_init = cylinder_init;
 		obj->up_x = attr->up_v->data[0][0];
 		obj->up_y = attr->up_v->data[1][0];
 		obj->up_z = attr->up_v->data[2][0];
 		obj->obj_test_inter_scn = cylinder_test_inter_scn;
+		obj->obj_init(obj);
+	}
+	else if (type == CON)
+	{
+		obj->obj_init = cone_init;
+		obj->up_x = attr->up_v->data[0][0];
+		obj->up_y = attr->up_v->data[1][0];
+		obj->up_z = attr->up_v->data[2][0];
+		obj->obj_test_inter_scn = cone_test_inter_scn;
 		obj->obj_init(obj);
 	}
 }

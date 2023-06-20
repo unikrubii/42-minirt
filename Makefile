@@ -58,6 +58,7 @@ SRCS =	rt_key_handler.c \
 		rt_readmap.c \
 		rt_atof.c \
 		cylinder.c \
+		cone.c \
 
 OBJS = $(SRCS:.c=.o)
 

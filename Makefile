@@ -60,6 +60,7 @@ SRCS =	rt_key_handler.c \
 SRCS_LIGHT =	lightbase.c \
 				lightlist.c \
 				pointlight.c \
+				pointlightutil.c \
 
 SRCS_PRIM =	objectbase.c \
 			objectbaseutil.c \

@@ -24,6 +24,8 @@
 		"gtform.h": "c",
 		"objectbase.h": "c",
 		"lightbase.h": "c",
-		"scene.h": "c"
+		"scene.h": "c",
+		"__locale": "c",
+		"locale": "c"
 	}
 }

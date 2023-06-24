@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blink.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 14:09:56 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:51:36 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@ int	main(int argc, char **argv)
 	static t_handle	handy;
 
 	read_map(argc, argv, &handy);
-
-
-
-
-
-
-
-
-
-
-
-
 	// handy.objects = &obj_test;
 	handy.to_render = 1;
 

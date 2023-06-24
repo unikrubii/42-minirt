@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 18:24:20 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:40:05 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	scene_init(t_scene *scn);
 
 int		read_map(int argc, char **argv, t_handle *handy);
 
+void	init_color_pix(t_handle *handy);
 void	deinit_color_pix(t_handle *handy);
 
 void	opt_color(t_handle *handy);

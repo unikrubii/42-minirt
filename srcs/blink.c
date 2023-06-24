@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 17:51:36 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:40:23 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 
 	read_map(argc, argv, &handy);
 	// handy.objects = &obj_test;
+	init_color_pix(&handy);
 	handy.to_render = 1;
 
 	handy.max_rfl_ray = 3;

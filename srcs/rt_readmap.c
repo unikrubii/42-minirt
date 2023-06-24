@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/24 18:26:46 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:26:51 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,8 @@ void	construct_plane(char **pl_data, t_handle *handy, int id)
 	}
 	set_vect(att.v_rot, 0.0, 0.0, 0.0);
 	set_vect(att.v_scl, 20, 20, 20);
-	att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
+	att.mat = set_material(SIM, att.v_color, 0.5, 10.0);
+	// att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
 	objlst_add_back(&handy->objects, objlst_new(PLN, &att, id));
 }
 
@@ -276,6 +277,7 @@ void	construct_cylinder(char **cy_data, t_handle *handy, int id)
 		i++;
 	}
 	set_vect(att.v_scl, rt_atof(cy_data[3]), rt_atof(cy_data[3]), rt_atof(cy_data[4]));
+	att.mat = set_material(SIM, att.v_color, 0.5, 10.0);
 	objlst_add_back(&handy->objects, objlst_new(CYL, &att, id));
 }
 
@@ -307,7 +309,8 @@ void	construct_cone(char **cone_data, t_handle *handy, int id)
 		i++;
 	}
 	set_vect(att.v_scl, rt_atof(cone_data[3]), rt_atof(cone_data[3]), rt_atof(cone_data[4]));
-	att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
+	att.mat = set_material(SIM, att.v_color, 0.5, 10.0);
+	// att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
 	objlst_add_back(&handy->objects, objlst_new(CON, &att, id));
 }
 

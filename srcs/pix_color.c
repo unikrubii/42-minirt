@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:43:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 16:13:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 01:19:10 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ void	init_color_pix(t_handle *handy)
 	handy->max_green = 0.0;
 	handy->max_blue = 0.0;
 	handy->maxall = 0.0;
+	handy->amb_factor = 0.0;
+	handy->amb_red = 0.0;
+	handy->amb_green = 0.0;
+	handy->amb_blue = 0.0;
 	handy->vv_color = malloc(sizeof(t_nml_mat *) * WIDTH * HEIGHT);
 	while (width < WIDTH)
 	{
@@ -101,9 +105,9 @@ void	pix_color_put(t_scene *scn, t_handle *handy)
 	t_nml_mat	**dst;
 
 	dst = handy->vv_color + (HEIGHT * scn->x) + (scn->y);
-	(*dst)->data[0][0] = scn->red;
-	(*dst)->data[1][0] = scn->green;
-	(*dst)->data[2][0] = scn->blue;
+	(*dst)->data[0][0] = scn->red + (handy->amb_factor * handy ->amb_red);
+	(*dst)->data[1][0] = scn->green + (handy->amb_factor * handy ->amb_green);
+	(*dst)->data[2][0] = scn->blue + (handy->amb_factor * handy ->amb_blue);
 	if (scn->red > handy->max_red)
 		handy->max_red = scn->red;
 	if (scn->green > handy->max_green)
@@ -127,9 +131,12 @@ void	pix_color_put_v(t_scene *scn, t_nml_mat *v_color, t_handle *handy)
 	t_nml_mat	**dst;
 
 	dst = handy->vv_color + (HEIGHT * scn->x) + (scn->y);
-	(*dst)->data[0][0] = v_color->data[0][0];
-	(*dst)->data[1][0] = v_color->data[1][0];
-	(*dst)->data[2][0] = v_color->data[2][0];
+	(*dst)->data[0][0] = v_color->data[0][0] + \
+		(handy->amb_factor * handy ->amb_red);
+	(*dst)->data[1][0] = v_color->data[1][0] + \
+		(handy->amb_factor * handy ->amb_green);
+	(*dst)->data[2][0] = v_color->data[2][0] + \
+		(handy->amb_factor * handy ->amb_blue);
 	if (v_color->data[0][0] > handy->max_red)
 		handy->max_red = v_color->data[0][0];
 	if (v_color->data[1][0] > handy->max_green)

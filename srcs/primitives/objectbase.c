@@ -6,16 +6,40 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 17:26:45 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:01:55 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "objectbase.h"
 
+void	obj_init_util2(t_objbase *obj, int type, t_fattr *attr, int id)
+{
+	(void)id;
+	if (type == CYL)
+	{
+		obj->obj_init = cylinder_init;
+		obj->up_x = attr->up_v->data[0][0];
+		obj->up_y = attr->up_v->data[1][0];
+		obj->up_z = attr->up_v->data[2][0];
+		obj->obj_test_inter_scn = cylinder_test_inter_scn;
+		obj->obj_init(obj);
+	}
+	else if (type == CON)
+	{
+		obj->obj_init = cone_init;
+		obj->up_x = attr->up_v->data[0][0];
+		obj->up_y = attr->up_v->data[1][0];
+		obj->up_z = attr->up_v->data[2][0];
+		obj->obj_test_inter_scn = cone_test_inter_scn;
+		obj->obj_init(obj);
+		obj->obj_deinit = plane_deinit;
+	}
+}
+
 void	obj_init_util(t_objbase *obj, int type, t_fattr *attr, int id)
 {
-	(void) id;
+	(void)id;
 	if (attr->mat)
 	{
 		obj->material = attr->mat;
@@ -37,25 +61,8 @@ void	obj_init_util(t_objbase *obj, int type, t_fattr *attr, int id)
 		obj->obj_test_inter_scn = plane_test_inter_scn;
 		obj->obj_init(obj);
 	}
-	else if (type == CYL)
-	{
-		obj->obj_init = cylinder_init;
-		obj->up_x = attr->up_v->data[0][0];
-		obj->up_y = attr->up_v->data[1][0];
-		obj->up_z = attr->up_v->data[2][0];
-		obj->obj_test_inter_scn = cylinder_test_inter_scn;
-		obj->obj_init(obj);
-	}
-	else if (type == CON)
-	{
-		obj->obj_init = cone_init;
-		obj->up_x = attr->up_v->data[0][0];
-		obj->up_y = attr->up_v->data[1][0];
-		obj->up_z = attr->up_v->data[2][0];
-		obj->obj_test_inter_scn = cone_test_inter_scn;
-		obj->obj_init(obj);
-		obj->obj_deinit = plane_deinit;
-	}
+	else
+		obj_init_util2(obj, type, attr, id);
 }
 
 void	obj_init(t_objbase *obj, int type, t_fattr *attr, int id)

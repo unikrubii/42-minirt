@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_base.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 01:14:46 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:24:58 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,13 +185,14 @@ typedef struct s_inter_calc
 	float		num_sqrt;
 	float		t1;
 	float		t2;
-	float		tt[3];
+	float		tt[4];
 	int			t1_valid;
 	int			t2_valid;
 	int			t3_valid;
+	int			t4_valid;
 	int			min_i;
 	float		min_t;
-	t_nml_mat	*poi[3];
+	t_nml_mat	*poi[4];
 	t_ray		*bck_ray;
 	t_nml_mat	*v_poi;
 	t_nml_mat	*v_obj_org;
@@ -202,6 +203,13 @@ typedef struct s_inter_calc
 	float		v;
 	t_nml_mat	*v_obj_norm;
 	t_nml_mat	*v_obj_gorg;
+	t_nml_mat	*valid_poi;
+	t_nml_mat	*org_normal;
+	t_nml_mat	*local_origin;
+	t_nml_mat	*global_origin;
+	float		tx;
+	float		ty;
+	float		tz;
 }	t_inter_calc;
 
 /// @brief Object Attributes

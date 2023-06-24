@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pix_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:43:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 01:19:10 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:59:27 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_color_pix(t_handle *handy)
 	int			height;
 	t_nml_mat	**dst;
 
-	width = 0;
+	width = -1;
 	height = 0;
 	handy->max_red = 0.0;
 	handy->max_green = 0.0;
@@ -60,7 +60,7 @@ void	init_color_pix(t_handle *handy)
 	handy->amb_green = 0.0;
 	handy->amb_blue = 0.0;
 	handy->vv_color = malloc(sizeof(t_nml_mat *) * WIDTH * HEIGHT);
-	while (width < WIDTH)
+	while (++width < WIDTH)
 	{
 		height = 0;
 		while (height < HEIGHT)
@@ -69,7 +69,6 @@ void	init_color_pix(t_handle *handy)
 			*dst = new_vector();
 			height++;
 		}
-		width++;
 	}
 }
 

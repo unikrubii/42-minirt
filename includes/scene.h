@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:07:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 21:57:07 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 23:41:55 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_scene
 	t_nml_mat	*dif_color;
 	t_nml_mat	*ref_color;
 	t_nml_mat	*spc_color;
+	t_nml_mat	*tmp_light_dir_bfr_nrm;
+	float		tmp_light_dist;
 }	t_scene;
 
 #endif

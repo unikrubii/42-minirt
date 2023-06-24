@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 18:40:05 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:21:44 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@
 # define EPSILON 1e-21f
 # define ONE_DEG 0.01745329251f
 
-# define WIDTH 1280
-# define HEIGHT 720
+// # define WIDTH 1280
+// # define HEIGHT 720
+# define WIDTH 640
+# define HEIGHT 480
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 

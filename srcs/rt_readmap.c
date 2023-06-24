@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/24 20:26:51 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:22:19 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,11 +164,12 @@ void	construct_sphere(char **sp_data, t_handle *handy, int id)
 		else if (i == 2)
 			set_vect(att.v_scl, rt_atof(d[0]), rt_atof(d[0]), rt_atof(d[0]));
 		else if (i == 3)
-			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+			set_vect(att.v_color, rt_atof(d[0]) / 255.0, rt_atof(d[1]) / 255.0, rt_atof(d[2]) / 255.0);
 		free_arr(d);
 		i++;
 	}
 	set_vect(att.v_rot, 0.0, 0.0, 0.0);
+	att.mat = set_material(SIM, att.v_color, 0.0, 10.0);
 	objlst_add_back(&handy->objects, objlst_new(SPH, &att, id));
 }
 
@@ -192,12 +193,12 @@ void	construct_plane(char **pl_data, t_handle *handy, int id)
 		else if (i == 2)
 			set_vect(att.up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
 		else if (i == 3)
-			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+			set_vect(att.v_color, rt_atof(d[0]) / 255.0, rt_atof(d[1]) / 255.0, rt_atof(d[2]) / 255.0);
 		free_arr(d);
 		i++;
 	}
 	set_vect(att.v_rot, 0.0, 0.0, 0.0);
-	set_vect(att.v_scl, 20, 20, 20);
+	set_vect(att.v_scl, 100, 100, 100);
 	att.mat = set_material(SIM, att.v_color, 0.5, 10.0);
 	// att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
 	objlst_add_back(&handy->objects, objlst_new(PLN, &att, id));
@@ -228,7 +229,7 @@ void	construct_camera(char **c_data, t_handle *handy)
 	}
 	cam_set_lookat(cam, 0.0, 0.0, 0.0);
 	cam_set_length(cam, 1.0);
-	cam_set_aspr(cam, 16.0 / 9.0);
+	cam_set_aspr(cam, 4.0 / 3.0);
 	update_cam_geomet(cam);
 	handy->camera = cam;
 }
@@ -269,7 +270,7 @@ void	construct_cylinder(char **cy_data, t_handle *handy, int id)
 		else if (i == 2)
 			set_vect(att.up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
 		else if (i == 5)
-			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+			set_vect(att.v_color, rt_atof(d[0]) / 255.0, rt_atof(d[1]) / 255.0, rt_atof(d[2]) / 255.0);
 		else if (i == 6)
 			set_vect(att.v_rot, rt_atof(d[0]) * ONE_DEG, \
 				rt_atof(d[1]) * ONE_DEG, rt_atof(d[2]) * ONE_DEG);
@@ -277,7 +278,7 @@ void	construct_cylinder(char **cy_data, t_handle *handy, int id)
 		i++;
 	}
 	set_vect(att.v_scl, rt_atof(cy_data[3]), rt_atof(cy_data[3]), rt_atof(cy_data[4]));
-	att.mat = set_material(SIM, att.v_color, 0.5, 10.0);
+	att.mat = set_material(SIM, att.v_color, 0.0, 10.0);
 	objlst_add_back(&handy->objects, objlst_new(CYL, &att, id));
 }
 
@@ -301,7 +302,7 @@ void	construct_cone(char **cone_data, t_handle *handy, int id)
 		else if (i == 2)
 			set_vect(att.up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
 		else if (i == 5)
-			set_vect(att.v_color, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
+			set_vect(att.v_color, rt_atof(d[0]) / 255.0, rt_atof(d[1]) / 255.0, rt_atof(d[2]) / 255.0);
 		else if (i == 6)
 			set_vect(att.v_rot, rt_atof(d[0]) * ONE_DEG, \
 				rt_atof(d[1]) * ONE_DEG, rt_atof(d[2]) * ONE_DEG);
@@ -309,7 +310,7 @@ void	construct_cone(char **cone_data, t_handle *handy, int id)
 		i++;
 	}
 	set_vect(att.v_scl, rt_atof(cone_data[3]), rt_atof(cone_data[3]), rt_atof(cone_data[4]));
-	att.mat = set_material(SIM, att.v_color, 0.5, 10.0);
+	att.mat = set_material(SIM, att.v_color, 0.0, 20.0);
 	// att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
 	objlst_add_back(&handy->objects, objlst_new(CON, &att, id));
 }

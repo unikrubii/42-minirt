@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 05:11:43 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:17:35 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,10 +163,6 @@ typedef struct s_lightbase
 
 	void				(*light_init)(struct s_lightbase *light);
 	void				(*light_deinit)(struct s_lightbase *light);
-	int					(*light_comp_illum)(struct s_lightbase *light,
-			t_nml_mat *intpoint, t_nml_mat *lc_normal, \
-			t_objbase *obj, t_objbase *cur_obj, \
-			t_nml_mat *color, float *intensity);
 	int					(*light_comp_illum_scn)(struct s_lightbase *light,
 			t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
 }	t_lightbase;

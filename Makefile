@@ -68,6 +68,7 @@ SRCS_PRIM =	objectbase.c \
 			plane.c \
 
 SRCS_MAT =	materialbase.c \
+			materialbaseutil.c \
 			simplemat.c \
 			simplematutil.c \
 

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 09:43:04 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/18 09:43:21 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:25:31 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	simple_compute_color(t_handle *handy, t_objbase *obj, \
 {
 	t_nml_mat	*vtmp1;
 	t_nml_mat	*vtmp2;
+	t_scene		rfl_scn;
 
+	scene_init(&rfl_scn);
 	compute_diffuse_color(handy, obj, scn);
 	if (obj->material->reflectivity > 0.0)
-		compute_reflect_color(handy, obj, scn);
+		compute_reflect_color(handy, obj, scn, &rfl_scn);
 	vtmp1 = nml_mat_smult(scn->ref_color, obj->material->reflectivity);
 	vtmp2 = nml_mat_smult(scn->dif_color, (1 - obj->material->reflectivity));
 	nml_mat_add_r(vtmp1, vtmp2);

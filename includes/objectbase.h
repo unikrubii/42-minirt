@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 22:52:20 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:26:01 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		mat_deinit(t_matbase *mat);
 void		compute_color(t_handle *handy, t_objbase *closet_obj, t_scene *scn);
 void		compute_specular(t_handle *handy, t_objbase *closet_obj, t_scene *scn);
 void		compute_diffuse_color(t_handle *handy, t_objbase *closet_obj, t_scene *scn);
-void		compute_reflect_color(t_handle *handy, t_objbase *obj, t_scene *scn);
+void		compute_reflect_color(t_handle *handy, t_objbase *obj, t_scene *scn, t_scene *rfl_scn);
 
 void		simple_compute_color(t_handle *handy, t_objbase *obj, t_scene *scn);
 void		simple_compute_specular(t_handle *handy, t_objbase *obj, t_scene *scn);

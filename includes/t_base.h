@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 17:36:06 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 01:14:46 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,13 @@ typedef struct s_inter_calc
 	float		num_sqrt;
 	float		t1;
 	float		t2;
+	float		tt[3];
+	int			t1_valid;
+	int			t2_valid;
+	int			t3_valid;
+	int			min_i;
+	float		min_t;
+	t_nml_mat	*poi[3];
 	t_ray		*bck_ray;
 	t_nml_mat	*v_poi;
 	t_nml_mat	*v_obj_org;

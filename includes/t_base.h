@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   t_base.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
 /*   Updated: 2023/06/25 01:14:46 by sthitiku         ###   ########.fr       */
@@ -261,6 +261,10 @@ typedef struct s_handle
 	t_nml_mat	**vv_color;
 	int			max_rfl_ray;
 	int			rfl_ray_cnt;
+	float		amb_factor;
+	float		amb_red;
+	float		amb_green;
+	float		amb_blue;
 }	t_handle;
 
 #endif

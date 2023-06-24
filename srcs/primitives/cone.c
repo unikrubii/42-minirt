@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 01:17:03 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 01:46:48 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,62 @@ void	cone_get_min(t_inter_calc *cone)
 	}
 }
 
+int	cone_side_inter(t_objbase *obj, t_scene *scn, t_inter_calc *cone)
+{
+	// if minIndex is 0 or 1, we have a side intersection
+	t_nml_mat	*valid_poi;
+	t_nml_mat	*org_normal;
+	t_nml_mat	*local_origin;
+	t_nml_mat	*global_origin;
+	float		tx;
+	float		ty;
+	float		tz;
+
+	valid_poi = nml_mat_cp(cone->poi[cone->min_i]);
+	local_origin = new_vector();
+	set_vect(local_origin, 0.0, 0.0, 0.0);
+	global_origin = new_vector();
+	org_normal = new_vector();
+	// transform the intersection point to world coordinates
+	scn->v_intpoint = gt_apply(obj->transmat, valid_poi, FWDFM);
+	global_origin = gt_apply(obj->transmat, local_origin, FWDFM);
+	if (cone->min_i < 2)
+	{
+		tx = valid_poi->data[0][0];
+		ty = valid_poi->data[1][0];
+		tz = -sqrtf(powf(tx, 2.0) + powf(ty, 2.0));
+		set_vect(org_normal, tx, ty, tz);
+		scn->v_lc_norm = nml_mat_sub(gt_apply(obj->transmat, org_normal, FWDFM), \
+			global_origin);
+		nml_mat_normalize_r(scn->v_lc_norm);
+		// Return the base color
+		scn->v_lc_color = nml_mat_cp(obj->v_base_color);
+		return 1;
+	}
+	else
+	{
+		if (!obj_close_enough(cone->vhat->data[2][0], 0.0))
+		{
+			if (sqrtf(powf(valid_poi->data[0][0], 2.0) + powf(valid_poi->data[1][0], 2.0)) < 1.0)
+			{
+				// compute the local normal
+				set_vect(org_normal, 0.0, 0.0, 1.0);
+				scn->v_lc_norm = nml_mat_sub(gt_apply(obj->transmat, org_normal, FWDFM), \
+					global_origin);
+				nml_mat_normalize_r(scn->v_lc_norm);
+				// return the base color
+				scn->v_lc_color = nml_mat_cp(obj->v_base_color);
+				return 1;
+			}
+			else
+				return (0);
+		}
+		else
+			return (0);
+	}
+	return (0);
+}
+
 int	cone_test_inter_scn(t_objbase *obj, t_scene *scn)
 {
 	t_inter_calc	cone;
@@ -131,73 +187,7 @@ int	cone_test_inter_scn(t_objbase *obj, t_scene *scn)
 	}
 	cone_close_enough(&cone);
 	if (!cone.t1_valid && !cone.t2_valid && !cone.t3_valid)
-		return 0;
+		return (0);
 	cone_get_min(&cone);
-	// // Check for the smalloes valid value of t
-	// int		i;
-
-	// cone.min_i = 0;
-	// cone.min_t = 10e6;
-	// i = 0;
-	// while (i < 3)
-	// {
-	// 	if (cone.tt[i] < cone.min_t)
-	// 	{
-	// 		cone.min_t = cone.tt[i];
-	// 		cone.min_i = i;
-	// 	}
-	// 	i++;
-	// }
-	// if minIndex is 0 or 1, we have a side intersection
-	t_nml_mat	*valid_poi;
-	t_nml_mat	*org_normal;
-	t_nml_mat	*local_origin;
-	t_nml_mat	*global_origin;
-	float		tx;
-	float		ty;
-	float		tz;
-
-	valid_poi = nml_mat_cp(cone.poi[cone.min_i]);
-	local_origin = new_vector();
-	set_vect(local_origin, 0.0, 0.0, 0.0);
-	global_origin = new_vector();
-	org_normal = new_vector();
-	// transform the intersection point to world coordinates
-	scn->v_intpoint = gt_apply(obj->transmat, valid_poi, FWDFM);
-	global_origin = gt_apply(obj->transmat, local_origin, FWDFM);
-	if (cone.min_i < 2)
-	{
-		tx = valid_poi->data[0][0];
-		ty = valid_poi->data[1][0];
-		tz = -sqrtf(powf(tx, 2.0) + powf(ty, 2.0));
-		set_vect(org_normal, tx, ty, tz);
-		scn->v_lc_norm = nml_mat_sub(gt_apply(obj->transmat, org_normal, FWDFM), \
-			global_origin);
-		nml_mat_normalize_r(scn->v_lc_norm);
-		// Return the base color
-		scn->v_lc_color = nml_mat_cp(obj->v_base_color);
-		return 1;
-	}
-	else
-	{
-		if (!obj_close_enough(cone.vhat->data[2][0], 0.0))
-		{
-			if (sqrtf(powf(valid_poi->data[0][0], 2.0) + powf(valid_poi->data[1][0], 2.0)) < 1.0)
-			{
-				// compute the local normal
-				set_vect(org_normal, 0.0, 0.0, 1.0);
-				scn->v_lc_norm = nml_mat_sub(gt_apply(obj->transmat, org_normal, FWDFM), \
-					global_origin);
-				nml_mat_normalize_r(scn->v_lc_norm);
-				// return the base color
-				scn->v_lc_color = nml_mat_cp(obj->v_base_color);
-				return 1;
-			}
-			else
-				return 0;
-		}
-		else
-			return 0;
-	}
-	return 0;
+	return (cone_side_inter(obj, scn, &cone));
 }

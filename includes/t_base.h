@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 04:24:58 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:11:43 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ typedef struct s_matbase
 	t_nml_mat			*v_base_color;
 	float				reflectivity;
 	float				shiness;
-	// struct s_matbase	*next;
-
 	void				(*mat_init)(struct s_matbase *);
 	void				(*mat_deinit)(struct s_matbase *);
 	void				(*mat_comp_color)(struct s_matbase *, t_scene *scn);
@@ -96,14 +94,14 @@ typedef struct s_matbase
 
 typedef struct s_gtform_calc
 {
-	t_nml_mat	*transm;
-	t_nml_mat	*rotmx;
-	t_nml_mat	*rotmy;
-	t_nml_mat	*rotmz;
-	t_nml_mat	*sclm;
-	t_nml_mat	*dot_tmp1;
-	t_nml_mat	*dot_tmp2;
-	t_nml_mat_lup *lup;
+	t_nml_mat		*transm;
+	t_nml_mat		*rotmx;
+	t_nml_mat		*rotmy;
+	t_nml_mat		*rotmz;
+	t_nml_mat		*sclm;
+	t_nml_mat		*dot_tmp1;
+	t_nml_mat		*dot_tmp2;
+	t_nml_mat_lup	*lup;
 }	t_gtform_calc;
 
 /// @brief Geometric Transformation Class
@@ -146,13 +144,13 @@ typedef struct s_objbase
 	void				(*obj_init)(struct s_objbase *);
 	void				(*obj_deinit)(struct s_objbase *);
 	int					(*obj_test_intersect)(t_ray *ray, \
-		t_nml_mat *int_point, t_nml_mat *lc_normal, t_nml_mat *lc_color);
+			t_nml_mat *int_point, t_nml_mat *lc_normal, t_nml_mat *lc_color);
 	int					(*obj_test_inter_scn)(struct s_objbase *, t_scene *scn);
 	int					(*obj_close_enough)(float f1, float f2);
-	void				(*obj_set_trans_mat)(t_gtform *form, t_gtform *transmat);
+	void				(*obj_set_trans_mat)(t_gtform *form, \
+			t_gtform *transmat);
 	int					(*obj_assign_material)(struct s_objbase *, t_matbase *);
 }	t_objbase;
-
 
 /// @brief Light Object Base
 typedef struct s_lightbase
@@ -166,11 +164,11 @@ typedef struct s_lightbase
 	void				(*light_init)(struct s_lightbase *light);
 	void				(*light_deinit)(struct s_lightbase *light);
 	int					(*light_comp_illum)(struct s_lightbase *light,
-		t_nml_mat *intpoint, t_nml_mat *lc_normal, \
-		t_objbase *obj, t_objbase *cur_obj, \
-		t_nml_mat *color, float *intensity);
+			t_nml_mat *intpoint, t_nml_mat *lc_normal, \
+			t_objbase *obj, t_objbase *cur_obj, \
+			t_nml_mat *color, float *intensity);
 	int					(*light_comp_illum_scn)(struct s_lightbase *light,
-		t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
+			t_objbase *obj, t_objbase *cur_obj, t_scene *scn);
 }	t_lightbase;
 
 /// @brief For intersect calculation purpose

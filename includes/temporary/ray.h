@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@42.fr>                  +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 10:02:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/23 14:55:31 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:12:57 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "nml_matrix.h"
 # include "v_util.h"
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_nml_mat	*v_point1;
 	t_nml_mat	*v_point2;

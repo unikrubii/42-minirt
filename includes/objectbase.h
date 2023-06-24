@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 04:55:19 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:10:01 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,27 @@ int			obj_assign_material(t_objbase *obj, t_matbase *material);
 void		cone_get_min(t_inter_calc *cone);
 void		cone_close_enough(t_inter_calc *cone);
 int			cone_side_inter(t_objbase *obj, t_scene *scn, t_inter_calc *cone);
-int			cone_not_side_inter(t_objbase *obj, t_scene *scn, t_inter_calc *cone);
+int			cone_not_side_inter(t_objbase *obj, \
+				t_scene *scn, t_inter_calc *cone);
 
 void		mat_init(t_matbase *mat);
 void		mat_deinit(t_matbase *mat);
 
-void		compute_color(t_handle *handy, t_objbase *closet_obj, t_scene *scn);
-void		compute_specular(t_handle *handy, t_objbase *closet_obj, t_scene *scn);
-void		compute_diffuse_color(t_handle *handy, t_objbase *closet_obj, t_scene *scn);
-void		compute_reflect_color(t_handle *handy, t_objbase *obj, t_scene *scn, t_scene *rfl_scn);
+void		compute_color(t_handle *handy, \
+				t_objbase *closet_obj, t_scene *scn);
+void		compute_specular(t_handle *handy, \
+				t_objbase *closet_obj, t_scene *scn);
+void		compute_diffuse_color(t_handle *handy, \
+				t_objbase *closet_obj, t_scene *scn);
+void		compute_reflect_color(t_handle *handy, \
+				t_objbase *obj, t_scene *scn, t_scene *rfl_scn);
 
-void		simple_compute_color(t_handle *handy, t_objbase *obj, t_scene *scn);
-void		simple_compute_specular(t_handle *handy, t_objbase *obj, t_scene *scn);
+void		simple_compute_color(t_handle *handy, \
+				t_objbase *obj, t_scene *scn);
+void		simple_compute_specular(t_handle *handy, \
+				t_objbase *obj, t_scene *scn);
 
-int			cast_ray(t_scene *scn, t_handle *handy, t_objbase *this_obj, t_objbase **closet_obj);
-
+int			cast_ray(t_scene *scn, t_handle *handy, \
+				t_objbase *this_obj, t_objbase **closet_obj);
 
 #endif

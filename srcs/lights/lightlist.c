@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lightlist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 03:02:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/05/13 11:51:54 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/05/27 14:52:45 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	lightlst_add_back(t_lightbase **lst, t_lightbase *new)
 	p_lst->next = new;
 }
 
-t_lightbase	*lightlst_new(int type)
+t_lightbase	*lightlst_new(int type, char **light_data)
 {
 	t_lightbase	*new;
 
 	new = malloc(sizeof(t_lightbase));
 	if (!new)
 		return (NULL);
-	light_init(new, type);
+	light_init(new, type, light_data);
 	new->next = NULL;
 	return (new);
 }

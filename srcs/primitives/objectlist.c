@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   objectlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 00:13:06 by nnakarac          #+#    #+#             */
 /*   Updated: 2023/06/17 21:42:47 by nnakarac         ###   ########.fr       */

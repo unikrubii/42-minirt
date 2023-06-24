@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 23:06:51 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:26:45 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,31 @@ void	obj_init_util(t_objbase *obj, int type, t_fattr *attr, int id)
 		obj->obj_init(obj);
 		obj->obj_deinit = sphere_deinit;
 	}
-	if (type == PLN)
+	else if (type == PLN)
 	{
 		obj->obj_init = plane_init;
+		obj->up_x = attr->up_v->data[0][0];
+		obj->up_y = attr->up_v->data[1][0];
+		obj->up_z = attr->up_v->data[2][0];
 		obj->obj_test_inter_scn = plane_test_inter_scn;
+		obj->obj_init(obj);
+	}
+	else if (type == CYL)
+	{
+		obj->obj_init = cylinder_init;
+		obj->up_x = attr->up_v->data[0][0];
+		obj->up_y = attr->up_v->data[1][0];
+		obj->up_z = attr->up_v->data[2][0];
+		obj->obj_test_inter_scn = cylinder_test_inter_scn;
+		obj->obj_init(obj);
+	}
+	else if (type == CON)
+	{
+		obj->obj_init = cone_init;
+		obj->up_x = attr->up_v->data[0][0];
+		obj->up_y = attr->up_v->data[1][0];
+		obj->up_z = attr->up_v->data[2][0];
+		obj->obj_test_inter_scn = cone_test_inter_scn;
 		obj->obj_init(obj);
 		obj->obj_deinit = plane_deinit;
 	}

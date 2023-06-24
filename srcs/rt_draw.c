@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rt_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 19:06:03 by nnakarac          #+#    #+#             */
 /*   Updated: 2023/06/17 14:24:02 by nnakarac         ###   ########.fr       */

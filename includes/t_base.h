@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_base.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 17:56:05 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:36:06 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,9 @@ typedef struct s_objbase
 	t_gtform			*transmat;
 	t_matbase			*material;
 	int					has_material;
+	float				up_x;
+	float				up_y;
+	float				up_z;
 	struct s_objbase	*next;
 
 	void				(*obj_init)(struct s_objbase *);
@@ -175,6 +178,7 @@ typedef struct s_inter_calc
 {
 	t_nml_mat	*vhat;
 	t_nml_mat	*vtmp;
+	float		a;
 	float		b;
 	float		c;
 	float		inter_test;
@@ -200,6 +204,7 @@ typedef struct s_fattr
 	t_nml_mat	*v_rot;
 	t_nml_mat	*v_scl;
 	t_nml_mat	*v_color;
+	t_nml_mat	*up_v;
 	t_matbase	*mat;
 }	t_fattr;
 

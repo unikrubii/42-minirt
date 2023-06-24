@@ -50,9 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+.vscode/
+.gitignore
 
 # Project Related
 miniRT
 minilibx/*.swiftdoc
 minilibx/*.swiftmodule
 minilibx/*.swiftsourceinfo
+*.orig

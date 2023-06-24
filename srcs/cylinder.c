@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/12 00:15:02 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:53:12 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,8 @@ int	cylinder_test_inter_scn(t_objbase *obj, t_scene *scn)
 			{
 				scn->v_intpoint = gt_apply(obj->transmat, valid_poi, FWDFM);
 				// comput local normal
-				set_vect(org_normal, 0.0, 0.0, 0.0 + valid_poi->data[2][0]);
+				set_vect(org_normal, obj->up_x, obj->up_y, obj->up_z + valid_poi->data[2][0]);
+				// set_vect(org_normal, 0.0, 0.0, 0.0 + valid_poi->data[2][0]);
 				global_origin = gt_apply(obj->transmat, local_origin, FWDFM);
 				scn->v_lc_norm = nml_mat_sub(gt_apply(obj->transmat, \
 					org_normal, FWDFM), global_origin);

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:03:44 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 14:04:45 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/24 23:52:25 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,26 @@
 #include "minirt.h"
 #include "lightbase.h"
 
+int	validint_util(int valid_int, t_scene *shadow_scn, t_scene *scn)
+{
+	float		dist;
+	t_nml_mat	*vtmp;
+
+	dist = 0.0f;
+	if (valid_int)
+	{
+		vtmp = nml_mat_sub(shadow_scn->v_intpoint, \
+			scn->closet_int_point);
+		dist = nml_vect_norm(vtmp);
+		nml_mat_free(vtmp);
+		if (dist > scn->tmp_light_dist)
+			valid_int = 0;
+	}
+	return (valid_int);
+}
+
 int	p_light_comp_illum_scn_close_validint(t_objbase *obj, t_objbase *cur_obj, \
-	t_scene *shadow_scn)
+	t_scene *shadow_scn, t_scene *scn)
 {
 	int			valid_int;
 	t_objbase	*p_obj;
@@ -25,7 +43,10 @@ int	p_light_comp_illum_scn_close_validint(t_objbase *obj, t_objbase *cur_obj, \
 	while (p_obj)
 	{
 		if (p_obj->id != cur_obj->id)
+		{
 			valid_int = p_obj->obj_test_inter_scn(p_obj, shadow_scn);
+			valid_int = validint_util(valid_int, shadow_scn, scn);
+		}
 		if (valid_int)
 			break ;
 		p_obj = p_obj->next;
@@ -73,6 +94,8 @@ int	p_light_comp_illum_scn_close(t_lightbase *light, \
 	light_ray = malloc(sizeof(t_ray));
 	start_point = nml_mat_cp(scn->closet_int_point);
 	v_light_dir = nml_mat_sub(light->v_location, scn->closet_int_point);
+	scn->tmp_light_dir_bfr_nrm = v_light_dir;
+	scn->tmp_light_dist = nml_vect_norm(scn->tmp_light_dir_bfr_nrm);
 	nml_vect_normalize_r(v_light_dir);
 	v_tmp = nml_mat_add(start_point, v_light_dir);
 	ray_init(light_ray, start_point, v_tmp);
@@ -84,6 +107,6 @@ int	p_light_comp_illum_scn_close(t_lightbase *light, \
 	shadow_scn.norm_y = ((float) shadow_scn.y * shadow_scn.y_fact) - 1.0;
 	shadow_scn.cam_ray = light_ray;
 	return (p_light_comp_illum_scn_close_validate(\
-		p_light_comp_illum_scn_close_validint(obj, cur_obj, &shadow_scn), \
-		scn, light, v_light_dir));
+		p_light_comp_illum_scn_close_validint(obj, cur_obj, &shadow_scn, \
+		scn), scn, light, v_light_dir));
 }

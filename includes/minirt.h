@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 23:19:32 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:42:48 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		pix_color_put_v(t_scene *scn, t_nml_mat *v_color, t_handle *handy);
 // readmap
 int			read_map(int argc, char **argv, t_handle *handy);
 void		construct_light(char **light_data, t_handle *handy, int id);
+void		construct_ambient(char **map_arr, t_handle *handy);
 void		construct_sphere(char **sp_data, t_handle *handy, int id);
 void		construct_plane(char **pl_data, t_handle *handy, int id);
 void		construct_camera(char **c_data, t_handle *handy);

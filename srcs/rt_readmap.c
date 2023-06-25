@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:08:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/24 23:18:12 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:42:16 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	get_obj_type(char *map, t_handle *handy, int id)
 	map_arr = ft_split(map, ' ');
 	size = array_size(map_arr);
 	if (!ft_strncmp(map_arr[0], "A\0", 2) && size == 3)
-		printf("Ambient light\n");
+		construct_ambient(map_arr, handy);
 	else if (!ft_strncmp(map_arr[0], "C\0", 2) && size == 4)
 		construct_camera(map_arr, handy);
 	else if (!ft_strncmp(map_arr[0], "L\0", 2) && size == 4)

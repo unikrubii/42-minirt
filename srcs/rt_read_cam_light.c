@@ -6,11 +6,23 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:55:54 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/25 11:35:33 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:42:22 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+
+void	construct_ambient(char **map_arr, t_handle *handy)
+{
+	char	**d;
+
+	handy->amb_factor = rt_atof(map_arr[1]);
+	d = ft_split(map_arr[2], ',');
+	handy->amb_red = rt_atof(d[0]);
+	handy->amb_green = rt_atof(d[1]);
+	handy->amb_blue = rt_atof(d[2]);
+	free_arr(d);
+}
 
 void	construct_light(char **light_data, t_handle *handy, int id)
 {

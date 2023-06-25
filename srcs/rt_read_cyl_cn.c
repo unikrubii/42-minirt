@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_read_cyl_cn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:55:54 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/25 11:35:58 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 20:01:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	cyl_cn_set_loop(char **data, t_fattr *att, int i)
 	if (i == 1)
 		set_vect(att->v_tr, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
 	else if (i == 2)
-		set_vect(att->up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
+		// set_vect(att->up_v, rt_atof(d[0]), rt_atof(d[2]), -rt_atof(d[1]));
+		set_vect(att->up_v, rt_atof(d[0]), rt_atof(d[1]), rt_atof(d[2]));
 	else if (i == 5)
 		set_vect(att->v_color, rt_atof(d[0]) / 255.0, \
 			rt_atof(d[1]) / 255.0, rt_atof(d[2]) / 255.0);
@@ -70,5 +71,5 @@ void	construct_cone(char **cone_data, t_handle *handy, int id)
 	objlst_add_back(&handy->objects, objlst_new(CON, &att, id));
 }
 
-// att.mat = set_material(SIM, att.v_color, 
+// att.mat = set_material(SIM, att.v_color,
 // 	time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);

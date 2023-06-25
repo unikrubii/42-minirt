@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 22:55:54 by sthitiku          #+#    #+#             */
-/*   Updated: 2023/06/24 23:59:41 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:35:58 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void	construct_cone(char **cone_data, t_handle *handy, int id)
 	objlst_add_back(&handy->objects, objlst_new(CON, &att, id));
 }
 
-	// att.mat = set_material(SIM, att.v_color, time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);
+// att.mat = set_material(SIM, att.v_color, 
+// 	time(NULL) % 10 / 10.0, time(NULL) % 100 / 10.0);

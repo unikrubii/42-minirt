@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 23:08:41 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:34:03 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	mlx_key_close(t_handle *handy)
 	handy->data.mlx = NULL;
 	handy->data.mlx = NULL;
 	deinit_color_pix(handy);
+	camera_deinit(handy->camera);
 	exit(0);
 }
 
@@ -33,6 +34,7 @@ int	mlx_close(t_handle *handy)
 	handy->data.win = NULL;
 	handy->data.mlx = NULL;
 	deinit_color_pix(handy);
+	camera_deinit(handy->camera);
 	exit(0);
 }
 

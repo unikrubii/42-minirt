@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 00:13:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 21:42:47 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:33:53 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	objlst_clear(t_objbase **lst)
 	{
 		tmp = p_lst->next;
 		obj_deinit(p_lst);
+		mat_deinit(p_lst->material);
 		free(p_lst);
 		p_lst = tmp;
 	}

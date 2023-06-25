@@ -6,7 +6,7 @@
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:29:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 05:03:06 by sthitiku         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:31:02 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,5 @@ int	main(int argc, char **argv)
 	mlx_hook(handy.data.win, ON_KEYDOWN, 1L << 0, rt_key_handler, &handy);
 	mlx_loop_hook(handy.data.mlx, &mlx_re_draw, &handy);
 	mlx_loop(handy.data.mlx);
-
-	// deinit_color_pix(&handy);
-	// objlst_clear(&(handy.objects));
-	// lightlst_clear(&(handy.lights));
-	// camera_deinit(&cam);
-	// mat_deinit(&mat1);
-	// mat_deinit(&mat2);
 	return (0);
 }

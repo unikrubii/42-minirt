@@ -56,6 +56,12 @@ SRCS =	rt_key_handler.c \
 		gtform3.c \
 		gtform4.c \
 		pix_color.c \
+		rt_readmap.c \
+		rt_readmap_utils.c \
+		rt_read_sphere_plane.c \
+		rt_read_cam_light.c \
+		rt_read_cyl_cn.c \
+		rt_atof.c \
 
 SRCS_LIGHT =	lightbase.c \
 				lightlist.c \
@@ -77,12 +83,6 @@ SRCS_MAT =	materialbase.c \
 			materialbaseutil.c \
 			simplemat.c \
 			simplematutil.c \
-			rt_readmap.c \
-			rt_readmap_utils.c \
-			rt_read_sphere_plane.c \
-			rt_read_cam_light.c \
-			rt_read_cyl_cn.c \
-			rt_atof.c \
 
 OBJS = $(SRCS:.c=.o)
 

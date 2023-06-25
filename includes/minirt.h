@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:24:20 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/11 02:56:59 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 20:16:59 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 # define PI 3.14159265358979323846
 # define EPSILON 1e-21f
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 640
+# define HEIGHT 480
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 

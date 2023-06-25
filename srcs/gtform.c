@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 01:15:26 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 22:10:40 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 20:04:34 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,12 @@ void	gt_set_trans(t_gtform *form, t_nml_mat *trans, \
 	set_roty_mat(calc.rotmy, rot);
 	set_rotx_mat(calc.rotmx, rot);
 	set_scale_mat(calc.sclm, scale);
-	calc.dot_tmp1 = nml_mat_dot(calc.transm, calc.sclm);
-	calc.dot_tmp2 = nml_mat_dot(calc.dot_tmp1, calc.rotmx);
+	calc.dot_tmp1 = nml_mat_dot(calc.transm, calc.rotmx);
+	calc.dot_tmp2 = nml_mat_dot(calc.dot_tmp1, calc.rotmy);
 	nml_mat_free(calc.dot_tmp1);
-	calc.dot_tmp1 = nml_mat_dot(calc.dot_tmp2, calc.rotmy);
+	calc.dot_tmp1 = nml_mat_dot(calc.dot_tmp2, calc.rotmz);
 	nml_mat_free(calc.dot_tmp2);
-	calc.dot_tmp2 = nml_mat_dot(calc.dot_tmp1, calc.rotmz);
+	calc.dot_tmp2 = nml_mat_dot(calc.dot_tmp1, calc.sclm);
 	form->fwdtfm = nml_mat_cp(calc.dot_tmp2);
 	nml_mat_free(calc.dot_tmp1);
 	nml_mat_free(calc.dot_tmp2);

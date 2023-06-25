@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 20:08:35 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 17:56:05 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 22:44:54 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,12 +175,21 @@ typedef struct s_inter_calc
 {
 	t_nml_mat	*vhat;
 	t_nml_mat	*vtmp;
+	float		a;
 	float		b;
 	float		c;
 	float		inter_test;
 	float		num_sqrt;
 	float		t1;
 	float		t2;
+	float		tt[4];
+	int			t1_valid;
+	int			t2_valid;
+	int			t3_valid;
+	int			t4_valid;
+	int			min_i;
+	float		min_t;
+	t_nml_mat	*poi[4];
 	t_ray		*bck_ray;
 	t_nml_mat	*v_poi;
 	t_nml_mat	*v_obj_org;
@@ -191,6 +200,14 @@ typedef struct s_inter_calc
 	float		v;
 	t_nml_mat	*v_obj_norm;
 	t_nml_mat	*v_obj_gorg;
+	t_nml_mat	*valid_poi;
+	t_nml_mat	*org_normal;
+	t_nml_mat	*local_origin;
+	t_nml_mat	*global_origin;
+	t_nml_mat	*new_normal;
+	float		tx;
+	float		ty;
+	float		tz;
 }	t_inter_calc;
 
 /// @brief Object Attributes

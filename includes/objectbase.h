@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:44:06 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/24 13:26:01 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:47:37 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int		sphere_test_inter_scn(t_objbase *obj, t_scene *scn);
 void	plane_init(t_objbase *obj);
 void	plane_deinit(t_objbase *obj);
 int		plane_test_inter_scn(t_objbase *obj, t_scene *scn);
+void	cylinder_init(t_objbase *obj);
+void	cylinder_deinit(t_objbase *obj);
+int		cylinder_test_inter_scn(t_objbase *obj, t_scene *scn);
+
 
 t_objbase	*objlst_last(t_objbase *lst);
 void		objlst_add_back(t_objbase **lst, t_objbase *new);

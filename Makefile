@@ -67,6 +67,7 @@ SRCS_PRIM =	objectbase.c \
 			objectlist.c \
 			sphere.c \
 			plane.c \
+			cylinder_test.c \
 
 SRCS_MAT =	materialbase.c \
 			materialbaseutil.c \

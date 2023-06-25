@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:19:45 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 23:06:51 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:47:58 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ void	obj_init_util(t_objbase *obj, int type, t_fattr *attr, int id)
 		obj->obj_test_inter_scn = plane_test_inter_scn;
 		obj->obj_init(obj);
 		obj->obj_deinit = plane_deinit;
+	}
+	if (type == CYL)
+	{
+		obj->obj_init = cylinder_init;
+		obj->obj_test_inter_scn = cylinder_test_inter_scn;
+		obj->obj_init(obj);
+		obj->obj_deinit = cylinder_deinit;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 07:08:24 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/04/30 09:29:29 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:12:42 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_camera
 	t_nml_mat	*v_proj_scr_v;
 	t_nml_mat	*v_proj_scr_cen;
 
-	t_nml_mat	(* getfn_mat)(struct s_camera *);
-	float		(* getfn_flt)(struct s_camera *);
-	void		(* setfn_uvw)(struct s_camera *, float, float, float);
-	void		(* setval)(struct s_camera *, float);
+	t_nml_mat	(*getfn_mat)(struct s_camera *);
+	float		(*getfn_flt)(struct s_camera *);
+	void		(*setfn_uvw)(struct s_camera *, float, float, float);
+	void		(*setval)(struct s_camera *, float);
 }	t_camera;
 
 void		camera_init(t_camera *camera);
@@ -73,7 +73,5 @@ t_nml_mat	cam_get_scr_cen(t_camera *camera);
 void		update_cam_geomet(t_camera *camera);
 
 t_ray		*generate_ray(t_camera *camera, float pro_scr_x, float pro_scr_y);
-// int			generate_ray(t_camera *camera, float pro_scr_x, \
-// 	float pro_scr_y, t_ray *cam_ray);
 
 #endif

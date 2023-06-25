@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   cyl_cone_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 10:02:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/25 05:12:57 by sthitiku         ###   ########.fr       */
+/*   Created: 2023/04/29 16:26:31 by nnakarac          #+#    #+#             */
+/*   Updated: 2023/06/25 04:57:37 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include <math.h>
+#include "minirt.h"
+#include "objectbase.h"
 
-# include "nml_matrix.h"
-# include "v_util.h"
-
-typedef struct s_ray
+void	cone_init(t_objbase *obj)
 {
-	t_nml_mat	*v_point1;
-	t_nml_mat	*v_point2;
-	t_nml_mat	*v_lab;
-}	t_ray;
+	(void) obj;
+}
 
-void		ray_init(t_ray *ray, t_nml_mat *v_point1, t_nml_mat *v_point2);
+void	cone_deinit(t_objbase *obj)
+{
+	(void) obj;
+}
 
-t_nml_mat	*ray_get_point(t_ray *ray, int point);
+void	cylinder_init(t_objbase *obj)
+{
+	(void) obj;
+}
 
-#endif
+void	cylinder_deinit(t_objbase *obj)
+{
+	(void) obj;
+}

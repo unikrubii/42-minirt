@@ -67,15 +67,22 @@ SRCS_PRIM =	objectbase.c \
 			objectlist.c \
 			sphere.c \
 			plane.c \
+			cylinder.c \
+			cylinder_utils.c \
+			cone.c \
+			cone_utils.c \
+			cyl_cone_utils.c \
 
 SRCS_MAT =	materialbase.c \
 			materialbaseutil.c \
 			simplemat.c \
 			simplematutil.c \
-		rt_readmap.c \
-		rt_atof.c \
-		cylinder.c \
-		cone.c \
+			rt_readmap.c \
+			rt_readmap_utils.c \
+			rt_read_sphere_plane.c \
+			rt_read_cam_light.c \
+			rt_read_cyl_cn.c \
+			rt_atof.c \
 
 OBJS = $(SRCS:.c=.o)
 

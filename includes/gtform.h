@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gtform.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:53:59 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/06/17 21:40:43 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 05:05:31 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ void		set_rotz_mat(t_nml_mat *mat, t_nml_mat *rot);
 void		set_roty_mat(t_nml_mat *mat, t_nml_mat *rot);
 void		set_rotx_mat(t_nml_mat *mat, t_nml_mat *rot);
 void		set_scale_mat(t_nml_mat *mat, t_nml_mat *scale);
-
 
 #endif

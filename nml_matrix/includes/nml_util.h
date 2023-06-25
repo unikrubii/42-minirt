@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nml_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sthitiku <sthitiku@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:43:00 by nnakarac          #+#    #+#             */
-/*   Updated: 2023/03/26 21:42:15 by nnakarac         ###   ########.fr       */
+/*   Updated: 2023/06/25 12:32:11 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "../../libft/includes/libft.h"
 
 // Enable this to allow debugging messages
-# define DEBUG_TRUE 1
+# define DEBUG_TRUE 0
 # define BUFFER_SIZE 4096
 
 # define BLACK "\033[0;30m"
